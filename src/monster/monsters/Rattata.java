@@ -1,6 +1,7 @@
 package monster.monsters;
 
 import monster.Monster;
+import monster.Type;
 import monster.evolution.Evolvable;
 import monster.move.Move;
 import monster.move.MoveSet;
@@ -16,6 +17,7 @@ public class Rattata extends Monster implements Evolvable {
         setSpecial(5);
         setSpeed(5);
         setMoveSet(new Move[]{PhysicalMoves.TACKLE, null, null, null});
+        setTyping(new Type[]{Type.NORMAL});
     }
 
     public Rattata(int health, int attack, int special, int speed, MoveSet moveSet, int dv) {

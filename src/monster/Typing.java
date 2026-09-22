@@ -18,5 +18,11 @@ public class Typing {
         return typing.length != 0 && typing.length <= 2;
     }
 
+    public Type[] getTyping() {
+        return typing;
+    }
 
+    public void setTyping(Type[] typing) {
+        this.typing = typing;
+    }
 }

@@ -1,8 +1,5 @@
 package monster;
 
-import monster.move.Move;
-import monster.move.interfaces.Attack;
-
 public enum Type {
     BUG,
     ELECTRIC,
@@ -17,17 +14,4 @@ public enum Type {
     PSYCHIC,
     ROCK,
     WATER;
-
-    public int typeComparator(Move move, Monster monster) {
-        if (move instanceof Attack attackMove) {
-
-        }
-
-
-
-
-        return 0;
-    }
-
-
 }

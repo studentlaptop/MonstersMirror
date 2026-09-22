@@ -20,6 +20,7 @@ public abstract class Monster {
 
     public Monster() {
         setMoveSet(new MoveSet());
+        setTyping(new Typing());
         setRandomDv();
         status = null;
     }
@@ -87,7 +88,7 @@ public abstract class Monster {
 
     public void setMoveSet(Move[] moveSet) {
         if (!MoveSet.isValid(moveSet)) {
-            throw new IllegalArgumentException("moveSet must be of length 1 through 4");
+            throw new IllegalArgumentException("moveSet must be of length 4");
         }
         this.moveSet.setMoveSet(moveSet);
     }
@@ -98,6 +99,18 @@ public abstract class Monster {
 
     public void setDv(int dv) {
         this.dv = dv;
+    }
+
+    public Typing getTyping() {
+        return typing;
+    }
+
+    public void setTyping(Typing typing) {
+        this.typing = typing;
+    }
+
+    public void setTyping(Type[] typing) {
+        this.typing.setTyping(typing);
     }
 
     public void setRandomDv() {
