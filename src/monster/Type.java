@@ -2,6 +2,7 @@ package monster;
 
 public enum Type {
     BUG,
+    DRAGON,
     ELECTRIC,
     FIRE,
     FLYING,
