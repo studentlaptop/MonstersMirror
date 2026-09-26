@@ -5,13 +5,13 @@ public enum MoveEffect {
     NOT_EFFECTIVE(0.5f),
     SUPER_EFFECTIVE(2.0f);
 
-    final float modifier;
-
-    public float getModifier() {
-        return modifier;
-    }
+    private final float modifier;
 
     MoveEffect(float modifier) {
         this.modifier = modifier;
+    }
+
+    public float getModifier() {
+        return modifier;
     }
 }

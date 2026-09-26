@@ -1,50 +1,27 @@
 package battle;
 
 import monster.Monster;
-import monster.Type;
 import monster.move.Move;
 import monster.move.interfaces.Attack;
 
-import java.util.EnumMap;
-
 public class Effectiveness {
-    private final float[][] effectiveTable; // consider deleting
-    private final EnumMap<Type, Integer> indices; // consider <Type, EnumMap> or <Type, HashMap> for individual effect
 
-    public Effectiveness() {
-        effectiveTable = new float[Type.values().length][Type.values().length];
-        indices = new EnumMap<>(Type.class);
-        populateMap();
-        populateTable();
-    }
-
-    private void populateMap() {
-        int index = 0;
-
-        for (Type type : Type.values()) {
-            indices.put(type, index);
-            index++;
-        }
-    }
-
-    private void populateTable() {
-        for (int i = 0; i < effectiveTable.length; i++) {
-            for (int j = 0; j < effectiveTable.length; j++) {
-                if (i == j) {
-                    effectiveTable[i][j] = 0.5f;
-                }
-            }
-        }
-    }
-
-    public MoveEffect typeComparator(Move move, Monster monster) {
+    public static MoveModifier typeComparator(Move move, Monster monster) {
         if (move instanceof Attack attackMove) {
+            MoveEffect moveEffect = move.getType().getMoveEffect(monster.getTyping().get(0));
 
+            if (moveEffect == null) {
+                return new MoveModifier(null, 1.0f);
+            }
+
+            return new MoveModifier(moveEffect, moveEffect.getModifier());
         }
 
 
 
 
-        return MoveEffect.NO_EFFECT;
+        return new MoveModifier(MoveEffect.NO_EFFECT, MoveEffect.NO_EFFECT.getModifier());
     }
+
+    public record MoveModifier(MoveEffect moveEffect, float modifier){};
 }
