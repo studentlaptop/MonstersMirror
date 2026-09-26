@@ -22,6 +22,10 @@ public class Typing {
         return typing;
     }
 
+    public Type get(int index) {
+        return typing[index];
+    }
+
     public void setTyping(Type[] typing) {
         this.typing = typing;
     }
