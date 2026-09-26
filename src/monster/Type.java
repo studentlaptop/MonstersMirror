@@ -261,7 +261,7 @@ public enum Type {
         )))
         ;
 
-        final EnumMap<Type, MoveEffect> effects;
+        private final EnumMap<Type, MoveEffect> effects;
 
         TypeMove(EnumMap<Type, MoveEffect> effects) {
             this.effects = effects;
