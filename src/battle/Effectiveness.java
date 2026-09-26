@@ -17,7 +17,7 @@ public class Effectiveness {
             return new MoveModifier(moveEffect, moveEffect.getModifier());
         }
 
-
+        // TODO: maybe add contingencies for non-attack moves
 
 
         return new MoveModifier(MoveEffect.NO_EFFECT, MoveEffect.NO_EFFECT.getModifier());
