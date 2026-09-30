@@ -9,7 +9,7 @@ public class MoveSet {
 
     public MoveSet(Move[] moveSet) {
         if (!isValid(moveSet)) {
-            throw new IllegalArgumentException("moveSet must be of length 0 through 4");
+            throw new IllegalArgumentException("moveSet must be of length 4");
         }
         this.moveSet = moveSet;
     }
@@ -19,7 +19,7 @@ public class MoveSet {
     }
 
     @SuppressWarnings("BooleanMethodIsAlwaysInverted")
-    public static boolean isValid(Move[] moveSet) {
+    public static boolean isValid(Move[] moveSet) { // TODO: ensure no duplicates are present
         return moveSet.length == 4;
     }
 
