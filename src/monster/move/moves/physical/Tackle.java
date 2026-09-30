@@ -3,8 +3,9 @@ package monster.move.moves.physical;
 import monster.Monster;
 import monster.Type;
 import monster.move.Move;
+import monster.move.interfaces.Attack;
 
-public final class Tackle extends Move {
+public final class Tackle extends Move implements Attack {
     public Tackle() {
         super();
         setName("Tackle");
