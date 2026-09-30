@@ -1,26 +1,41 @@
 package monster.move;
 
+import java.util.HashSet;
+import java.util.Set;
+
 public class MoveSet {
     private Move[] moveSet;
 
     public MoveSet() {
-        moveSet = new Move[]{null, null, null, null};
+        moveSet = new Move[4];
     }
 
     public MoveSet(Move[] moveSet) {
-        if (!isValid(moveSet)) {
-            throw new IllegalArgumentException("moveSet must be of length 4");
+        if (isValid(moveSet)) {
+            this.moveSet = moveSet;
         }
-        this.moveSet = moveSet;
     }
 
-    public MoveSet(MoveSet moveSetObj) {
-        this.moveSet = moveSetObj.moveSet;
+    public MoveSet(MoveSet moveSet) {
+        if (isValid(moveSet.getMoves())) {
+            this.moveSet = moveSet.moveSet;
+        }
     }
 
-    @SuppressWarnings("BooleanMethodIsAlwaysInverted")
-    public static boolean isValid(Move[] moveSet) { // TODO: ensure no duplicates are present
-        return moveSet.length == 4;
+    public static boolean isValid(Move[] moveSet) {
+        if (moveSet.length == 4) {
+            Set<Move> duplicateCheck = new HashSet<>();
+            for (Move move : moveSet) {
+                if (move == null) {
+                    continue;
+                }
+                if (!duplicateCheck.add(move)) {
+                    throw new IllegalArgumentException("Duplicate move: " + move.getName());
+                }
+            }
+            return true;
+        }
+        throw new IllegalArgumentException("moveSet length out of range");
     }
 
     public Move get(int index) {
@@ -32,7 +47,9 @@ public class MoveSet {
     }
 
     public void setMoveSet(Move[] moveSet) {
-        this.moveSet = moveSet;
+        if (isValid(moveSet)) {
+            this.moveSet = moveSet;
+        }
     }
 
     public int indexOf(Move move) {
