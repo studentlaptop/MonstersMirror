@@ -1,27 +1,43 @@
 package monster;
 
+import java.util.Arrays;
+
 public class Typing {
     private Type[] typing;
 
     public Typing() {
-        typing = new Type[]{null, null};
+        typing = new Type[]{Type.NORMAL};
     }
 
     public Typing(Type[] typing) {
-        if (!isValid(typing)) {
-            throw new IllegalArgumentException("Invalid typing");
+        if (isValid(typing)) {
+            this.typing = typing;
         }
-        this.typing = typing;
+    }
+
+    public Typing(Typing typing) {
+        if (isValid(typing.getTypes())) {
+            this.typing = typing.getTypes();
+        }
     }
 
     public static boolean isValid(Type[] typing) {
         if (typing.length != 0 && typing.length <= 2) {
-            return typing.length != 2 || typing[0] != typing[1];
+            for (Type type: typing) {
+                if (type == null) {
+                    throw new NullPointerException("Invalid Type");
+                }
+            }
+
+            if (typing.length == 2 && typing[0] == typing[1]) {
+                throw new IllegalArgumentException("Duplicate types: " + Arrays.toString(typing));
+            }
+            return true;
         }
-        return false;
+        throw new IllegalArgumentException("typing length out of range");
     }
 
-    public Type[] getTyping() {
+    public Type[] getTypes() {
         return typing;
     }
 
@@ -29,7 +45,7 @@ public class Typing {
         return typing[index];
     }
 
-    public void setTyping(Type[] typing) {
+    public void setTypes(Type[] typing) {
         if (isValid(typing)) {
             this.typing = typing;
         }
