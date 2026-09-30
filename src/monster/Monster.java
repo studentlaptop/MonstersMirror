@@ -10,8 +10,10 @@ public abstract class Monster {
     private String name;
     private int health;
     private int attack;
+    private int defense;
     private int special;
     private int speed;
+    private int level;
     private MoveSet moveSet;
     private int dv;
     private Typing typing;
@@ -20,16 +22,18 @@ public abstract class Monster {
 
     public Monster() {
         setMoveSet(new MoveSet());
-        setTyping(new Typing());
+        setTyping(new Typing(new Type[]{Type.NORMAL}));
         setRandomDv();
         status = null;
     }
 
-    public Monster(int health, int attack, int special, int speed, MoveSet moveSet, int dv) {
+    public Monster(int health, int attack, int defense, int special, int speed, int level, MoveSet moveSet, int dv) {
         this.health = health;
         this.attack = attack;
+        this.defense = defense;
         this.special = special;
         this.speed = speed;
+        this.level = level;
         this.moveSet = moveSet;
         this.dv = dv;
         status = null;
@@ -62,6 +66,14 @@ public abstract class Monster {
         this.attack = attack;
     }
 
+    public int getDefense() {
+        return defense;
+    }
+
+    public void setDefense(int defense) {
+        this.defense = defense;
+    }
+
     public int getSpecial() {
         return special;
     }
@@ -78,17 +90,28 @@ public abstract class Monster {
         this.speed = speed;
     }
 
+    public int getLevel() {
+        return level;
+    }
+
+    public void setLevel(int level) {
+        this.level = level;
+    }
+
     public MoveSet getMoveSet() {
         return moveSet;
     }
 
     public void setMoveSet(MoveSet moveSet) {
+        if (!MoveSet.isValid(moveSet.getMoves())) {
+            throw new IllegalArgumentException("invalid MoveSet");
+        }
         this.moveSet = moveSet;
     }
 
     public void setMoveSet(Move[] moveSet) {
         if (!MoveSet.isValid(moveSet)) {
-            throw new IllegalArgumentException("moveSet must be of length 4");
+            throw new IllegalArgumentException("invalid MoveSet");
         }
         this.moveSet.setMoveSet(moveSet);
     }
@@ -106,10 +129,16 @@ public abstract class Monster {
     }
 
     public void setTyping(Typing typing) {
+        if (!Typing.isValid(typing.getTyping())) {
+            throw new IllegalArgumentException("invalid typing");
+        }
         this.typing = typing;
     }
 
     public void setTyping(Type[] typing) {
+        if (!Typing.isValid(typing)) {
+            throw new IllegalArgumentException("invalid typing");
+        }
         this.typing.setTyping(typing);
     }
 
