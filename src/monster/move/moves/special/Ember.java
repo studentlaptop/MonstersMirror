@@ -9,7 +9,7 @@ import monster.status.statuses.Statuses;
 
 import java.util.random.RandomGenerator;
 
-public class Ember extends Move implements Attack, Status {
+public final class Ember extends Move implements Attack, Status {
 
     public Ember() {
         super();
@@ -24,7 +24,7 @@ public class Ember extends Move implements Attack, Status {
     }
 
     public boolean attack(Monster user, Monster enemy) {
-        if (true) { // change to accuracy check eventually
+        if (true) { // TODO: change to accuracy check eventually
             enemy.setHealth(enemy.getHealth() - ((user.getAttack() / 10) + 40));
 
             int burnChance = statusChance();
