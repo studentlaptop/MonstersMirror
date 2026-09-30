@@ -5,113 +5,124 @@ import battle.MoveEffect;
 import java.util.EnumMap;
 import java.util.Map;
 
+/**
+ * Enums of the {@link Type} class can be applied to the typing of a {@link monster.move.Move} and a {@link Monster}.
+ * Each {@link Type} shall have an associated {@link EnumMap} in {@link TypeMove} to define Move v. Monster effectiveness.
+ * Each {@link Type} shall implement {@link getMoveEffect}.
+ */
 public enum Type {
     BUG {
         @Override
         public MoveEffect getMoveEffect(Type monsterType) {
             EnumMap<Type, MoveEffect> bugMove = TypeMove.BUG_MOVE.getEffects();
-            return bugMove.get(monsterType);
+            return (bugMove.get(monsterType) == null) ? MoveEffect.EFFECTIVE : bugMove.get(monsterType);
         }
     },
     DRAGON {
         @Override
         public MoveEffect getMoveEffect(Type monsterType) {
             EnumMap<Type, MoveEffect> dragonMove = TypeMove.DRAGON_MOVE.getEffects();
-            return dragonMove.get(monsterType);
+            return (dragonMove.get(monsterType) == null) ? MoveEffect.EFFECTIVE : dragonMove.get(monsterType);
         }
     },
     ELECTRIC {
         @Override
         public MoveEffect getMoveEffect(Type monsterType) {
             EnumMap<Type, MoveEffect> electricMove = TypeMove.ELECTRIC_MOVE.getEffects();
-            return electricMove.get(monsterType);
+            return (electricMove.get(monsterType) == null) ? MoveEffect.EFFECTIVE : electricMove.get(monsterType);
         }
     },
     FIGHTING {
         @Override
         public MoveEffect getMoveEffect(Type monsterType) {
             EnumMap<Type, MoveEffect> fightingMove = TypeMove.FIGHTING_MOVE.getEffects();
-            return fightingMove.get(monsterType);
+            return (fightingMove.get(monsterType) == null) ? MoveEffect.EFFECTIVE : fightingMove.get(monsterType);
         }
     },
     FIRE {
         @Override
         public MoveEffect getMoveEffect(Type monsterType) {
             EnumMap<Type, MoveEffect> fireMove = TypeMove.FIRE_MOVE.getEffects();
-            return fireMove.get(monsterType);
+            return (fireMove.get(monsterType) == null) ? MoveEffect.EFFECTIVE : fireMove.get(monsterType);
         }
     },
     FLYING {
         @Override
         public MoveEffect getMoveEffect(Type monsterType) {
             EnumMap<Type, MoveEffect> flyingMove = TypeMove.FLYING_MOVE.getEffects();
-            return flyingMove.get(monsterType);
+            return (flyingMove.get(monsterType) == null) ? MoveEffect.EFFECTIVE : flyingMove.get(monsterType);
         }
     },
     GHOST {
         @Override
         public MoveEffect getMoveEffect(Type monsterType) {
             EnumMap<Type, MoveEffect> ghostMove = TypeMove.GHOST_MOVE.getEffects();
-            return ghostMove.get(monsterType);
+            return (ghostMove.get(monsterType) == null) ? MoveEffect.EFFECTIVE : ghostMove.get(monsterType);
         }
     },
     GROUND {
         @Override
         public MoveEffect getMoveEffect(Type monsterType) {
             EnumMap<Type, MoveEffect> groundMove = TypeMove.GROUND_MOVE.getEffects();
-            return groundMove.get(monsterType);
+            return (groundMove.get(monsterType) == null) ? MoveEffect.EFFECTIVE : groundMove.get(monsterType);
         }
     },
     GRASS {
         @Override
         public MoveEffect getMoveEffect(Type monsterType) {
             EnumMap<Type, MoveEffect> grassMove = TypeMove.GRASS_MOVE.getEffects();
-            return grassMove.get(monsterType);
+            return (grassMove.get(monsterType) == null) ? MoveEffect.EFFECTIVE : grassMove.get(monsterType);
         }
     },
     ICE {
         @Override
         public MoveEffect getMoveEffect(Type monsterType) {
             EnumMap<Type, MoveEffect> iceMove = TypeMove.ICE_MOVE.getEffects();
-            return iceMove.get(monsterType);
+            return (iceMove.get(monsterType) == null) ? MoveEffect.EFFECTIVE : iceMove.get(monsterType);
         }
     },
     NORMAL {
         @Override
         public MoveEffect getMoveEffect(Type monsterType) {
             EnumMap<Type, MoveEffect> normalMove = TypeMove.NORMAL_MOVE.getEffects();
-            return normalMove.get(monsterType);
+            return (normalMove.get(monsterType) == null) ? MoveEffect.EFFECTIVE : normalMove.get(monsterType);
         }
     },
     POISON {
         @Override
         public MoveEffect getMoveEffect(Type monsterType) {
             EnumMap<Type, MoveEffect> poisonMove = TypeMove.POISON_MOVE.getEffects();
-            return poisonMove.get(monsterType);
+            return (poisonMove.get(monsterType) == null) ? MoveEffect.EFFECTIVE : poisonMove.get(monsterType);
         }
     },
     PSYCHIC {
         @Override
         public MoveEffect getMoveEffect(Type monsterType) {
             EnumMap<Type, MoveEffect> psychicMove = TypeMove.PSYCHIC_MOVE.getEffects();
-            return psychicMove.get(monsterType);
+            return (psychicMove.get(monsterType) == null) ? MoveEffect.EFFECTIVE : psychicMove.get(monsterType);
         }
     },
     ROCK {
         @Override
         public MoveEffect getMoveEffect(Type monsterType) {
             EnumMap<Type, MoveEffect> rockMove = TypeMove.ROCK_MOVE.getEffects();
-            return rockMove.get(monsterType);
+            return (rockMove.get(monsterType) == null) ? MoveEffect.EFFECTIVE : rockMove.get(monsterType);
         }
     },
     WATER {
         @Override
         public MoveEffect getMoveEffect(Type monsterType) {
             EnumMap<Type, MoveEffect> waterMove = TypeMove.WATER_MOVE.getEffects();
-            return waterMove.get(monsterType);
+            return (waterMove.get(monsterType) == null) ? MoveEffect.EFFECTIVE : waterMove.get(monsterType);
         }
     };
 
+    /**
+     * Returns a {@link MoveEffect} value from a {@link TypeMove} enum map associated with a given {@link Type} of a {@link Monster}.
+     *
+     * @param monsterType the key with which the MoveEffect value is to be associated
+     * @return The MoveEffect value associated with monsterType key, or {@code null} if there was no mapping for the key.
+     */
     public abstract MoveEffect getMoveEffect(Type monsterType);
 
     private enum TypeMove {
