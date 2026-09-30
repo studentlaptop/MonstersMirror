@@ -14,14 +14,16 @@ public class Rattata extends Monster implements Evolvable {
         setName("Rattata");
         setHealth(25);
         setAttack(5);
+        setDefense(5);
         setSpecial(5);
         setSpeed(5);
+        setLevel(5);
         setMoveSet(new Move[]{PhysicalMoves.TACKLE, null, null, null});
         setTyping(new Type[]{Type.NORMAL});
     }
 
-    public Rattata(int health, int attack, int special, int speed, MoveSet moveSet, int dv) {
-        super(health, attack, special, speed, moveSet, dv);
+    public Rattata(int health, int attack, int defense, int special, int speed, int level, MoveSet moveSet, int dv) {
+        super(health, attack, defense, special, speed, level, moveSet, dv);
     }
 
 
