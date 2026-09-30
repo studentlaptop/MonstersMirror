@@ -22,7 +22,7 @@ public abstract class Monster {
 
     public Monster() {
         setMoveSet(new MoveSet());
-        setTyping(new Typing(new Type[]{Type.NORMAL}));
+        setTyping(new Typing());
         setRandomDv();
         status = null;
     }
@@ -103,17 +103,15 @@ public abstract class Monster {
     }
 
     public void setMoveSet(MoveSet moveSet) {
-        if (!MoveSet.isValid(moveSet.getMoves())) {
-            throw new IllegalArgumentException("invalid MoveSet");
+        if (MoveSet.isValid(moveSet.getMoves())) {
+            this.moveSet = moveSet;
         }
-        this.moveSet = moveSet;
     }
 
     public void setMoveSet(Move[] moveSet) {
-        if (!MoveSet.isValid(moveSet)) {
-            throw new IllegalArgumentException("invalid MoveSet");
+        if (MoveSet.isValid(moveSet)) {
+            this.moveSet.setMoveSet(moveSet);
         }
-        this.moveSet.setMoveSet(moveSet);
     }
 
     public int getDv() {
@@ -129,17 +127,15 @@ public abstract class Monster {
     }
 
     public void setTyping(Typing typing) {
-        if (!Typing.isValid(typing.getTyping())) {
-            throw new IllegalArgumentException("invalid typing");
+        if (Typing.isValid(typing.getTypes())) {
+            this.typing = typing;
         }
-        this.typing = typing;
     }
 
     public void setTyping(Type[] typing) {
-        if (!Typing.isValid(typing)) {
-            throw new IllegalArgumentException("invalid typing");
+        if (Typing.isValid(typing)) {
+            this.typing.setTypes(typing);
         }
-        this.typing.setTyping(typing);
     }
 
     public void setRandomDv() {
