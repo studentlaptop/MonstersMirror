@@ -6,7 +6,7 @@ import monster.move.Move;
 import monster.move.interfaces.Attack;
 
 public final class VineWhip extends Move implements Attack {
-    public VineWhip() {
+    private VineWhip() {
         super();
         setName("Vine Whip");
         setType(Type.GRASS);
@@ -14,13 +14,16 @@ public final class VineWhip extends Move implements Attack {
         setPowerPoints(25);
     }
 
-    public VineWhip(String name, Type type, int powerPoints) {
-        super(name, type, powerPoints);
-    }
-
     public boolean attack(Monster user, Monster enemy) {
 
         return false;
     }
 
+    private static class VineWhipInstance {
+        private static final VineWhip instance = new VineWhip();
+    }
+
+    public static VineWhip getInstance() {
+        return VineWhipInstance.instance;
+    }
 }

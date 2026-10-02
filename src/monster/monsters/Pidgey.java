@@ -5,7 +5,7 @@ import monster.Type;
 import monster.evolution.Evolvable;
 import monster.move.Move;
 import monster.move.MoveSet;
-import monster.move.moves.physical.PhysicalMoves;
+import monster.move.moves.physical.Physical;
 
 public class Pidgey extends Monster implements Evolvable {
 
@@ -18,7 +18,7 @@ public class Pidgey extends Monster implements Evolvable {
         setSpecial(5);
         setSpeed(5);
         setLevel(5);
-        setMoveSet(new Move[]{PhysicalMoves.TACKLE, null, null, null});
+        setMoveSet(new Move[]{Physical.TACKLE.getMove(), null, null, null});
         setTyping(new Type[]{Type.NORMAL, Type.FLYING});
     }
 

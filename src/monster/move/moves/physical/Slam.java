@@ -6,7 +6,7 @@ import monster.move.Move;
 import monster.move.interfaces.Attack;
 
 public final class Slam extends Move implements Attack {
-    public Slam() {
+    private Slam() {
         super();
         setName("Slam");
         setType(Type.NORMAL);
@@ -14,13 +14,16 @@ public final class Slam extends Move implements Attack {
         setPowerPoints(25);
     }
 
-    public Slam(String name, Type type, int powerPoints) {
-        super(name, type, powerPoints);
-    }
-
     public boolean attack(Monster user, Monster enemy) {
 
         return false;
     }
 
+    private static class SlamInstance {
+        private static final Slam instance = new Slam();
+    }
+
+    public static Slam getInstance() {
+        return SlamInstance.instance;
+    }
 }

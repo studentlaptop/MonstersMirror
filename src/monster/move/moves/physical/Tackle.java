@@ -6,7 +6,7 @@ import monster.move.Move;
 import monster.move.interfaces.Attack;
 
 public final class Tackle extends Move implements Attack {
-    public Tackle() {
+    private Tackle() {
         super();
         setName("Tackle");
         setType(Type.NORMAL);
@@ -14,13 +14,16 @@ public final class Tackle extends Move implements Attack {
         setPowerPoints(25);
     }
 
-    public Tackle(String name, Type type, int powerPoints) {
-        super(name, type, powerPoints);
-    }
-
     public boolean attack(Monster user, Monster enemy) {
 
         return false;
     }
 
+    private static class TackleInstance {
+        private static final Tackle instance = new Tackle();
+    }
+
+    public static Tackle getInstance() {
+        return TackleInstance.instance;
+    }
 }

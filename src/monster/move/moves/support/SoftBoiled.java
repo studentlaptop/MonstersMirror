@@ -6,8 +6,7 @@ import monster.move.Move;
 import monster.move.interfaces.Heal;
 
 public class SoftBoiled extends Move implements Heal {
-
-    public SoftBoiled() {
+    private SoftBoiled() {
         super();
         setName("Soft-Boiled");
         setType(Type.NORMAL);
@@ -15,11 +14,15 @@ public class SoftBoiled extends Move implements Heal {
         setPowerPoints(25);
     }
 
-    public SoftBoiled(String name, Type type, int powerPoints) {
-        super(name, type, powerPoints);
-    }
-
     public void heal(Monster user) {
         user.setHealth(user.getHealth() + (user.getHealth() / 2));
+    }
+
+    private static class SoftBoiledInstance {
+        private static final SoftBoiled instance = new SoftBoiled();
+    }
+
+    public static SoftBoiled getInstance() {
+        return SoftBoiledInstance.instance;
     }
 }

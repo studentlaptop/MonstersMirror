@@ -8,15 +8,7 @@ public abstract class Move {
     private int accuracy;
     private int powerPoints;
 
-    public Move() {
-
-    }
-
-    public Move(String name, Type type, int powerPoints) {
-        this.name = name;
-        this.type = type;
-        this.powerPoints = powerPoints;
-    }
+    public Move() {}
 
     public String getName() {
         return name;

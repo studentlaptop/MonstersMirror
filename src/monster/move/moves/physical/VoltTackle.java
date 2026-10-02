@@ -10,17 +10,12 @@ import monster.status.statuses.Statuses;
 import java.util.random.RandomGenerator;
 
 public final class VoltTackle extends Move implements Attack, Status {
-
-    public VoltTackle() {
+    private VoltTackle() {
         super();
         setName("Volt Tackle");
         setType(Type.ELECTRIC);
         setAccuracy(100);
         setPowerPoints(25);
-    }
-
-    public VoltTackle(String name, Type type, int powerPoints) {
-        super(name, type, powerPoints);
     }
 
     public boolean attack(Monster user, Monster enemy) {
@@ -52,5 +47,13 @@ public final class VoltTackle extends Move implements Attack, Status {
             return true;
         }
         return false;
+    }
+
+    private static class VoltTackleInstance {
+        private static final VoltTackle instance = new VoltTackle();
+    }
+
+    public static VoltTackle getInstance() {
+        return VoltTackleInstance.instance;
     }
 }

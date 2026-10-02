@@ -10,17 +10,12 @@ import monster.status.statuses.Statuses;
 import java.util.random.RandomGenerator;
 
 public final class Ember extends Move implements Attack, Status {
-
-    public Ember() {
+    private Ember() {
         super();
         setName("Ember");
         setType(Type.FIRE);
         setAccuracy(100);
         setPowerPoints(25);
-    }
-
-    public Ember(String name, Type type, int powerPoints) {
-        super(name, type, powerPoints);
     }
 
     public boolean attack(Monster user, Monster enemy) {
@@ -52,5 +47,13 @@ public final class Ember extends Move implements Attack, Status {
             return true;
         }
         return false;
+    }
+
+    private static class EmberInstance {
+        private static final Ember instance = new Ember();
+    }
+
+    public static Ember getInstance() {
+        return EmberInstance.instance;
     }
 }

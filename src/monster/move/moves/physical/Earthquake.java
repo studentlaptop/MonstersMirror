@@ -6,7 +6,7 @@ import monster.move.Move;
 import monster.move.interfaces.Attack;
 
 public final class Earthquake extends Move implements Attack {
-    public Earthquake() {
+    private Earthquake() {
         super();
         setName("Earthquake");
         setType(Type.GROUND);
@@ -14,13 +14,16 @@ public final class Earthquake extends Move implements Attack {
         setPowerPoints(25);
     }
 
-    public Earthquake(String name, Type type, int powerPoints) {
-        super(name, type, powerPoints);
-    }
-
     public boolean attack(Monster user, Monster enemy) {
 
         return false;
     }
 
+    private static class EarthquakeInstance {
+        private static final Earthquake instance = new Earthquake();
+    }
+
+    public static Earthquake getInstance() {
+        return EarthquakeInstance.instance;
+    }
 }
