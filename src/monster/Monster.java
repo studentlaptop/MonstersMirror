@@ -17,7 +17,6 @@ public abstract class Monster {
     private MoveSet moveSet;
     private int dv;
     private Typing typing;
-
     private Status status;
 
     public Monster() {
@@ -133,9 +132,7 @@ public abstract class Monster {
     }
 
     public void setTyping(Type[] typing) {
-        if (Typing.isValid(typing)) {
             this.typing.setTypes(typing);
-        }
     }
 
     public void setRandomDv() {
