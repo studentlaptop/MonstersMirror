@@ -6,4 +6,6 @@ import monster.Type;
 public interface Attack {
     boolean attack(Monster user, Monster enemy);
     Type getType();
+    int getPowerPoints();
+    void setPowerPoints(int powerPoints);
 }

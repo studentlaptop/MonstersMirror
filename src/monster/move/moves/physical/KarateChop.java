@@ -6,11 +6,13 @@ import monster.move.Move;
 import monster.move.interfaces.Attack;
 
 public final class KarateChop extends Move implements Attack {
-    private KarateChop() {
+    private static final String NAME = "Karate Chop";
+    private static final Type TYPE = Type.FIGHTING;
+    private static final int ACCURACY = 95;
+    private int powerPoints;
+
+    KarateChop() {
         super();
-        setName("Karate Chop");
-        setType(Type.FIGHTING);
-        setAccuracy(95);
         setPowerPoints(25);
     }
 
@@ -19,11 +21,29 @@ public final class KarateChop extends Move implements Attack {
         return false;
     }
 
-    private static class KarateChopInstance {
-        private static final KarateChop instance = new KarateChop();
+    @Override
+    public String getName() {
+        return NAME;
     }
 
-    public static KarateChop getInstance() {
-        return KarateChopInstance.instance;
+    @Override
+    public Type getType() {
+        return TYPE;
     }
+
+    @Override
+    public int getAccuracy() {
+        return ACCURACY;
+    }
+
+    @Override
+    public int getPowerPoints() {
+        return powerPoints;
+    }
+
+    @Override
+    public void setPowerPoints(int powerPoints) {
+        this.powerPoints = powerPoints;
+    }
+
 }

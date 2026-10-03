@@ -6,11 +6,12 @@ import monster.move.Move;
 import monster.move.interfaces.Heal;
 
 public class SoftBoiled extends Move implements Heal {
-    private SoftBoiled() {
+    private static final String NAME = "Soft-Boiled";
+    private static final Type TYPE = Type.NORMAL;
+    private int powerPoints;
+
+    SoftBoiled() {
         super();
-        setName("Soft-Boiled");
-        setType(Type.NORMAL);
-        setAccuracy(100);
         setPowerPoints(25);
     }
 
@@ -18,11 +19,29 @@ public class SoftBoiled extends Move implements Heal {
         user.setHealth(user.getHealth() + (user.getHealth() / 2));
     }
 
-    private static class SoftBoiledInstance {
-        private static final SoftBoiled instance = new SoftBoiled();
+    @Override
+    public String getName() {
+        return NAME;
     }
 
-    public static SoftBoiled getInstance() {
-        return SoftBoiledInstance.instance;
+    @Override
+    public Type getType() {
+        return TYPE;
     }
+
+    @Override
+    public int getAccuracy() {
+        return 0;
+    }
+
+    @Override
+    public int getPowerPoints() {
+        return powerPoints;
+    }
+
+    @Override
+    public void setPowerPoints(int powerPoints) {
+        this.powerPoints = powerPoints;
+    }
+
 }

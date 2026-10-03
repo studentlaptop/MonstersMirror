@@ -1,10 +1,45 @@
 package monster.status.statuses;
 
-public record Statuses() {
-    public static final Burn BURN = new Burn();
-    public static final Confusion CONFUSION = new Confusion();
-    public static final Freeze FREEZE = new Freeze();
-    public static final Paralyze PARALYZE = new Paralyze();
-    public static final Poison POISON = new Poison();
-    public static final Sleep SLEEP = new Sleep();
+import monster.status.Status;
+
+public enum Statuses {
+    BURN {
+        @Override
+        public Status getStatus() {
+            return Burn.getInstance();
+        }
+    },
+    CONFUSION {
+        @Override
+        public Status getStatus() {
+            return Confusion.getInstance();
+        }
+    },
+    FREEZE {
+        @Override
+        public Status getStatus() {
+            return Freeze.getInstance();
+        }
+    },
+    PARALYZE {
+        @Override
+        public Status getStatus() {
+            return Paralyze.getInstance();
+        }
+    },
+    POISON {
+        @Override
+        public Status getStatus() {
+            return Poison.getInstance();
+        }
+    },
+    SLEEP {
+        @Override
+        public Status getStatus() {
+            return Sleep.getInstance();
+        }
+    },
+    ;
+
+    public abstract Status getStatus();
 }

@@ -6,11 +6,13 @@ import monster.move.Move;
 import monster.move.interfaces.Attack;
 
 public final class Earthquake extends Move implements Attack {
-    private Earthquake() {
+    private static final String NAME = "Earthquake";
+    private static final Type TYPE = Type.GROUND;
+    private static final int ACCURACY = 80;
+    private int powerPoints;
+
+    Earthquake() {
         super();
-        setName("Earthquake");
-        setType(Type.GROUND);
-        setAccuracy(95);
         setPowerPoints(25);
     }
 
@@ -19,11 +21,30 @@ public final class Earthquake extends Move implements Attack {
         return false;
     }
 
-    private static class EarthquakeInstance {
-        private static final Earthquake instance = new Earthquake();
+    @Override
+    public String getName() {
+        return NAME;
     }
 
-    public static Earthquake getInstance() {
-        return EarthquakeInstance.instance;
+    @Override
+    public Type getType() {
+        return TYPE;
     }
+
+    @Override
+    public int getAccuracy() {
+        return ACCURACY;
+    }
+
+    @Override
+    public int getPowerPoints() {
+        return powerPoints;
+    }
+
+    @Override
+    public void setPowerPoints(int powerPoints) {
+        this.powerPoints = powerPoints;
+    }
+
+
 }

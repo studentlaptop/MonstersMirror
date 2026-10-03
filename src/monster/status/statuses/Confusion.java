@@ -4,7 +4,7 @@ import monster.Monster;
 import monster.status.Status;
 
 public class Confusion extends Status {
-    public Confusion() {
+    private Confusion() {
         super();
         setName("Confusion");
     }
@@ -19,5 +19,11 @@ public class Confusion extends Status {
         monster.setHealth(monster.getHealth() / 6);
     }
 
+    private static class ConfusionInstance {
+        private static final Confusion instance = new Confusion();
+    }
 
+    public static Confusion getInstance() {
+        return ConfusionInstance.instance;
+    }
 }

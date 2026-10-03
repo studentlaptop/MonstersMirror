@@ -7,14 +7,14 @@ import monster.move.interfaces.Attack;
 import monster.move.interfaces.Status;
 import monster.status.statuses.Statuses;
 
-import java.util.random.RandomGenerator;
-
 public final class Ember extends Move implements Attack, Status {
-    private Ember() {
+    private static final String NAME = "Ember";
+    private static final Type TYPE = Type.FIRE;
+    private static final int ACCURACY = 95;
+    private int powerPoints;
+
+    Ember() {
         super();
-        setName("Ember");
-        setType(Type.FIRE);
-        setAccuracy(100);
         setPowerPoints(25);
     }
 
@@ -22,38 +22,43 @@ public final class Ember extends Move implements Attack, Status {
         if (true) { // TODO: change to accuracy check eventually
             enemy.setHealth(enemy.getHealth() - ((user.getAttack() / 10) + 40));
 
-            int burnChance = statusChance();
-
-            if (burnChance <= 10) {
-                return inflictStatus(enemy);
+            if (isUnaffected(enemy)) {
+                if (statusChance(1,11) == 1) {
+                    return inflictStatus(enemy);
+                }
+                return true;
             }
-            return true;
         }
         return false;
-    }
-
-    public int statusChance() {
-        RandomGenerator rng = RandomGenerator.of("L64X128MixRandom"); // look into changing to SplittableRandom
-        return rng.nextInt(1, 100);
-    }
-
-    public boolean isUnaffected(Monster monster) {
-        return monster.getStatus() == null;
     }
 
     public boolean inflictStatus(Monster monster) {
-        if (isUnaffected(monster)) {
-            monster.setStatus(Statuses.BURN);
-            return true;
-        }
-        return false;
+        monster.setStatus(Statuses.BURN.getStatus());
+        return true;
     }
 
-    private static class EmberInstance {
-        private static final Ember instance = new Ember();
+    @Override
+    public String getName() {
+        return NAME;
     }
 
-    public static Ember getInstance() {
-        return EmberInstance.instance;
+    @Override
+    public Type getType() {
+        return TYPE;
+    }
+
+    @Override
+    public int getAccuracy() {
+        return ACCURACY;
+    }
+
+    @Override
+    public int getPowerPoints() {
+        return powerPoints;
+    }
+
+    @Override
+    public void setPowerPoints(int powerPoints) {
+        this.powerPoints = powerPoints;
     }
 }

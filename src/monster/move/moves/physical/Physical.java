@@ -1,43 +1,43 @@
 package monster.move.moves.physical;
 
 import monster.move.Move;
-import monster.move.interfaces.Singleton;
+import monster.move.interfaces.Creator;
 
-public enum Physical implements Singleton {
+public enum Physical implements Creator {
     TACKLE {
         @Override
         public Move getMove() {
-            return Tackle.getInstance();
+            return new Tackle();
         }
     },
     SLAM {
         @Override
         public Move getMove() {
-            return Slam.getInstance();
+            return new Slam();
         }
     },
     EARTHQUAKE {
         @Override
         public Move getMove() {
-            return Earthquake.getInstance();
+            return new Earthquake();
         }
     },
     KARATE_CHOP {
         @Override
         public Move getMove() {
-            return KarateChop.getInstance();
+            return new KarateChop();
         }
     },
     VOLT_TACKLE {
         @Override
         public Move getMove() {
-            return VoltTackle.getInstance();
+            return new VoltTackle();
         }
     },
     VINE_WHIP {
         @Override
         public Move getMove() {
-            return VineWhip.getInstance();
+            return new VineWhip();
         }
     }
     ;

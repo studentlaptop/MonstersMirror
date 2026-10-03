@@ -6,7 +6,7 @@ import monster.status.Status;
 import java.util.random.RandomGenerator;
 
 public class Paralyze extends Status {
-    public Paralyze() {
+    private Paralyze() {
         super();
         setName("Paralyze");
     }
@@ -17,8 +17,16 @@ public class Paralyze extends Status {
         int moveChance = rng.nextInt(1, 3);
 
         if (moveChance == 3) {
-            //
-            ;
+            monster.setStatus(null);
         }
+    }
+
+    private static class ParalyzeInstance {
+        private static final Paralyze instance = new Paralyze();
+    }
+
+    public static Paralyze getInstance()
+    {
+        return ParalyzeInstance.instance;
     }
 }

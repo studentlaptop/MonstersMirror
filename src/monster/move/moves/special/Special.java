@@ -1,13 +1,13 @@
 package monster.move.moves.special;
 
 import monster.move.Move;
-import monster.move.interfaces.Singleton;
+import monster.move.interfaces.Creator;
 
-public enum Special implements Singleton {
+public enum Special implements Creator {
     EMBER {
         @Override
         public Move getMove() {
-            return Ember.getInstance();
+            return new Ember();
         }
     }
     ;

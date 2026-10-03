@@ -4,7 +4,7 @@ import monster.Monster;
 import monster.status.Status;
 
 public class Freeze extends Status {
-    public Freeze() {
+    private Freeze() {
         super();
         setName("Freeze");
     }
@@ -12,5 +12,13 @@ public class Freeze extends Status {
     @Override
     public void behavior(Monster monster) {
         monster.setHealth(monster.getHealth() / 3);
+    }
+
+    private static class FreezeInstance {
+        private static final Freeze instance = new Freeze();
+    }
+
+    public static Freeze getInstance() {
+        return FreezeInstance.instance;
     }
 }

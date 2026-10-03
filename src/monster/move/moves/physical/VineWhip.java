@@ -6,11 +6,13 @@ import monster.move.Move;
 import monster.move.interfaces.Attack;
 
 public final class VineWhip extends Move implements Attack {
-    private VineWhip() {
+    private static final String NAME = "Vine Whip";
+    private static final Type TYPE = Type.GRASS;
+    private static final int ACCURACY = 95;
+    private int powerPoints;
+
+    VineWhip() {
         super();
-        setName("Vine Whip");
-        setType(Type.GRASS);
-        setAccuracy(95);
         setPowerPoints(25);
     }
 
@@ -19,11 +21,28 @@ public final class VineWhip extends Move implements Attack {
         return false;
     }
 
-    private static class VineWhipInstance {
-        private static final VineWhip instance = new VineWhip();
+    @Override
+    public String getName() {
+        return NAME;
     }
 
-    public static VineWhip getInstance() {
-        return VineWhipInstance.instance;
+    @Override
+    public Type getType() {
+        return TYPE;
+    }
+
+    @Override
+    public int getAccuracy() {
+        return ACCURACY;
+    }
+
+    @Override
+    public int getPowerPoints() {
+        return powerPoints;
+    }
+
+    @Override
+    public void setPowerPoints(int powerPoints) {
+        this.powerPoints = powerPoints;
     }
 }

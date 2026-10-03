@@ -6,11 +6,13 @@ import monster.move.Move;
 import monster.move.interfaces.Attack;
 
 public final class Slam extends Move implements Attack {
-    private Slam() {
+    private static final String NAME = "Slam";
+    private static final Type TYPE = Type.NORMAL;
+    private static final int ACCURACY = 95;
+    private int powerPoints;
+
+    Slam() {
         super();
-        setName("Slam");
-        setType(Type.NORMAL);
-        setAccuracy(95);
         setPowerPoints(25);
     }
 
@@ -19,11 +21,28 @@ public final class Slam extends Move implements Attack {
         return false;
     }
 
-    private static class SlamInstance {
-        private static final Slam instance = new Slam();
+    @Override
+    public String getName() {
+        return NAME;
     }
 
-    public static Slam getInstance() {
-        return SlamInstance.instance;
+    @Override
+    public Type getType() {
+        return TYPE;
+    }
+
+    @Override
+    public int getAccuracy() {
+        return ACCURACY;
+    }
+
+    @Override
+    public int getPowerPoints() {
+        return powerPoints;
+    }
+
+    @Override
+    public void setPowerPoints(int powerPoints) {
+        this.powerPoints = powerPoints;
     }
 }

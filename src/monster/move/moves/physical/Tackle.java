@@ -6,11 +6,13 @@ import monster.move.Move;
 import monster.move.interfaces.Attack;
 
 public final class Tackle extends Move implements Attack {
-    private Tackle() {
+    private static final String NAME = "Tackle";
+    private static final Type TYPE = Type.NORMAL;
+    private static final int ACCURACY = 100;
+    private int powerPoints;
+
+    Tackle() {
         super();
-        setName("Tackle");
-        setType(Type.NORMAL);
-        setAccuracy(95);
         setPowerPoints(25);
     }
 
@@ -19,11 +21,29 @@ public final class Tackle extends Move implements Attack {
         return false;
     }
 
-    private static class TackleInstance {
-        private static final Tackle instance = new Tackle();
+    @Override
+    public String getName() {
+        return NAME;
     }
 
-    public static Tackle getInstance() {
-        return TackleInstance.instance;
+    @Override
+    public Type getType() {
+        return TYPE;
     }
+
+    @Override
+    public int getAccuracy() {
+        return ACCURACY;
+    }
+
+    @Override
+    public int getPowerPoints() {
+        return powerPoints;
+    }
+
+    @Override
+    public void setPowerPoints(int powerPoints) {
+        this.powerPoints = powerPoints;
+    }
+
 }

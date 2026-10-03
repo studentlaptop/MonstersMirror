@@ -4,7 +4,7 @@ import monster.Monster;
 import monster.status.Status;
 
 public class Burn extends Status {
-    public Burn() {
+    private Burn() {
         super();
         setName("Burn");
     }
@@ -12,5 +12,13 @@ public class Burn extends Status {
     @Override
     public void behavior(Monster monster) {
         monster.setHealth(monster.getHealth() / 6);
+    }
+
+    private static class BurnInstance {
+        private static final Burn instance = new Burn();
+    }
+
+    public static Burn getInstance() {
+        return BurnInstance.instance;
     }
 }

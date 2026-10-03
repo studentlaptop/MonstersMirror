@@ -2,6 +2,6 @@ package monster.move.interfaces;
 
 import monster.move.Move;
 
-public interface Singleton {
+public interface Creator {
     Move getMove();
 }

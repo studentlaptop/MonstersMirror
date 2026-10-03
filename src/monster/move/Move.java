@@ -3,42 +3,16 @@ package monster.move;
 import monster.Type;
 
 public abstract class Move {
-    private String name;
+    /*private String name;
     private Type type;
     private int accuracy;
-    private int powerPoints;
+    private int powerPoints;*/
 
-    public Move() {}
+    protected Move() {}
 
-    public String getName() {
-        return name;
-    }
-
-    public void setName(String name) {
-        this.name = name;
-    }
-
-    public Type getType() {
-        return type;
-    }
-
-    public void setType(Type type) {
-        this.type = type;
-    }
-
-    public int getAccuracy() {
-        return accuracy;
-    }
-
-    public void setAccuracy(int accuracy) {
-        this.accuracy = accuracy;
-    }
-
-    public int getPowerPoints() {
-        return powerPoints;
-    }
-
-    public void setPowerPoints(int powerPoints) {
-        this.powerPoints = powerPoints;
-    }
+    public abstract String getName();
+    public abstract Type getType();
+    public abstract int getAccuracy();
+    public abstract int getPowerPoints();
+    public abstract void setPowerPoints(int powerPoints);
 }
