@@ -6,37 +6,37 @@ public enum Statuses {
     BURN {
         @Override
         public Status getStatus() {
-            return Burn.getInstance();
+            return new Burn();
         }
     },
     CONFUSION {
         @Override
         public Status getStatus() {
-            return Confusion.getInstance();
+            return new Confusion();
         }
     },
     FREEZE {
         @Override
         public Status getStatus() {
-            return Freeze.getInstance();
+            return new Freeze();
         }
     },
     PARALYZE {
         @Override
         public Status getStatus() {
-            return Paralyze.getInstance();
+            return new Paralyze();
         }
     },
     POISON {
         @Override
         public Status getStatus() {
-            return Poison.getInstance();
+            return new Poison();
         }
     },
     SLEEP {
         @Override
         public Status getStatus() {
-            return Sleep.getInstance();
+            return new Sleep();
         }
     },
     ;

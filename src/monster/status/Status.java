@@ -5,19 +5,12 @@ import monster.Monster;
 import java.util.random.RandomGenerator;
 
 public abstract class Status {
-    private String name;
 
-    public Status() {
+    protected Status() {
 
     }
 
-    public String getName() {
-        return name;
-    }
-
-    public void setName(String name) {
-        this.name = name;
-    }
+    public abstract String getName();
 
     public int recoverChance(int origin, int bound) {
         RandomGenerator rng = RandomGenerator.of("L64X128MixRandom");
@@ -25,8 +18,4 @@ public abstract class Status {
     }
 
     public abstract void behavior(Monster monster);
-
-    public String toString() {
-        return name;
-    }
 }

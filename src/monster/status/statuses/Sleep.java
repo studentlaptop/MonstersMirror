@@ -4,9 +4,15 @@ import monster.Monster;
 import monster.status.Status;
 
 public class Sleep extends Status {
-    private Sleep() {
+    private static final String NAME = "Sleep";
+
+    Sleep() {
         super();
-        setName("Sleep");
+    }
+
+    @Override
+    public String getName() {
+        return NAME;
     }
 
     @Override
@@ -16,13 +22,5 @@ public class Sleep extends Status {
         if (wakeChance == 3) {
             monster.setStatus(null);
         }
-    }
-
-    private static class SleepInstance{
-        private static final Sleep instance = new Sleep();
-    }
-
-    public static Sleep getInstance(){
-        return SleepInstance.instance;
     }
 }

@@ -4,21 +4,19 @@ import monster.Monster;
 import monster.status.Status;
 
 public class Poison extends Status {
-    private Poison() {
+    private static final String NAME = "Poison";
+
+    Poison() {
         super();
-        setName("Poison");
+    }
+
+    @Override
+    public String getName() {
+        return NAME;
     }
 
     @Override
     public void behavior(Monster monster) {
         monster.setHealth((monster.getHealth() / 8));
-    }
-
-    private static class PoisonInstance {
-        private static final Poison instance = new Poison();
-    }
-
-    public static Poison getInstance(){
-        return PoisonInstance.instance;
     }
 }
