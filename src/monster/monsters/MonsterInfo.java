@@ -4,907 +4,907 @@ import monster.Type;
 import monster.Typing;
 
 public enum MonsterInfo {
-    BULBASAUR(TestMonster.class) {
+    BULBASAUR(Bulbasaur.class, new Typing(new Type[]{Type.GRASS, Type.POISON})) {
         @Override
         Typing getMonsterTyping() {
-            return new Typing(new Type[]{Type.GRASS, Type.POISON});
+            return BULBASAUR.uniqueTyping;
         }
     },
-    IVYSAUR(TestMonster.class) {
-        @Override
-        Typing getMonsterTyping() {
-            return BULBASAUR.getMonsterTyping();
-        }
-    },
-    VENUSAUR(TestMonster.class) {
+    IVYSAUR(Ivysaur.class) {
         @Override
         Typing getMonsterTyping() {
             return BULBASAUR.getMonsterTyping();
         }
     },
-    CHARMANDER(TestMonster.class) {
+    VENUSAUR(Venusaur.class) {
         @Override
         Typing getMonsterTyping() {
-            return new Typing(new Type[]{Type.FIRE});
+            return BULBASAUR.getMonsterTyping();
         }
     },
-    CHARMELEON(TestMonster.class) {
+    CHARMANDER(Charmander.class, new Typing(new Type[]{Type.FIRE})) {
+        @Override
+        Typing getMonsterTyping() {
+            return CHARMANDER.uniqueTyping;
+        }
+    },
+    CHARMELEON(Charmeleon.class) {
         @Override
         Typing getMonsterTyping() {
             return CHARMANDER.getMonsterTyping();
         }
     },
-    CHARIZARD(TestMonster.class) {
+    CHARIZARD(Charizard.class, new Typing(new Type[]{Type.FIRE, Type.FLYING})) {
         @Override
         Typing getMonsterTyping() {
-            return new Typing(new Type[]{Type.FIRE, Type.FLYING});
+            return CHARIZARD.uniqueTyping;
         }
     },
-    SQUIRTLE(TestMonster.class) {
+    SQUIRTLE(Squirtle.class, new Typing(new Type[]{Type.WATER})) {
         @Override
         Typing getMonsterTyping() {
-            return new Typing(new Type[]{Type.WATER});
+            return SQUIRTLE.uniqueTyping;
         }
     },
-    WARTORTLE(TestMonster.class) {
-        @Override
-        Typing getMonsterTyping() {
-            return SQUIRTLE.getMonsterTyping();
-        }
-    },
-    BLASTOISE(TestMonster.class) {
+    WARTORTLE(Wartortle.class) {
         @Override
         Typing getMonsterTyping() {
             return SQUIRTLE.getMonsterTyping();
         }
     },
-    CATERPIE(TestMonster.class) {
+    BLASTOISE(Blastoise.class) {
         @Override
         Typing getMonsterTyping() {
-            return new Typing(new Type[]{Type.BUG});
+            return SQUIRTLE.getMonsterTyping();
         }
     },
-    METAPOD(TestMonster.class) {
+    CATERPIE(Caterpie.class, new Typing(new Type[]{Type.BUG})) {
+        @Override
+        Typing getMonsterTyping() {
+            return CATERPIE.uniqueTyping;
+        }
+    },
+    METAPOD(Metapod.class) {
         @Override
         Typing getMonsterTyping() {
             return CATERPIE.getMonsterTyping();
         }
     },
-    BUTTERFREE(TestMonster.class) {
+    BUTTERFREE(Butterfree.class, new Typing(new Type[]{Type.BUG, Type.FLYING})) {
         @Override
         Typing getMonsterTyping() {
-            return new  Typing(new Type[]{Type.BUG, Type.FLYING});
+            return BUTTERFREE.uniqueTyping;
         }
     },
-    WEEDLE(TestMonster.class) {
+    WEEDLE(Weedle.class, new Typing(new Type[]{Type.BUG, Type.POISON})) {
         @Override
         Typing getMonsterTyping() {
-            return new Typing(new Type[]{Type.BUG, Type.POISON});
+            return WEEDLE.uniqueTyping;
         }
     },
-    KAKUNA(TestMonster.class) {
-        @Override
-        Typing getMonsterTyping() {
-            return WEEDLE.getMonsterTyping();
-        }
-    },
-    BEEDRILL(TestMonster.class) {
+    KAKUNA(Kakuna.class) {
         @Override
         Typing getMonsterTyping() {
             return WEEDLE.getMonsterTyping();
         }
     },
-    PIDGEY(Pidgey.class) {
+    BEEDRILL(Beedrill.class) {
         @Override
         Typing getMonsterTyping() {
-            return new Typing(new Type[]{Type.NORMAL, Type.FLYING});
+            return WEEDLE.getMonsterTyping();
         }
     },
-    PIDGEOTTO(TestMonster.class) {
+    PIDGEY(Pidgey.class, new Typing(new Type[]{Type.NORMAL, Type.FLYING})) {
+        @Override
+        Typing getMonsterTyping() {
+            return PIDGEY.uniqueTyping;
+        }
+    },
+    PIDGEOTTO(Pidgeotto.class) {
         @Override
         Typing getMonsterTyping() {
             return PIDGEY.getMonsterTyping();
         }
     },
-    PIDGEOT(TestMonster.class) {
+    PIDGEOT(Pidgeot.class) {
         @Override
         Typing getMonsterTyping() {
             return PIDGEY.getMonsterTyping();
         }
     },
-    RATTATA(Rattata.class) {
+    RATTATA(Rattata.class, new Typing(new Type[]{Type.NORMAL})) {
         @Override
         Typing getMonsterTyping() {
-            return new Typing(new Type[]{Type.NORMAL});
+            return RATTATA.uniqueTyping;
         }
     },
-    RATICATE(TestMonster.class) {
+    RATICATE(Raticate.class) {
         @Override
         Typing getMonsterTyping() {
             return RATTATA.getMonsterTyping();
         }
     },
-    SPEAROW(TestMonster.class) {
+    SPEAROW(Spearow.class) {
         @Override
         Typing getMonsterTyping() {
             return PIDGEY.getMonsterTyping();
         }
     },
-    FEAROW(TestMonster.class) {
+    FEAROW(Fearow.class) {
         @Override
         Typing getMonsterTyping() {
             return PIDGEY.getMonsterTyping();
         }
     },
-    EKANS(TestMonster.class) {
+    EKANS(Ekans.class, new Typing(new Type[]{Type.POISON})) {
         @Override
         Typing getMonsterTyping() {
-            return new Typing(new Type[]{Type.POISON});
+            return EKANS.uniqueTyping;
         }
     },
-    ARBOK(TestMonster.class) {
+    ARBOK(Arbok.class) {
         @Override
         Typing getMonsterTyping() {
             return EKANS.getMonsterTyping();
         }
     },
-    PIKACHU(TestMonster.class) {
+    PIKACHU(Pikachu.class, new Typing(new Type[]{Type.ELECTRIC})) {
         @Override
         Typing getMonsterTyping() {
-            return new Typing(new Type[]{Type.ELECTRIC});
+            return PIKACHU.uniqueTyping;
         }
     },
-    RAICHU(TestMonster.class) {
+    RAICHU(Raichu.class) {
         @Override
         Typing getMonsterTyping() {
             return PIKACHU.getMonsterTyping();
         }
     },
-    SANDSHREW(TestMonster.class) {
+    SANDSHREW(Sandshrew.class, new Typing(new Type[]{Type.GROUND})) {
         @Override
         Typing getMonsterTyping() {
-            return new Typing(new Type[]{Type.GROUND});
+            return SANDSHREW.uniqueTyping;
         }
     },
-    SANDSLASH(TestMonster.class) {
+    SANDSLASH(Sandslash.class) {
         @Override
         Typing getMonsterTyping() {
             return SANDSHREW.getMonsterTyping();
         }
     },
-    NIDORAN_FEM(TestMonster.class) {
+    NIDORAN_FEMALE(NidoranFemale.class) {
         @Override
         Typing getMonsterTyping() {
             return EKANS.getMonsterTyping();
         }
     },
-    NIDORINA(TestMonster.class) {
+    NIDORINA(Nidorina.class) {
         @Override
         Typing getMonsterTyping() {
             return EKANS.getMonsterTyping();
         }
     },
-    NIDOQUEEN(TestMonster.class) {
+    NIDOQUEEN(Nidoqueen.class, new Typing(new Type[]{Type.POISON, Type.GROUND})) {
         @Override
         Typing getMonsterTyping() {
-            return new Typing(new Type[]{Type.POISON, Type.GROUND});
+            return NIDOQUEEN.uniqueTyping;
         }
     },
-    NIDORAN_MALE(TestMonster.class) {
-        @Override
-        Typing getMonsterTyping() {
-            return EKANS.getMonsterTyping();
-        }
-    },
-    NIDORINO(TestMonster.class) {
+    NIDORAN_MALE(NidoranMale.class) {
         @Override
         Typing getMonsterTyping() {
             return EKANS.getMonsterTyping();
         }
     },
-    NIDOKING(TestMonster.class) {
+    NIDORINO(Nidorino.class) {
+        @Override
+        Typing getMonsterTyping() {
+            return EKANS.getMonsterTyping();
+        }
+    },
+    NIDOKING(Nidoking.class) {
         @Override
         Typing getMonsterTyping() {
             return NIDOQUEEN.getMonsterTyping();
         }
     },
-    CLEFAIRY(TestMonster.class) {
+    CLEFAIRY(Clefairy.class) {
         @Override
         Typing getMonsterTyping() {
             return RATTATA.getMonsterTyping();
         }
     },
-    CLEFABLE(TestMonster.class) {
+    CLEFABLE(Clefable.class) {
         @Override
         Typing getMonsterTyping() {
             return RATTATA.getMonsterTyping();
         }
     },
-    VULPIX(TestMonster.class) {
+    VULPIX(Vulpix.class) {
         @Override
         Typing getMonsterTyping() {
             return CHARMANDER.getMonsterTyping();
         }
     },
-    NINETALES(TestMonster.class) {
+    NINETALES(Ninetales.class) {
         @Override
         Typing getMonsterTyping() {
             return CHARMANDER.getMonsterTyping();
         }
     },
-    JIGGLYPUFF(TestMonster.class) {
+    JIGGLYPUFF(Jigglypuff.class) {
         @Override
         Typing getMonsterTyping() {
             return RATTATA.getMonsterTyping();
         }
     },
-    WIGGLYTUFF(TestMonster.class) {
+    WIGGLYTUFF(Wigglytuff.class) {
         @Override
         Typing getMonsterTyping() {
             return RATTATA.getMonsterTyping();
         }
     },
-    ZUBAT(TestMonster.class) {
+    ZUBAT(Zubat.class, new Typing(new Type[]{Type.POISON, Type.FLYING})) {
         @Override
         Typing getMonsterTyping() {
-            return new Typing(new Type[]{Type.POISON, Type.FLYING});
+            return ZUBAT.uniqueTyping;
         }
     },
-    GOLBAT(TestMonster.class) {
+    GOLBAT(Golbat.class) {
         @Override
         Typing getMonsterTyping() {
             return ZUBAT.getMonsterTyping();
         }
     },
-    ODDISH(TestMonster.class) {
+    ODDISH(Oddish.class) {
         @Override
         Typing getMonsterTyping() {
             return BULBASAUR.getMonsterTyping();
         }
     },
-    GLOOM(TestMonster.class) {
+    GLOOM(Gloom.class) {
         @Override
         Typing getMonsterTyping() {
             return BULBASAUR.getMonsterTyping();
         }
     },
-    VILEPLUME(TestMonster.class) {
+    VILEPLUME(Vileplume.class) {
         @Override
         Typing getMonsterTyping() {
             return BULBASAUR.getMonsterTyping();
         }
     },
-    PARAS(TestMonster.class) {
+    PARAS(Paras.class, new Typing(new Type[]{Type.BUG, Type.POISON})) {
         @Override
         Typing getMonsterTyping() {
-            return new Typing(new Type[]{Type.BUG, Type.POISON});
+            return PARAS.uniqueTyping;
         }
     },
-    PARASECT(TestMonster.class) {
+    PARASECT(Parasect.class) {
         @Override
         Typing getMonsterTyping() {
             return PARAS.getMonsterTyping();
         }
     },
-    VENONAT(TestMonster.class) {
+    VENONAT(Venonat.class) {
         @Override
         Typing getMonsterTyping() {
             return WEEDLE.getMonsterTyping();
         }
     },
-    VENOMOTH(TestMonster.class) {
+    VENOMOTH(Venomoth.class) {
         @Override
         Typing getMonsterTyping() {
             return WEEDLE.getMonsterTyping();
         }
     },
-    DIGLETT(TestMonster.class) {
+    DIGLETT(Diglett.class) {
         @Override
         Typing getMonsterTyping() {
             return SANDSHREW.getMonsterTyping();
         }
     },
-    DUGTRIO(TestMonster.class) {
+    DUGTRIO(Dugtrio.class) {
         @Override
         Typing getMonsterTyping() {
             return SANDSHREW.getMonsterTyping();
         }
     },
-    MEOWTH(TestMonster.class) {
+    MEOWTH(Meowth.class) {
         @Override
         Typing getMonsterTyping() {
             return RATTATA.getMonsterTyping();
         }
     },
-    PERSIAN(TestMonster.class) {
+    PERSIAN(Persian.class) {
         @Override
         Typing getMonsterTyping() {
             return RATTATA.getMonsterTyping();
         }
     },
-    PSYDUCK(TestMonster.class) {
+    PSYDUCK(Psyduck.class) {
         @Override
         Typing getMonsterTyping() {
             return SQUIRTLE.getMonsterTyping();
         }
     },
-    GOLDUCK(TestMonster.class) {
+    GOLDUCK(Golduck.class) {
         @Override
         Typing getMonsterTyping() {
             return SQUIRTLE.getMonsterTyping();
         }
     },
-    MANKEY(TestMonster.class) {
+    MANKEY(Mankey.class, new Typing(new Type[]{Type.FIGHTING})) {
         @Override
         Typing getMonsterTyping() {
-            return new Typing(new Type[]{Type.FIGHTING});
+            return MANKEY.uniqueTyping;
         }
     },
-    PRIMEAPE(TestMonster.class) {
+    PRIMEAPE(Primeape.class) {
         @Override
         Typing getMonsterTyping() {
             return MANKEY.getMonsterTyping();
         }
     },
-    GROWLITHE(TestMonster.class) {
+    GROWLITHE(Growlithe.class) {
         @Override
         Typing getMonsterTyping() {
             return CHARMANDER.getMonsterTyping();
         }
     },
-    ARCANINE(TestMonster.class) {
+    ARCANINE(Arcanine.class) {
         @Override
         Typing getMonsterTyping() {
             return CHARMANDER.getMonsterTyping();
         }
     },
-    POLIWAG(TestMonster.class) {
+    POLIWAG(Poliwag.class) {
         @Override
         Typing getMonsterTyping() {
             return SQUIRTLE.getMonsterTyping();
         }
     },
-    POLIWHIRL(TestMonster.class) {
+    POLIWHIRL(Poliwhirl.class) {
         @Override
         Typing getMonsterTyping() {
             return SQUIRTLE.getMonsterTyping();
         }
     },
-    POLIWRATH(TestMonster.class) {
+    POLIWRATH(Poliwrath.class, new Typing(new Type[]{Type.WATER, Type.FIGHTING})) {
         @Override
         Typing getMonsterTyping() {
-            return new Typing(new Type[]{Type.WATER, Type.FIGHTING});
+            return POLIWRATH.uniqueTyping;
         }
     },
-    ABRA(TestMonster.class) {
+    ABRA(Abra.class, new Typing(new Type[]{Type.PSYCHIC})) {
         @Override
         Typing getMonsterTyping() {
-            return new Typing(new Type[]{Type.PSYCHIC});
+            return ABRA.uniqueTyping;
         }
     },
-    KADABRA(TestMonster.class) {
-        @Override
-        Typing getMonsterTyping() {
-            return ABRA.getMonsterTyping();
-        }
-    },
-    ALAKAZAM(TestMonster.class) {
+    KADABRA(Kadabra.class) {
         @Override
         Typing getMonsterTyping() {
             return ABRA.getMonsterTyping();
         }
     },
-    MACHOP(TestMonster.class) {
+    ALAKAZAM(Alakazam.class) {
+        @Override
+        Typing getMonsterTyping() {
+            return ABRA.getMonsterTyping();
+        }
+    },
+    MACHOP(Machop.class) {
         @Override
         Typing getMonsterTyping() {
             return MANKEY.getMonsterTyping();
         }
     },
-    MACHOKE(TestMonster.class) {
+    MACHOKE(Machoke.class) {
         @Override
         Typing getMonsterTyping() {
             return MANKEY.getMonsterTyping();
         }
     },
-    MACHAMP(TestMonster.class) {
+    MACHAMP(Machamp.class) {
         @Override
         Typing getMonsterTyping() {
             return MANKEY.getMonsterTyping();
         }
     },
-    BELLSPROUT(TestMonster.class) {
+    BELLSPROUT(Bellsprout.class) {
         @Override
         Typing getMonsterTyping() {
             return BULBASAUR.getMonsterTyping();
         }
     },
-    WEEPINBELL(TestMonster.class) {
+    WEEPINBELL(Weepinbell.class) {
         @Override
         Typing getMonsterTyping() {
             return BULBASAUR.getMonsterTyping();
         }
     },
-    VICTREEBEL(TestMonster.class) {
+    VICTREEBEL(Victreebel.class) {
         @Override
         Typing getMonsterTyping() {
             return BULBASAUR.getMonsterTyping();
         }
     },
-    TENTACOOL(TestMonster.class) {
+    TENTACOOL(Tentacool.class, new Typing(new Type[]{Type.WATER, Type.POISON})) {
         @Override
         Typing getMonsterTyping() {
-            return new Typing(new Type[]{Type.WATER, Type.POISON});
+            return TENTACOOL.uniqueTyping;
         }
     },
-    TENTACRUEL(TestMonster.class) {
+    TENTACRUEL(Tentacruel.class) {
         @Override
         Typing getMonsterTyping() {
             return TENTACOOL.getMonsterTyping();
         }
     },
-    GEODUDE(TestMonster.class) {
+    GEODUDE(Geodude.class, new Typing(new Type[]{Type.ROCK, Type.GROUND})) {
         @Override
         Typing getMonsterTyping() {
-            return new Typing(new Type[]{Type.ROCK, Type.GROUND});
+            return GEODUDE.uniqueTyping;
         }
     },
-    GRAVELER(TestMonster.class) {
-        @Override
-        Typing getMonsterTyping() {
-            return GEODUDE.getMonsterTyping();
-        }
-    },
-    GOLEM(TestMonster.class) {
+    GRAVELER(Graveler.class) {
         @Override
         Typing getMonsterTyping() {
             return GEODUDE.getMonsterTyping();
         }
     },
-    PONYTA(TestMonster.class) {
+    GOLEM(Golem.class) {
+        @Override
+        Typing getMonsterTyping() {
+            return GEODUDE.getMonsterTyping();
+        }
+    },
+    PONYTA(Ponyta.class) {
         @Override
         Typing getMonsterTyping() {
             return CHARMANDER.getMonsterTyping();
         }
     },
-    RAPIDASH(TestMonster.class) {
+    RAPIDASH(Rapidash.class) {
         @Override
         Typing getMonsterTyping() {
             return CHARMANDER.getMonsterTyping();
         }
     },
-    SLOWPOKE(TestMonster.class) {
+    SLOWPOKE(Slowpoke.class, new Typing(new Type[]{Type.WATER, Type.PSYCHIC})) {
         @Override
         Typing getMonsterTyping() {
-            return new Typing(new Type[]{Type.WATER, Type.PSYCHIC});
+            return SLOWPOKE.uniqueTyping;
         }
     },
-    SLOWBRO(TestMonster.class) {
+    SLOWBRO(Slowbro.class) {
         @Override
         Typing getMonsterTyping() {
             return SLOWPOKE.getMonsterTyping();
         }
     },
-    MAGNEMITE(TestMonster.class) {
+    MAGNEMITE(Magnemite.class) {
         @Override
         Typing getMonsterTyping() {
             return PIKACHU.getMonsterTyping();
         }
     },
-    MAGNETON(TestMonster.class) {
+    MAGNETON(Magneton.class) {
         @Override
         Typing getMonsterTyping() {
             return PIKACHU.getMonsterTyping();
         }
     },
-    FARFETCH_D(TestMonster.class) {
+    FARFETCH_D(Farfetchd.class) {
         @Override
         Typing getMonsterTyping() {
             return PIDGEY.getMonsterTyping();
         }
     },
-    DODUO(TestMonster.class) {
+    DODUO(Doduo.class) {
         @Override
         Typing getMonsterTyping() {
             return PIDGEY.getMonsterTyping();
         }
     },
-    DODRIO(TestMonster.class) {
+    DODRIO(Dodrio.class) {
         @Override
         Typing getMonsterTyping() {
             return PIDGEY.getMonsterTyping();
         }
     },
-    SEEL(TestMonster.class) {
+    SEEL(Seel.class) {
         @Override
         Typing getMonsterTyping() {
             return SQUIRTLE.getMonsterTyping();
         }
     },
-    DEWGONG(TestMonster.class) {
+    DEWGONG(Dewgong.class, new Typing(new Type[]{Type.WATER, Type.ICE})) {
         @Override
         Typing getMonsterTyping() {
-            return new Typing(new Type[]{Type.WATER, Type.ICE});
+            return DEWGONG.uniqueTyping;
         }
     },
-    GRIMER(TestMonster.class) {
+    GRIMER(Grimer.class, new Typing(new Type[]{Type.POISON})) {
         @Override
         Typing getMonsterTyping() {
-            return new Typing(new Type[]{Type.POISON});
+            return GRIMER.uniqueTyping;
         }
     },
-    MUK(TestMonster.class) {
+    MUK(Muk.class) {
         @Override
         Typing getMonsterTyping() {
             return GRIMER.getMonsterTyping();
         }
     },
-    SHELLDER(TestMonster.class) {
+    SHELLDER(Shellder.class) {
         @Override
         Typing getMonsterTyping() {
             return SQUIRTLE.getMonsterTyping();
         }
     },
-    CLOYSTER(TestMonster.class) {
+    CLOYSTER(Cloyster.class) {
         @Override
         Typing getMonsterTyping() {
             return DEWGONG.getMonsterTyping();
         }
     },
-    GASTLY(TestMonster.class) {
+    GASTLY(Gastly.class, new Typing(new Type[]{Type.GHOST, Type.POISON})) {
         @Override
         Typing getMonsterTyping() {
-            return new Typing(new Type[]{Type.GHOST, Type.POISON});
+            return GASTLY.uniqueTyping;
         }
     },
-    HAUNTER(TestMonster.class) {
-        @Override
-        Typing getMonsterTyping() {
-            return GASTLY.getMonsterTyping();
-        }
-    },
-    GENGAR(TestMonster.class) {
+    HAUNTER(Haunter.class) {
         @Override
         Typing getMonsterTyping() {
             return GASTLY.getMonsterTyping();
         }
     },
-    ONIX(TestMonster.class) {
+    GENGAR(Gengar.class) {
+        @Override
+        Typing getMonsterTyping() {
+            return GASTLY.getMonsterTyping();
+        }
+    },
+    ONIX(Onix.class) {
         @Override
         Typing getMonsterTyping() {
             return GEODUDE.getMonsterTyping();
         }
     },
-    DROWZEE(TestMonster.class) {
+    DROWZEE(Drowzee.class) {
         @Override
         Typing getMonsterTyping() {
             return ABRA.getMonsterTyping();
         }
     },
-    HYPNO(TestMonster.class) {
+    HYPNO(Hypno.class) {
         @Override
         Typing getMonsterTyping() {
             return ABRA.getMonsterTyping();
         }
     },
-    KRABBY(TestMonster.class) {
+    KRABBY(Krabby.class) {
         @Override
         Typing getMonsterTyping() {
             return SQUIRTLE.getMonsterTyping();
         }
     },
-    KINGLER(TestMonster.class) {
+    KINGLER(Kingler.class) {
         @Override
         Typing getMonsterTyping() {
             return SQUIRTLE.getMonsterTyping();
         }
     },
-    VOLTORB(TestMonster.class) {
+    VOLTORB(Voltorb.class) {
         @Override
         Typing getMonsterTyping() {
             return PIKACHU.getMonsterTyping();
         }
     },
-    ELECTRODE(TestMonster.class) {
+    ELECTRODE(Electrode.class) {
         @Override
         Typing getMonsterTyping() {
             return PIKACHU.getMonsterTyping();
         }
     },
-    EXEGGCUTE(TestMonster.class) {
+    EXEGGCUTE(Exeggcute.class, new Typing(new Type[]{Type.GRASS, Type.PSYCHIC})) {
         @Override
         Typing getMonsterTyping() {
-            return new Typing(new Type[]{Type.GRASS, Type.PSYCHIC});
+            return EXEGGCUTE.uniqueTyping;
         }
     },
-    EXEGGUTOR(TestMonster.class) {
+    EXEGGUTOR(Exeggutor.class) {
         @Override
         Typing getMonsterTyping() {
             return EXEGGCUTE.getMonsterTyping();
         }
     },
-    CUBONE(TestMonster.class) {
+    CUBONE(Cubone.class) {
         @Override
         Typing getMonsterTyping() {
             return SANDSHREW.getMonsterTyping();
         }
     },
-    MAROWAK(TestMonster.class) {
+    MAROWAK(Marowak.class) {
         @Override
         Typing getMonsterTyping() {
             return SANDSHREW.getMonsterTyping();
         }
     },
-    HITMONLEE(TestMonster.class) {
+    HITMONLEE(Hitmonlee.class) {
         @Override
         Typing getMonsterTyping() {
             return MAROWAK.getMonsterTyping();
         }
     },
-    HITMONCHAN(TestMonster.class) {
+    HITMONCHAN(Hitmonchan.class) {
         @Override
         Typing getMonsterTyping() {
             return MANKEY.getMonsterTyping();
         }
     },
-    LICKITUNG(TestMonster.class) {
+    LICKITUNG(Lickitung.class) {
         @Override
         Typing getMonsterTyping() {
             return RATTATA.getMonsterTyping();
         }
     },
-    KOFFING(TestMonster.class) {
+    KOFFING(Koffing.class) {
         @Override
         Typing getMonsterTyping() {
             return GRIMER.getMonsterTyping();
         }
     },
-    WEEZING(TestMonster.class) {
+    WEEZING(Weezing.class) {
         @Override
         Typing getMonsterTyping() {
             return GRIMER.getMonsterTyping();
         }
     },
-    RHYHORN(TestMonster.class) {
+    RHYHORN(Rhyhorn.class, new Typing(new Type[]{Type.GROUND, Type.ROCK})) {
         @Override
         Typing getMonsterTyping() {
-            return new Typing(new Type[]{Type.GROUND, Type.ROCK});
+            return RHYHORN.uniqueTyping;
         }
     },
-    RHYDON(TestMonster.class) {
+    RHYDON(Rhydon.class) {
         @Override
         Typing getMonsterTyping() {
             return RHYHORN.getMonsterTyping();
         }
     },
-    CHANSEY(TestMonster.class) {
+    CHANSEY(Chansey.class) {
         @Override
         Typing getMonsterTyping() {
             return RATTATA.getMonsterTyping();
         }
     },
-    TANGELA(TestMonster.class) {
+    TANGELA(Tangela.class, new Typing(new Type[]{Type.GRASS})) {
         @Override
         Typing getMonsterTyping() {
-            return new Typing(new Type[]{Type.GRASS});
+            return TANGELA.uniqueTyping;
         }
     },
-    KANGASKHAN(TestMonster.class) {
+    KANGASKHAN(Kangaskhan.class) {
         @Override
         Typing getMonsterTyping() {
             return RATTATA.getMonsterTyping();
         }
     },
-    HORSEA(TestMonster.class) {
+    HORSEA(Horsea.class) {
         @Override
         Typing getMonsterTyping() {
             return SQUIRTLE.getMonsterTyping();
         }
     },
-    SEADRA(TestMonster.class) {
+    SEADRA(Seadra.class) {
         @Override
         Typing getMonsterTyping() {
             return SQUIRTLE.getMonsterTyping();
         }
     },
-    GOLDEEN(TestMonster.class) {
+    GOLDEEN(Goldeen.class) {
         @Override
         Typing getMonsterTyping() {
             return SQUIRTLE.getMonsterTyping();
         }
     },
-    SEAKING(TestMonster.class) {
+    SEAKING(Seaking.class) {
         @Override
         Typing getMonsterTyping() {
             return SQUIRTLE.getMonsterTyping();
         }
     },
-    STARYU(TestMonster.class) {
+    STARYU(Staryu.class) {
         @Override
         Typing getMonsterTyping() {
             return SQUIRTLE.getMonsterTyping();
         }
     },
-    STARMIE(TestMonster.class) {
+    STARMIE(Starmie.class) {
         @Override
         Typing getMonsterTyping() {
             return SLOWPOKE.getMonsterTyping();
         }
     },
-    MR_MIME(TestMonster.class) {
+    MR_MIME(MrMime.class) {
         @Override
         Typing getMonsterTyping() {
             return ABRA.getMonsterTyping();
         }
     },
-    SCYTHER(TestMonster.class) {
+    SCYTHER(Scyther.class) {
         @Override
         Typing getMonsterTyping() {
             return BUTTERFREE.getMonsterTyping();
         }
     },
-    JYNX(TestMonster.class) {
+    JYNX(Jynx.class, new Typing(new Type[]{Type.ICE, Type.PSYCHIC})) {
         @Override
         Typing getMonsterTyping() {
-            return new Typing(new Type[]{Type.ICE, Type.PSYCHIC});
+            return JYNX.uniqueTyping;
         }
     },
-    ELECTABUZZ(TestMonster.class) {
+    ELECTABUZZ(Electabuzz.class) {
         @Override
         Typing getMonsterTyping() {
             return PIKACHU.getMonsterTyping();
         }
     },
-    MAGMAR(TestMonster.class) {
+    MAGMAR(Magmar.class) {
         @Override
         Typing getMonsterTyping() {
             return CHARMANDER.getMonsterTyping();
         }
     },
-    PINSIR(TestMonster.class) {
+    PINSIR(Pinsir.class) {
         @Override
         Typing getMonsterTyping() {
             return CATERPIE.getMonsterTyping();
         }
     },
-    TAUROS(TestMonster.class) {
+    TAUROS(Tauros.class) {
         @Override
         Typing getMonsterTyping() {
             return RATTATA.getMonsterTyping();
         }
     },
-    MAGIKARP(TestMonster.class) {
+    MAGIKARP(Magikarp.class) {
         @Override
         Typing getMonsterTyping() {
             return SQUIRTLE.getMonsterTyping();
         }
     },
-    GYARADOS(TestMonster.class) {
+    GYARADOS(Gyarados.class, new Typing(new Type[]{Type.WATER, Type.FLYING})) {
         @Override
         Typing getMonsterTyping() {
-            return new Typing(new Type[]{Type.WATER, Type.FLYING});
+            return GYARADOS.uniqueTyping;
         }
     },
-    LAPRAS(TestMonster.class) {
+    LAPRAS(Lapras.class) {
         @Override
         Typing getMonsterTyping() {
             return DEWGONG.getMonsterTyping();
         }
     },
-    DITTO(TestMonster.class) {
+    DITTO(Ditto.class) {
         @Override
         Typing getMonsterTyping() {
             return RATTATA.getMonsterTyping();
         }
     },
-    EEVEE(TestMonster.class) {
+    EEVEE(Eevee.class) {
         @Override
         Typing getMonsterTyping() {
             return RATTATA.getMonsterTyping();
         }
     },
-    VAPOREON(TestMonster.class) {
+    VAPOREON(Vaporeon.class) {
         @Override
         Typing getMonsterTyping() {
             return SQUIRTLE.getMonsterTyping();
         }
     },
-    JOLTEON(TestMonster.class) {
+    JOLTEON(Jolteon.class) {
         @Override
         Typing getMonsterTyping() {
             return PIKACHU.getMonsterTyping();
         }
     },
-    FLAREON(TestMonster.class) {
+    FLAREON(Flareon.class) {
         @Override
         Typing getMonsterTyping() {
             return CHARMANDER.getMonsterTyping();
         }
     },
-    PORYGON(TestMonster.class) {
+    PORYGON(Porygon.class) {
         @Override
         Typing getMonsterTyping() {
             return RATTATA.getMonsterTyping();
         }
     },
-    OMANYTE(TestMonster.class) {
+    OMANYTE(Omanyte.class, new Typing(new Type[]{Type.ROCK, Type.WATER})) {
         @Override
         Typing getMonsterTyping() {
-            return new Typing(new Type[]{Type.ROCK, Type.WATER});
+            return OMANYTE.uniqueTyping;
         }
     },
-    OMASTAR(TestMonster.class) {
-        @Override
-        Typing getMonsterTyping() {
-            return OMANYTE.getMonsterTyping();
-        }
-    },
-    KABUTO(TestMonster.class) {
+    OMASTAR(Omastar.class) {
         @Override
         Typing getMonsterTyping() {
             return OMANYTE.getMonsterTyping();
         }
     },
-    KABUTOPS(TestMonster.class) {
+    KABUTO(Kabuto.class) {
         @Override
         Typing getMonsterTyping() {
             return OMANYTE.getMonsterTyping();
         }
     },
-    AERODACTYL(TestMonster.class) {
+    KABUTOPS(Kabutops.class) {
         @Override
         Typing getMonsterTyping() {
-            return new Typing(new Type[]{Type.ROCK, Type.FLYING});
+            return OMANYTE.getMonsterTyping();
         }
     },
-    SNORLAX(TestMonster.class) {
+    AERODACTYL(Aerodactyl.class, new Typing(new Type[]{Type.ROCK, Type.FLYING})) {
+        @Override
+        Typing getMonsterTyping() {
+            return AERODACTYL.uniqueTyping;
+        }
+    },
+    SNORLAX(Snorlax.class) {
         @Override
         Typing getMonsterTyping() {
             return RATTATA.getMonsterTyping();
         }
     },
-    ARTICUNO(TestMonster.class) {
+    ARTICUNO(Articuno.class, new Typing(new Type[]{Type.ICE, Type.FLYING})) {
         @Override
         Typing getMonsterTyping() {
-            return new Typing(new Type[]{Type.ICE, Type.FLYING});
+            return ARTICUNO.uniqueTyping;
         }
     },
-    ZAPDOS(TestMonster.class) {
+    ZAPDOS(Zapdos.class, new Typing(new Type[]{Type.ELECTRIC, Type.FLYING})) {
         @Override
         Typing getMonsterTyping() {
-            return new Typing(new Type[]{Type.ELECTRIC, Type.FLYING});
+            return ZAPDOS.uniqueTyping;
         }
     },
-    MOLTRES(TestMonster.class) {
+    MOLTRES(Moltres.class) {
         @Override
         Typing getMonsterTyping() {
             return CHARIZARD.getMonsterTyping();
         }
     },
-    DRATINI(TestMonster.class) {
+    DRATINI(Dratini.class, new Typing(new Type[]{Type.DRAGON})) {
         @Override
         Typing getMonsterTyping() {
-            return new Typing(new Type[]{Type.DRAGON});
+            return DRATINI.uniqueTyping;
         }
     },
-    DRAGONAIR(TestMonster.class) {
+    DRAGONAIR(Dragonair.class) {
         @Override
         Typing getMonsterTyping() {
             return DRATINI.getMonsterTyping();
         }
     },
-    DRAGONITE(TestMonster.class) {
+    DRAGONITE(Dragonite.class, new Typing(new Type[]{Type.DRAGON, Type.FLYING})) {
         @Override
         Typing getMonsterTyping() {
-            return new Typing(new Type[]{Type.DRAGON, Type.FLYING});
+            return DRAGONITE.uniqueTyping;
         }
     },
-    MEWTWO(TestMonster.class) {
+    MEWTWO(Mewtwo.class) {
         @Override
         Typing getMonsterTyping() {
             return ABRA.getMonsterTyping();
         }
     },
-    MEW(TestMonster.class) {
+    MEW(Mew.class) {
         @Override
         Typing getMonsterTyping() {
             return ABRA.getMonsterTyping();
@@ -913,6 +913,7 @@ public enum MonsterInfo {
     ;
 
     private final Class<?> monsterClass;
+    private Typing uniqueTyping;
     private static final MonsterInfo[] enums = values();
     abstract Typing getMonsterTyping();
 
@@ -920,8 +921,9 @@ public enum MonsterInfo {
         this.monsterClass = monsterClass;
     }
 
-    private Class<?> getMonsterClass() {
-        return monsterClass;
+    MonsterInfo(Class<?> monsterClass, Typing uniqueTyping) {
+        this.monsterClass = monsterClass;
+        this.uniqueTyping = uniqueTyping;
     }
 
     public static int getDexNum(Class<?> monsterClass) {
