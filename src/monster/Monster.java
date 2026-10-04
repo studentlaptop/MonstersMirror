@@ -16,12 +16,10 @@ public abstract class Monster {
     private int level;
     private MoveSet moveSet;
     private int dv;
-    private Typing typing;
     private Status status;
 
     public Monster() {
         setMoveSet(new MoveSet());
-        setTyping(new Typing());
         setRandomDv();
         status = null;
     }
@@ -121,19 +119,7 @@ public abstract class Monster {
         this.dv = dv;
     }
 
-    public Typing getTyping() {
-        return typing;
-    }
-
-    public void setTyping(Typing typing) {
-        if (Typing.isValid(typing.getTypes())) {
-            this.typing = typing;
-        }
-    }
-
-    public void setTyping(Type[] typing) {
-            this.typing.setTypes(typing);
-    }
+    public abstract Typing getTyping();
 
     public void setRandomDv() {
         RandomGenerator rng = RandomGenerator.of("L64X128MixRandom");
@@ -147,4 +133,6 @@ public abstract class Monster {
     public void setStatus(Status status) {
         this.status = status;
     }
+
+    public abstract int getDexNum();
 }
