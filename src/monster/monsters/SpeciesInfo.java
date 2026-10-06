@@ -3,491 +3,682 @@ package monster.monsters;
 import monster.Type;
 import monster.Typing;
 
-import java.util.HashMap;
-import java.util.Map;
+import java.util.EnumMap;
 
 public enum SpeciesInfo {
     BULBASAUR(new Builder()
-            .setTyping(Type.GRASS, Type.POISON)
+            .typing(Type.GRASS, Type.POISON)
+            .baseHealth(45)
+            .baseAttack(49)
+            .baseDefense(49)
+            .baseSpeed(45)
+            .baseSpecial(65)
     )
     ,
     IVYSAUR(new Builder()
-            .setTyping(Type.GRASS, Type.POISON)
+            .typing(Type.GRASS, Type.POISON)
+            .baseHealth(60)
+            .baseAttack(62)
+            .baseDefense(63)
+            .baseSpeed(60)
+            .baseSpecial(80)
     ),
     VENUSAUR(new Builder()
-            .setTyping(Type.GRASS, Type.POISON)
+            .typing(Type.GRASS, Type.POISON)
+            .baseHealth(80)
+            .baseAttack(82)
+            .baseDefense(83)
+            .baseSpeed(80)
+            .baseSpecial(100)
     ),
     CHARMANDER(new Builder()
-            .setTyping(Type.FIRE)
+            .typing(Type.FIRE)
+            .baseHealth(39)
+            .baseAttack(52)
+            .baseDefense(43)
+            .baseSpeed(65)
+            .baseSpecial(50)
     ),
     CHARMELEON(new Builder()
-            .setTyping(Type.FIRE)
+            .typing(Type.FIRE)
+            .baseHealth(58)
+            .baseAttack(64)
+            .baseDefense(58)
+            .baseSpeed(80)
+            .baseSpecial(65)
     ),
     CHARIZARD(new Builder()
-            .setTyping(Type.FIRE, Type.FLYING)
+            .typing(Type.FIRE, Type.FLYING)
+            .baseHealth(78)
+            .baseAttack(84)
+            .baseDefense(78)
+            .baseSpeed(100)
+            .baseSpecial(85)
     ),
     SQUIRTLE(new Builder()
-            .setTyping(Type.WATER)
+            .typing(Type.WATER)
+            .baseHealth(44)
+            .baseAttack(48)
+            .baseDefense(65)
+            .baseSpeed(43)
+            .baseSpecial(50)
     ),
     WARTORTLE(new Builder()
-            .setTyping(Type.WATER)
+            .typing(Type.WATER)
+            .baseHealth(59)
+            .baseAttack(63)
+            .baseDefense(80)
+            .baseSpeed(58)
+            .baseSpecial(65)
     ),
     BLASTOISE(new Builder()
-            .setTyping(Type.WATER)
+            .typing(Type.WATER)
+            .baseHealth(79)
+            .baseAttack(83)
+            .baseDefense(100)
+            .baseSpeed(78)
+            .baseSpecial(85)
     ),
     CATERPIE(new Builder()
-            .setTyping(Type.BUG)
+            .typing(Type.BUG)
+            .baseHealth(45)
+            .baseAttack(30)
+            .baseDefense(35)
+            .baseSpeed(45)
+            .baseSpecial(20)
     ),
     METAPOD(new Builder()
-            .setTyping(Type.BUG)
+            .typing(Type.BUG)
+            .baseHealth(50)
+            .baseAttack(20)
+            .baseDefense(55)
+            .baseSpeed(30)
+            .baseSpecial(25)
     ),
     BUTTERFREE(new Builder()
-            .setTyping(Type.BUG, Type.FLYING)
+            .typing(Type.BUG, Type.FLYING)
+            .baseHealth(60)
+            .baseAttack(45)
+            .baseDefense(50)
+            .baseSpeed(70)
+            .baseSpecial(80)
     ),
     WEEDLE(new Builder()
-            .setTyping(Type.BUG, Type.POISON)
+            .typing(Type.BUG, Type.POISON)
+            .baseHealth(40)
+            .baseAttack(35)
+            .baseDefense(30)
+            .baseSpeed(50)
+            .baseSpecial(20)
     ),
     KAKUNA(new Builder()
-            .setTyping(Type.BUG, Type.POISON)
+            .typing(Type.BUG, Type.POISON)
+            .baseHealth(45)
+            .baseAttack(25)
+            .baseDefense(50)
+            .baseSpeed(35)
+            .baseSpecial(25)
     ),
     BEEDRILL(new Builder()
-            .setTyping(Type.BUG, Type.POISON)
+            .typing(Type.BUG, Type.POISON)
+            .baseHealth(65)
+            .baseAttack(80)
+            .baseDefense(40)
+            .baseSpeed(75)
+            .baseSpecial(45)
     ),
     PIDGEY(new Builder()
-            .setTyping(Type.NORMAL, Type.FLYING)
+            .typing(Type.NORMAL, Type.FLYING)
+            .baseHealth(40)
+            .baseAttack(45)
+            .baseDefense(40)
+            .baseSpeed(56)
+            .baseSpecial(35)
     ),
     PIDGEOTTO(new Builder()
-            .setTyping(Type.NORMAL, Type.FLYING)
+            .typing(Type.NORMAL, Type.FLYING)
+            .baseHealth(63)
+            .baseAttack(60)
+            .baseDefense(55)
+            .baseSpeed(71)
+            .baseSpecial(50)
     ),
     PIDGEOT(new Builder()
-            .setTyping(Type.NORMAL, Type.FLYING)
+            .typing(Type.NORMAL, Type.FLYING)
+            .baseHealth(83)
+            .baseAttack(80)
+            .baseDefense(75)
+            .baseSpeed(91)
+            .baseSpecial(70)
     ),
     RATTATA(new Builder()
-            .setTyping(Type.NORMAL)
+            .typing(Type.NORMAL)
+            .baseHealth(30)
+            .baseAttack(56)
+            .baseDefense(35)
+            .baseSpeed(72)
+            .baseSpecial(25)
     ),
     RATICATE(new Builder()
-            .setTyping(Type.NORMAL)
+            .typing(Type.NORMAL)
+            .baseHealth(55)
+            .baseAttack(81)
+            .baseDefense(60)
+            .baseSpeed(97)
+            .baseSpecial(50)
     ),
     SPEAROW(new Builder()
-            .setTyping(Type.NORMAL, Type.FLYING)
+            .typing(Type.NORMAL, Type.FLYING)
+            .baseHealth(40)
+            .baseAttack(60)
+            .baseDefense(30)
+            .baseSpeed(70)
+            .baseSpecial(31)
+
     ),
     FEAROW(new Builder()
-            .setTyping(Type.NORMAL, Type.FLYING)
+            .typing(Type.NORMAL, Type.FLYING)
+            .baseHealth(65)
+            .baseAttack(90)
+            .baseDefense(65)
+            .baseSpeed(100)
+            .baseSpecial(61)
     ),
     EKANS(new Builder()
-            .setTyping(Type.POISON)
+            .typing(Type.POISON)
+            .baseHealth(35)
+            .baseAttack(60)
+            .baseDefense(44)
+            .baseSpeed(55)
+            .baseSpecial(40)
     ),
     ARBOK(new Builder()
-            .setTyping(Type.POISON)
+            .typing(Type.POISON)
+            .baseHealth(60)
+            .baseAttack(85)
+            .baseDefense(69)
+            .baseSpeed(80)
+            .baseSpecial(65)
     ),
     PIKACHU(new Builder()
-            .setTyping(Type.ELECTRIC)
+            .typing(Type.ELECTRIC)
+            .baseHealth(35)
+            .baseAttack(55)
+            .baseDefense(30)
+            .baseSpeed(90)
+            .baseSpecial(50)
     ),
     RAICHU(new Builder()
-            .setTyping(Type.ELECTRIC)
+            .typing(Type.ELECTRIC)
+            .baseHealth(60)
+            .baseAttack(90)
+            .baseDefense(55)
+            .baseSpeed(100)
+            .baseSpecial(90)
     ),
     SANDSHREW(new Builder()
-            .setTyping(Type.GROUND)
+            .typing(Type.GROUND)
     ),
     SANDSLASH(new Builder()
-            .setTyping(Type.GROUND)
+            .typing(Type.GROUND)
     ),
     NIDORAN_FEMALE(new Builder()
-            .setTyping(Type.POISON)
+            .typing(Type.POISON)
     ),
     NIDORINA(new Builder()
-            .setTyping(Type.POISON)
+            .typing(Type.POISON)
     ),
     NIDOQUEEN(new Builder()
-            .setTyping(Type.POISON, Type.GROUND)
+            .typing(Type.POISON, Type.GROUND)
     ),
     NIDORAN_MALE(new Builder()
-            .setTyping(Type.POISON)
+            .typing(Type.POISON)
     ),
     NIDORINO(new Builder()
-            .setTyping(Type.POISON)
+            .typing(Type.POISON)
     ),
     NIDOKING(new Builder()
-            .setTyping(Type.POISON, Type.GROUND)
+            .typing(Type.POISON, Type.GROUND)
     ),
     CLEFAIRY(new Builder()
-            .setTyping(Type.NORMAL)
+            .typing(Type.NORMAL)
     ),
     CLEFABLE(new Builder()
-            .setTyping(Type.NORMAL)
+            .typing(Type.NORMAL)
     ),
     VULPIX(new Builder()
-            .setTyping(Type.FIRE)
+            .typing(Type.FIRE)
     ),
     NINETALES(new Builder()
-            .setTyping(Type.FIRE)
+            .typing(Type.FIRE)
     ),
     JIGGLYPUFF(new Builder()
-            .setTyping(Type.NORMAL)
+            .typing(Type.NORMAL)
     ),
     WIGGLYTUFF(new Builder()
-            .setTyping(Type.NORMAL)
+            .typing(Type.NORMAL)
     ),
     ZUBAT(new Builder()
-            .setTyping(Type.POISON, Type.FLYING)
+            .typing(Type.POISON, Type.FLYING)
     ),
     GOLBAT(new Builder()
-            .setTyping(Type.POISON, Type.FLYING)
+            .typing(Type.POISON, Type.FLYING)
     ),
     ODDISH(new Builder()
-            .setTyping(Type.GRASS, Type.POISON)
+            .typing(Type.GRASS, Type.POISON)
     ),
     GLOOM(new Builder()
-            .setTyping(Type.GRASS, Type.POISON)
+            .typing(Type.GRASS, Type.POISON)
     ),
     VILEPLUME(new Builder()
-            .setTyping(Type.GRASS, Type.POISON)
+            .typing(Type.GRASS, Type.POISON)
     ),
     PARAS(new Builder()
-            .setTyping(Type.BUG, Type.POISON)
+            .typing(Type.BUG, Type.POISON)
     ),
     PARASECT(new Builder()
-            .setTyping(Type.BUG, Type.POISON)
+            .typing(Type.BUG, Type.POISON)
     ),
     VENONAT(new Builder()
-            .setTyping(Type.BUG, Type.POISON)
+            .typing(Type.BUG, Type.POISON)
     ),
     VENOMOTH(new Builder()
-            .setTyping(Type.BUG, Type.POISON)
+            .typing(Type.BUG, Type.POISON)
     ),
     DIGLETT(new Builder()
-            .setTyping(Type.GROUND)
+            .typing(Type.GROUND)
     ),
     DUGTRIO(new Builder()
-            .setTyping(Type.GROUND)
+            .typing(Type.GROUND)
     ),
     MEOWTH(new Builder()
-            .setTyping(Type.NORMAL)
+            .typing(Type.NORMAL)
     ),
     PERSIAN(new Builder()
-            .setTyping(Type.NORMAL)
+            .typing(Type.NORMAL)
     ),
     PSYDUCK(new Builder()
-            .setTyping(Type.WATER)
+            .typing(Type.WATER)
     ),
     GOLDUCK(new Builder()
-            .setTyping(Type.WATER)
+            .typing(Type.WATER)
     ),
     MANKEY(new Builder()
-            .setTyping(Type.FIGHTING)
+            .typing(Type.FIGHTING)
     ),
     PRIMEAPE(new Builder()
-            .setTyping(Type.FIGHTING)
+            .typing(Type.FIGHTING)
     ),
     GROWLITHE(new Builder()
-            .setTyping(Type.FIRE)
+            .typing(Type.FIRE)
     ),
     ARCANINE(new Builder()
-            .setTyping(Type.FIRE)
+            .typing(Type.FIRE)
     ),
     POLIWAG(new Builder()
-            .setTyping(Type.WATER)
+            .typing(Type.WATER)
     ),
     POLIWHIRL(new Builder()
-            .setTyping(Type.WATER)
+            .typing(Type.WATER)
     ),
     POLIWRATH(new Builder()
-            .setTyping(Type.WATER, Type.FIGHTING)
+            .typing(Type.WATER, Type.FIGHTING)
     ),
     ABRA(new Builder()
-            .setTyping(Type.PSYCHIC)
+            .typing(Type.PSYCHIC)
     ),
     KADABRA(new Builder()
-            .setTyping(Type.PSYCHIC)
+            .typing(Type.PSYCHIC)
     ),
     ALAKAZAM(new Builder()
-            .setTyping(Type.PSYCHIC)
+            .typing(Type.PSYCHIC)
     ),
     MACHOP(new Builder()
-            .setTyping(Type.FIGHTING)
+            .typing(Type.FIGHTING)
     ),
     MACHOKE(new Builder()
-            .setTyping(Type.FIGHTING)
+            .typing(Type.FIGHTING)
     ),
     MACHAMP(new Builder()
-            .setTyping(Type.FIGHTING)
+            .typing(Type.FIGHTING)
     ),
     BELLSPROUT(new Builder()
-            .setTyping(Type.GRASS, Type.POISON)
+            .typing(Type.GRASS, Type.POISON)
     ),
     WEEPINBELL(new Builder()
-            .setTyping(Type.GRASS, Type.POISON)
+            .typing(Type.GRASS, Type.POISON)
     ),
     VICTREEBEL(new Builder()
-            .setTyping(Type.GRASS, Type.POISON)
+            .typing(Type.GRASS, Type.POISON)
     ),
     TENTACOOL(new Builder()
-            .setTyping(Type.WATER, Type.POISON)
+            .typing(Type.WATER, Type.POISON)
     ),
     TENTACRUEL(new Builder()
-            .setTyping(Type.WATER, Type.POISON)
+            .typing(Type.WATER, Type.POISON)
     ),
     GEODUDE(new Builder()
-            .setTyping(Type.ROCK, Type.GROUND)
+            .typing(Type.ROCK, Type.GROUND)
     ),
     GRAVELER(new Builder()
-            .setTyping(Type.ROCK, Type.GROUND)
+            .typing(Type.ROCK, Type.GROUND)
     ),
     GOLEM(new Builder()
-            .setTyping(Type.ROCK, Type.GROUND)
+            .typing(Type.ROCK, Type.GROUND)
     ),
     PONYTA(new Builder()
-            .setTyping(Type.FIRE)
+            .typing(Type.FIRE)
     ),
     RAPIDASH(new Builder()
-            .setTyping(Type.FIRE)
+            .typing(Type.FIRE)
     ),
     SLOWPOKE(new Builder()
-            .setTyping(Type.WATER, Type.PSYCHIC)
+            .typing(Type.WATER, Type.PSYCHIC)
     ),
     SLOWBRO(new Builder()
-            .setTyping(Type.WATER, Type.PSYCHIC)
+            .typing(Type.WATER, Type.PSYCHIC)
     ),
     MAGNEMITE(new Builder()
-            .setTyping(Type.ELECTRIC)
+            .typing(Type.ELECTRIC)
     ),
     MAGNETON(new Builder()
-            .setTyping(Type.ELECTRIC)
+            .typing(Type.ELECTRIC)
     ),
     FARFETCH_D(new Builder()
-            .setTyping(Type.NORMAL, Type.FLYING)
+            .typing(Type.NORMAL, Type.FLYING)
     ),
     DODUO(new Builder()
-            .setTyping(Type.NORMAL, Type.FLYING)
+            .typing(Type.NORMAL, Type.FLYING)
     ),
     DODRIO(new Builder()
-            .setTyping(Type.NORMAL, Type.FLYING)
+            .typing(Type.NORMAL, Type.FLYING)
     ),
     SEEL(new Builder()
-            .setTyping(Type.WATER)
+            .typing(Type.WATER)
     ),
     DEWGONG(new Builder()
-            .setTyping(Type.WATER, Type.ICE)
+            .typing(Type.WATER, Type.ICE)
     ),
     GRIMER(new Builder()
-            .setTyping(Type.POISON)
+            .typing(Type.POISON)
     ),
     MUK(new Builder()
-            .setTyping(Type.POISON)
+            .typing(Type.POISON)
     ),
     SHELLDER(new Builder()
-            .setTyping(Type.WATER)
+            .typing(Type.WATER)
     ),
     CLOYSTER(new Builder()
-            .setTyping(Type.WATER, Type.ICE)
+            .typing(Type.WATER, Type.ICE)
     ),
     GASTLY(new Builder()
-            .setTyping(Type.GHOST, Type.POISON)
+            .typing(Type.GHOST, Type.POISON)
     ),
     HAUNTER(new Builder()
-            .setTyping(Type.GHOST, Type.POISON)
+            .typing(Type.GHOST, Type.POISON)
     ),
     GENGAR(new Builder()
-            .setTyping(Type.GHOST, Type.POISON)
+            .typing(Type.GHOST, Type.POISON)
     ),
     ONIX(new Builder()
-            .setTyping(Type.ROCK, Type.GROUND)
+            .typing(Type.ROCK, Type.GROUND)
     ),
     DROWZEE(new Builder()
-            .setTyping(Type.PSYCHIC)
+            .typing(Type.PSYCHIC)
     ),
     HYPNO(new Builder()
-            .setTyping(Type.PSYCHIC)
+            .typing(Type.PSYCHIC)
     ),
     KRABBY(new Builder()
-            .setTyping(Type.WATER)
+            .typing(Type.WATER)
     ),
     KINGLER(new Builder()
-            .setTyping(Type.WATER)
+            .typing(Type.WATER)
     ),
     VOLTORB(new Builder()
-            .setTyping(Type.ELECTRIC)
+            .typing(Type.ELECTRIC)
     ),
     ELECTRODE(new Builder()
-            .setTyping(Type.ELECTRIC)
+            .typing(Type.ELECTRIC)
     ),
     EXEGGCUTE(new Builder()
-            .setTyping(Type.GRASS, Type.PSYCHIC)
+            .typing(Type.GRASS, Type.PSYCHIC)
     ),
     EXEGGUTOR(new Builder()
-            .setTyping(Type.GRASS, Type.PSYCHIC)
+            .typing(Type.GRASS, Type.PSYCHIC)
     ),
     CUBONE(new Builder()
-            .setTyping(Type.GROUND)
+            .typing(Type.GROUND)
     ),
     MAROWAK(new Builder()
-            .setTyping(Type.GROUND)
+            .typing(Type.GROUND)
     ),
     HITMONLEE(new Builder()
-            .setTyping(Type.FIGHTING)
+            .typing(Type.FIGHTING)
     ),
     HITMONCHAN(new Builder()
-            .setTyping(Type.FIGHTING)
+            .typing(Type.FIGHTING)
     ),
     LICKITUNG(new Builder()
-            .setTyping(Type.NORMAL)
+            .typing(Type.NORMAL)
     ),
     KOFFING(new Builder()
-            .setTyping(Type.POISON)
+            .typing(Type.POISON)
     ),
     WEEZING(new Builder()
-            .setTyping(Type.POISON)
+            .typing(Type.POISON)
     ),
     RHYHORN(new Builder()
-            .setTyping(Type.GROUND, Type.ROCK)
+            .typing(Type.GROUND, Type.ROCK)
     ),
     RHYDON(new Builder()
-            .setTyping(Type.GROUND, Type.ROCK)
+            .typing(Type.GROUND, Type.ROCK)
     ),
     CHANSEY(new Builder()
-            .setTyping(Type.NORMAL)
+            .typing(Type.NORMAL)
     ),
     TANGELA(new Builder()
-            .setTyping(Type.GRASS)
+            .typing(Type.GRASS)
     ),
     KANGASKHAN(new Builder()
-            .setTyping(Type.NORMAL)
+            .typing(Type.NORMAL)
     ),
     HORSEA(new Builder()
-            .setTyping(Type.WATER)
+            .typing(Type.WATER)
     ),
     SEADRA(new Builder()
-            .setTyping(Type.WATER)
+            .typing(Type.WATER)
     ),
     GOLDEEN(new Builder()
-            .setTyping(Type.WATER)
+            .typing(Type.WATER)
     ),
     SEAKING(new Builder()
-            .setTyping(Type.WATER)
+            .typing(Type.WATER)
     ),
     STARYU(new Builder()
-            .setTyping(Type.WATER)
+            .typing(Type.WATER)
     ),
     STARMIE(new Builder()
-            .setTyping(Type.WATER, Type.PSYCHIC)
+            .typing(Type.WATER, Type.PSYCHIC)
     ),
     MR_MIME(new Builder()
-            .setTyping(Type.PSYCHIC)
+            .typing(Type.PSYCHIC)
     ),
     SCYTHER(new Builder()
-            .setTyping(Type.BUG, Type.FLYING)
+            .typing(Type.BUG, Type.FLYING)
     ),
     JYNX(new Builder()
-            .setTyping(Type.ICE, Type.PSYCHIC)
+            .typing(Type.ICE, Type.PSYCHIC)
     ),
     ELECTABUZZ(new Builder()
-            .setTyping(Type.ELECTRIC)
+            .typing(Type.ELECTRIC)
     ),
     MAGMAR(new Builder()
-            .setTyping(Type.FIRE)
+            .typing(Type.FIRE)
     ),
     PINSIR(new Builder()
-            .setTyping(Type.BUG)
+            .typing(Type.BUG)
     ),
     TAUROS(new Builder()
-            .setTyping(Type.NORMAL)
+            .typing(Type.NORMAL)
     ),
     MAGIKARP(new Builder()
-            .setTyping(Type.WATER)
+            .typing(Type.WATER)
     ),
     GYARADOS(new Builder()
-            .setTyping(Type.WATER, Type.FLYING)
+            .typing(Type.WATER, Type.FLYING)
     ),
     LAPRAS(new Builder()
-            .setTyping(Type.WATER, Type.ICE)
+            .typing(Type.WATER, Type.ICE)
     ),
     DITTO(new Builder()
-            .setTyping(Type.NORMAL)
+            .typing(Type.NORMAL)
     ),
     EEVEE(new Builder()
-            .setTyping(Type.NORMAL)
+            .typing(Type.NORMAL)
     ),
     VAPOREON(new Builder()
-            .setTyping(Type.WATER)
+            .typing(Type.WATER)
     ),
     JOLTEON(new Builder()
-            .setTyping(Type.ELECTRIC)
+            .typing(Type.ELECTRIC)
     ),
     FLAREON(new Builder()
-            .setTyping(Type.FIRE)
+            .typing(Type.FIRE)
     ),
     PORYGON(new Builder()
-            .setTyping(Type.NORMAL)
+            .typing(Type.NORMAL)
     ),
     OMANYTE(new Builder()
-            .setTyping(Type.ROCK, Type.WATER)
+            .typing(Type.ROCK, Type.WATER)
     ),
     OMASTAR(new Builder()
-            .setTyping(Type.ROCK, Type.WATER)
+            .typing(Type.ROCK, Type.WATER)
     ),
     KABUTO(new Builder()
-            .setTyping(Type.ROCK, Type.WATER)
+            .typing(Type.ROCK, Type.WATER)
     ),
     KABUTOPS(new Builder()
-            .setTyping(Type.ROCK, Type.WATER)
+            .typing(Type.ROCK, Type.WATER)
     ),
     AERODACTYL(new Builder()
-            .setTyping(Type.ROCK, Type.FLYING)
+            .typing(Type.ROCK, Type.FLYING)
     ),
     SNORLAX(new Builder()
-            .setTyping(Type.NORMAL)
+            .typing(Type.NORMAL)
     ),
     ARTICUNO(new Builder()
-            .setTyping(Type.ICE, Type.FLYING)
+            .typing(Type.ICE, Type.FLYING)
     ),
     ZAPDOS(new Builder()
-            .setTyping(Type.ELECTRIC, Type.FLYING)
+            .typing(Type.ELECTRIC, Type.FLYING)
     ),
     MOLTRES(new Builder()
-            .setTyping(Type.FIRE, Type.FLYING)
+            .typing(Type.FIRE, Type.FLYING)
     ),
     DRATINI(new Builder()
-            .setTyping(Type.DRAGON)
+            .typing(Type.DRAGON)
     ),
     DRAGONAIR(new Builder()
-            .setTyping(Type.DRAGON)
+            .typing(Type.DRAGON)
     ),
     DRAGONITE(new Builder()
-            .setTyping(Type.DRAGON, Type.FLYING)
+            .typing(Type.DRAGON, Type.FLYING)
     ),
     MEWTWO(new Builder()
-            .setTyping(Type.PSYCHIC)
+            .typing(Type.PSYCHIC)
     ),
     MEW(new Builder()
-            .setTyping(Type.PSYCHIC)
+            .typing(Type.PSYCHIC)
     ),
     ;
 
     private final Typing typing;
+    private final EnumMap<Info, Integer> info;
 
     SpeciesInfo(Builder builder) {
         this.typing = builder.typing;
-    }
-
-    public Typing getTyping() {
-        return typing;
+        this.info = builder.info;
     }
 
     public int getDexNum() {
         return ordinal() + 1;
     }
 
+    public Typing getTyping() {
+        return typing;
+    }
+
+    public int getBaseHealth() {
+        return info.getOrDefault(Info.BASE_HEALTH, 0);
+    }
+
+    public int getBaseAttack() {
+        return info.getOrDefault(Info.BASE_ATTACK, 0);
+    }
+
+    public int getBaseDefense() {
+        return info.getOrDefault(Info.BASE_DEFENSE, 0);
+    }
+
+    public int getBaseSpeed() {
+        return info.getOrDefault(Info.BASE_SPEED, 0);
+    }
+
+    public int getBaseSpecial() {
+        return info.getOrDefault(Info.BASE_SPECIAL, 0);
+    }
+
+
+
+
     private static class Builder {
         private Typing typing;
+        private final EnumMap<Info, Integer> info = new EnumMap<>(Info.class);
 
-        public Builder setTyping(Type type) {
+        public Builder typing(Type type) {
             this.typing = new Typing(new Type[]{type});
             return this;
         }
 
-        public Builder setTyping(Type firstType, Type secondType) {
+        public Builder typing(Type firstType, Type secondType) {
             this.typing = new Typing(new Type[]{firstType, secondType});
             return this;
         }
+
+        public Builder baseHealth(Integer health) {
+            this.info.put(Info.BASE_HEALTH, health);
+            return this;
+        }
+
+        public Builder baseAttack(Integer attack) {
+            this.info.put(Info.BASE_ATTACK, attack);
+            return this;
+        }
+
+        public Builder baseDefense(Integer defense) {
+            this.info.put(Info.BASE_DEFENSE, defense);
+            return this;
+        }
+
+        public Builder baseSpeed(Integer speed) {
+            this.info.put(Info.BASE_SPEED, speed);
+            return this;
+        }
+
+        public Builder baseSpecial(Integer special) {
+            this.info.put(Info.BASE_SPECIAL, special);
+            return this;
+        }
+
+    }
+
+    private enum Info {
+        TYPING,
+        BASE_HEALTH,
+        BASE_ATTACK,
+        BASE_DEFENSE,
+        BASE_SPEED,
+        BASE_SPECIAL,
     }
 }
