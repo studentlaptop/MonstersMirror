@@ -7,8 +7,6 @@ import monster.move.Move;
 import monster.move.MoveSet;
 import monster.move.moves.physical.Physical;
 
-import java.lang.invoke.MethodHandles;
-
 public class Porygon extends Monster implements Evolvable {
     private static final SpeciesInfo INFO = SpeciesInfo.PORYGON;
 
