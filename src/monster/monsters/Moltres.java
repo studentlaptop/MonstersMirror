@@ -9,13 +9,12 @@ import monster.move.moves.physical.Physical;
 
 import java.lang.invoke.MethodHandles;
 
-public class Moltres extends Monster implements Evolvable {
-    private static final int DEX_NUM = MonsterInfo.getDexNum(MethodHandles.lookup().lookupClass());
-    private static final Typing TYPING = MonsterInfo.getTyping(MethodHandles.lookup().lookupClass());
+public class Moltres extends Monster {
+    private static final SpeciesInfo INFO = SpeciesInfo.MOLTRES;
 
     public Moltres() {
         super();
-        setName("Pidgey");
+        setName(INFO.toString());
         setHealth(25);
         setAttack(5);
         setDefense(5);
@@ -31,16 +30,11 @@ public class Moltres extends Monster implements Evolvable {
 
     @Override
     public Typing getTyping() {
-        return TYPING;
+        return INFO.getTyping();
     }
 
     @Override
     public int getDexNum() {
-        return DEX_NUM;
-    }
-
-
-    public boolean evolve() {
-        return false;
+        return INFO.getDexNum();
     }
 }

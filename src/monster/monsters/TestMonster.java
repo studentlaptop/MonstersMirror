@@ -7,11 +7,9 @@ import monster.move.Move;
 import monster.move.MoveSet;
 import monster.move.moves.physical.Physical;
 
-import java.lang.invoke.MethodHandles;
-
 public class TestMonster extends Monster implements Evolvable {
-    private static final int DEX_NUM = MonsterInfo.getDexNum(MethodHandles.lookup().lookupClass());
-    private static final Typing TYPING = MonsterInfo.PIDGEY.getMonsterTyping();
+    private static final int DEX_NUM = -1;
+    private static final Typing TYPING = SpeciesInfo.PIDGEY.getTyping();
 
     public TestMonster() {
         super();
@@ -39,7 +37,7 @@ public class TestMonster extends Monster implements Evolvable {
         return DEX_NUM;
     }
 
-
+    @Override
     public boolean evolve() {
         return false;
     }

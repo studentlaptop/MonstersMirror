@@ -5,10 +5,6 @@ import java.util.Arrays;
 public class Typing {
     private Type[] typing;
 
-    public Typing() {
-        typing = new Type[]{Type.NORMAL};
-    }
-
     public Typing(Type[] typing) {
         if (isValid(typing)) {
             this.typing = typing;
