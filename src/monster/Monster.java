@@ -1,26 +1,43 @@
 package monster;
 
+import monster.monsters.SpeciesInfo;
 import monster.move.Move;
 import monster.move.MoveSet;
+import monster.move.moves.physical.Physical;
 import monster.status.Status;
 
 import java.util.random.RandomGenerator;
 
-public abstract class Monster {
+public class Monster {
     private String name;
     private int health;
     private int attack;
     private int defense;
+    private final MoveSet moveSet;
     private int special;
-    private int speed;
     private int level;
-    private MoveSet moveSet;
     private int dv;
     private Status status;
+    private int speed;
+    private Typing typing;
+    private int dexNum;
 
     public Monster() {
-        setMoveSet(new MoveSet());
+        moveSet = new MoveSet(Physical.TACKLE.getMove(), null, null, null);
         setRandomDv();
+        status = null;
+    }
+
+    public Monster(SpeciesInfo species, MoveSet moveSet) {
+        this.name = species.toString();
+        this.typing = species.getTyping();
+        this.moveSet = moveSet;
+        this.dexNum = species.getDexNum();
+        this.health = species.getBaseHealth();
+        this.attack = species.getBaseAttack();
+        this.defense = species.getBaseDefense();
+        this.speed = species.getBaseSpeed();
+        this.special = species.getBaseSpecial();
         status = null;
     }
 
@@ -95,20 +112,12 @@ public abstract class Monster {
         this.level = level;
     }
 
+    public void setMoveSet(Move firstMove, Move secondMove, Move thirdMove, Move fourthMove) {
+        moveSet.setMoves(firstMove, secondMove, thirdMove, fourthMove);
+    }
+
     public MoveSet getMoveSet() {
         return moveSet;
-    }
-
-    public void setMoveSet(MoveSet moveSet) {
-        if (MoveSet.isValid(moveSet.getMoves())) {
-            this.moveSet = moveSet;
-        }
-    }
-
-    public void setMoveSet(Move[] moveSet) {
-        if (MoveSet.isValid(moveSet)) {
-            this.moveSet.setMoveSet(moveSet);
-        }
     }
 
     public int getDv() {
@@ -119,7 +128,9 @@ public abstract class Monster {
         this.dv = dv;
     }
 
-    public abstract Typing getTyping();
+    public Typing getTyping() {
+        return typing;
+    }
 
     public void setRandomDv() {
         RandomGenerator rng = RandomGenerator.of("L64X128MixRandom");
@@ -134,5 +145,7 @@ public abstract class Monster {
         this.status = status;
     }
 
-    public abstract int getDexNum();
+    public int getDexNum() {
+        return dexNum;
+    }
 }

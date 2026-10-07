@@ -13,8 +13,7 @@ public enum SpeciesInfo {
             .baseDefense(49)
             .baseSpeed(45)
             .baseSpecial(65)
-    )
-    ,
+    ),
     IVYSAUR(new Builder()
             .typing(Type.GRASS, Type.POISON)
             .baseHealth(60)
@@ -610,23 +609,23 @@ public enum SpeciesInfo {
     }
 
     public int getBaseHealth() {
-        return info.getOrDefault(Info.BASE_HEALTH, 0);
+        return info.getOrDefault(Info.BASE_HEALTH, 1);
     }
 
     public int getBaseAttack() {
-        return info.getOrDefault(Info.BASE_ATTACK, 0);
+        return info.getOrDefault(Info.BASE_ATTACK, 1);
     }
 
     public int getBaseDefense() {
-        return info.getOrDefault(Info.BASE_DEFENSE, 0);
+        return info.getOrDefault(Info.BASE_DEFENSE, 1);
     }
 
     public int getBaseSpeed() {
-        return info.getOrDefault(Info.BASE_SPEED, 0);
+        return info.getOrDefault(Info.BASE_SPEED, 1);
     }
 
     public int getBaseSpecial() {
-        return info.getOrDefault(Info.BASE_SPECIAL, 0);
+        return info.getOrDefault(Info.BASE_SPECIAL, 1);
     }
 
 
@@ -637,12 +636,12 @@ public enum SpeciesInfo {
         private final EnumMap<Info, Integer> info = new EnumMap<>(Info.class);
 
         public Builder typing(Type type) {
-            this.typing = new Typing(new Type[]{type});
+            this.typing = new Typing(type);
             return this;
         }
 
         public Builder typing(Type firstType, Type secondType) {
-            this.typing = new Typing(new Type[]{firstType, secondType});
+            this.typing = new Typing(firstType, secondType);
             return this;
         }
 
@@ -670,7 +669,6 @@ public enum SpeciesInfo {
             this.info.put(Info.BASE_SPECIAL, special);
             return this;
         }
-
     }
 
     private enum Info {

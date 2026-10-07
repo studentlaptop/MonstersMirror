@@ -4,21 +4,17 @@ import java.util.HashSet;
 import java.util.Set;
 
 public class MoveSet {
-    private Move[] moveSet;
+    private Move[] moves;
 
-    public MoveSet() {
-        moveSet = new Move[4];
-    }
-
-    public MoveSet(Move[] moveSet) {
-        if (isValid(moveSet)) {
-            this.moveSet = moveSet;
+    public MoveSet(Move firstMove, Move secondMove, Move thirdMove, Move fourthMove) {
+        if (isValid(new Move[]{firstMove, secondMove, thirdMove, fourthMove})) {
+            moves = new Move[]{firstMove, secondMove, thirdMove, fourthMove};
         }
     }
 
     public MoveSet(MoveSet moveSet) {
         if (isValid(moveSet.getMoves())) {
-            this.moveSet = moveSet.moveSet;
+            this.moves = moveSet.moves;
         }
     }
 
@@ -39,22 +35,25 @@ public class MoveSet {
     }
 
     public Move get(int index) {
-        return moveSet[index];
+        return moves[index];
     }
 
     public Move[] getMoves() {
-        return moveSet;
+        return moves;
     }
 
-    public void setMoveSet(Move[] moveSet) {
-        if (isValid(moveSet)) {
-            this.moveSet = moveSet;
+    public void setMoves(Move firstMove, Move secondMove, Move thirdMove, Move fourthMove) {
+        if (isValid(new Move[]{firstMove, secondMove, thirdMove, fourthMove})) {
+            moves[0] = firstMove;
+            moves[1] = secondMove;
+            moves[2] = thirdMove;
+            moves[3] = fourthMove;
         }
     }
 
     public int indexOf(Move move) {
-        for (int i = 0; i < moveSet.length; i++) {
-            if (moveSet[i] == move) {
+        for (int i = 0; i < moves.length; i++) {
+            if (moves[i] == move) {
                 return i;
             }
         }
@@ -77,7 +76,7 @@ public class MoveSet {
         }
 
         if (index >= 0) {
-            moveSet[index] = move;
+            moves[index] = move;
             return true;
         }
 
@@ -85,5 +84,21 @@ public class MoveSet {
             return forget(move);
         }
         return false;
+    }
+
+    public Move getFirstMove() {
+        return moves[0];
+    }
+
+    public Move getSecondMove() {
+        return moves[1];
+    }
+
+    public Move getThirdMove() {
+        return moves[2];
+    }
+
+    public Move getFourthMove() {
+        return moves[3];
     }
 }
