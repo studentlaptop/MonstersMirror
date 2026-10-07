@@ -1,5 +1,6 @@
 package monster.monsters;
 
+import monster.Monster;
 import monster.Type;
 import monster.Typing;
 
@@ -13,7 +14,12 @@ public enum SpeciesInfo {
             .baseDefense(49)
             .baseSpeed(45)
             .baseSpecial(65)
-    ),
+    ) {
+        @Override
+        public SpeciesInfo getEvolution(Monster monster) {
+            return monster.getLevel() == 16 ? IVYSAUR : null;
+        }
+    },
     IVYSAUR(new Builder()
             .typing(Type.GRASS, Type.POISON)
             .baseHealth(60)
@@ -21,7 +27,12 @@ public enum SpeciesInfo {
             .baseDefense(63)
             .baseSpeed(60)
             .baseSpecial(80)
-    ),
+    ) {
+        @Override
+        public SpeciesInfo getEvolution(Monster monster) {
+            return monster.getLevel() == 32 ? VENUSAUR : null;
+        }
+    },
     VENUSAUR(new Builder()
             .typing(Type.GRASS, Type.POISON)
             .baseHealth(80)
@@ -37,7 +48,12 @@ public enum SpeciesInfo {
             .baseDefense(43)
             .baseSpeed(65)
             .baseSpecial(50)
-    ),
+    ) {
+        @Override
+        public SpeciesInfo getEvolution(Monster monster) {
+            return monster.getLevel() == 16 ? CHARMELEON : null;
+        }
+    },
     CHARMELEON(new Builder()
             .typing(Type.FIRE)
             .baseHealth(58)
@@ -45,7 +61,12 @@ public enum SpeciesInfo {
             .baseDefense(58)
             .baseSpeed(80)
             .baseSpecial(65)
-    ),
+    ) {
+        @Override
+        public SpeciesInfo getEvolution(Monster monster) {
+            return monster.getLevel() == 36 ? CHARIZARD : null;
+        }
+    },
     CHARIZARD(new Builder()
             .typing(Type.FIRE, Type.FLYING)
             .baseHealth(78)
@@ -61,7 +82,12 @@ public enum SpeciesInfo {
             .baseDefense(65)
             .baseSpeed(43)
             .baseSpecial(50)
-    ),
+    ) {
+        @Override
+        public SpeciesInfo getEvolution(Monster monster) {
+            return monster.getLevel() == 16 ? WARTORTLE : null;
+        }
+    },
     WARTORTLE(new Builder()
             .typing(Type.WATER)
             .baseHealth(59)
@@ -69,7 +95,12 @@ public enum SpeciesInfo {
             .baseDefense(80)
             .baseSpeed(58)
             .baseSpecial(65)
-    ),
+    ) {
+        @Override
+        public SpeciesInfo getEvolution(Monster monster) {
+            return monster.getLevel() == 16 ? BLASTOISE : null;
+        }
+    },
     BLASTOISE(new Builder()
             .typing(Type.WATER)
             .baseHealth(79)
@@ -626,6 +657,10 @@ public enum SpeciesInfo {
 
     public int getBaseSpecial() {
         return info.getOrDefault(Info.BASE_SPECIAL, 1);
+    }
+
+    public SpeciesInfo getEvolution(Monster monster) {
+        return null;
     }
 
 

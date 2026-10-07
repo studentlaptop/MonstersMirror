@@ -114,7 +114,7 @@ public class Monster {
         this.level = level;
     }
 
-    public void setMoveSet(Move firstMove, Move secondMove, Move thirdMove, Move fourthMove) {
+    public void setMoves(Move firstMove, Move secondMove, Move thirdMove, Move fourthMove) {
         moveSet.setMoves(firstMove, secondMove, thirdMove, fourthMove);
     }
 
@@ -149,5 +149,46 @@ public class Monster {
 
     public int getDexNum() {
         return dexNum;
+    }
+
+    public Move getFirstMove() {
+        return moveSet.get(0);
+    }
+
+    public Move getSecondMove() {
+        return moveSet.get(1);
+    }
+
+    public Move getThirdMove() {
+        return moveSet.get(2);
+    }
+
+    public Move getFourthMove() {
+        return moveSet.get(3);
+    }
+
+    public Move[] getMoves() {
+        return moveSet.getMoves();
+    }
+
+    public SpeciesInfo getSpecies() {
+        return species;
+    }
+
+    public void setSpecies(SpeciesInfo species) {
+        this.species = species;
+    }
+
+    public boolean evolve() {
+        if (species.getEvolution(this) != null) {
+            // call evolutionScene
+            // if evolutionScene == true
+            if (name.equals(species.name())) {
+                setName(species.getEvolution(this).name());
+            }
+            setSpecies(species.getEvolution(this));
+            return true;
+        }
+        return false;
     }
 }
