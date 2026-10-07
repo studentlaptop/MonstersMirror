@@ -21,6 +21,7 @@ public class Monster {
     private int speed;
     private Typing typing;
     private int dexNum;
+    private SpeciesInfo species;
 
     public Monster() {
         moveSet = new MoveSet(Physical.TACKLE.getMove(), null, null, null);
@@ -38,6 +39,7 @@ public class Monster {
         this.defense = species.getBaseDefense();
         this.speed = species.getBaseSpeed();
         this.special = species.getBaseSpecial();
+        this.species = species;
         status = null;
     }
 
