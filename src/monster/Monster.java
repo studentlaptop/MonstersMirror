@@ -1,5 +1,6 @@
 package monster;
 
+import item.Item;
 import monster.monsters.SpeciesInfo;
 import monster.move.Move;
 import monster.move.MoveSet;
@@ -23,10 +24,13 @@ public class Monster {
     private int dexNum;
     private SpeciesInfo species;
 
+    private Item item;
+
     public Monster() {
         moveSet = new MoveSet(Physical.TACKLE.getMove(), null, null, null);
         setRandomDv();
         status = null;
+        item = null;
     }
 
     public Monster(SpeciesInfo species, MoveSet moveSet) {
@@ -41,6 +45,7 @@ public class Monster {
         this.special = species.getBaseSpecial();
         this.species = species;
         status = null;
+        item = null;
     }
 
     public Monster(int health, int attack, int defense, int special, int speed, int level, MoveSet moveSet, int dv) {
@@ -53,6 +58,7 @@ public class Monster {
         this.moveSet = moveSet;
         this.dv = dv;
         status = null;
+        item = null;
     }
 
     public String getName() {
@@ -179,16 +185,37 @@ public class Monster {
         this.species = species;
     }
 
-    public boolean evolve() {
+    public Item getItem() {
+        return item;
+    }
+
+    public void setItem(Item item) {
+        this.item = item;
+    }
+
+    public Item useItem() {
+        return null;
+    }
+
+    public void evolve() {
         if (species.getEvolution(this) != null) {
             // call evolutionScene
             // if evolutionScene == true
-            if (name.equals(species.name())) {
-                setName(species.getEvolution(this).name());
+            if (name.equals(species.toString())) {
+                setName(species.getEvolution(this).toString());
             }
             setSpecies(species.getEvolution(this));
-            return true;
         }
-        return false;
+    }
+
+    public void evolve(Item item) {
+        if (species.getEvolution(this, item) != null) {
+            // call evolutionScene
+            // if evolutionScene == true
+            if (name.equals(species.toString())) {
+                setName(species.getEvolution(this, item).toString());
+            }
+            setSpecies(species.getEvolution(this, item));
+        }
     }
 }

@@ -1,5 +1,7 @@
 package monster.monsters;
 
+import item.Item;
+import item.ItemInfo;
 import monster.Monster;
 import monster.Type;
 import monster.Typing;
@@ -566,7 +568,22 @@ public enum SpeciesInfo {
     ),
     EEVEE(new Builder()
             .typing(Type.NORMAL)
-    ),
+    ) {
+        @Override
+        public SpeciesInfo getEvolution(Monster monster) {
+            return null;
+        }
+
+        @Override
+        public SpeciesInfo getEvolution(Monster monster, Item item) {
+            return switch(item.getInfo()) {
+                case FIRE_STONE -> FLAREON;
+                case WATER_STONE -> VAPOREON;
+                case LIGHTNING_STONE -> JOLTEON;
+                default -> null;
+            };
+        }
+    },
     VAPOREON(new Builder()
             .typing(Type.WATER)
     ),
@@ -663,7 +680,9 @@ public enum SpeciesInfo {
         return null;
     }
 
-
+    public SpeciesInfo getEvolution(Monster monster, Item item) {
+        return null;
+    }
 
 
     private static class Builder {
