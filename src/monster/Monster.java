@@ -1,6 +1,7 @@
 package monster;
 
 import item.Item;
+import item.ItemInfo;
 import monster.monsters.SpeciesInfo;
 import monster.move.Move;
 import monster.move.MoveSet;
@@ -23,7 +24,7 @@ public class Monster {
     private Typing typing;
     private int dexNum;
     private SpeciesInfo species;
-
+    private int friendship;
     private Item item;
 
     public Monster() {
@@ -31,12 +32,13 @@ public class Monster {
         setRandomDv();
         status = null;
         item = null;
+        friendship = 0;
     }
 
-    public Monster(SpeciesInfo species, MoveSet moveSet) {
+    public Monster(SpeciesInfo species, Move firstMove, Move secondMove, Move thirdMove, Move fourthMove) {
         this.name = species.toString();
         this.typing = species.getTyping();
-        this.moveSet = moveSet;
+        this.moveSet = new  MoveSet(firstMove, secondMove, thirdMove, fourthMove);
         this.dexNum = species.getDexNum();
         this.health = species.getBaseHealth();
         this.attack = species.getBaseAttack();
@@ -46,6 +48,7 @@ public class Monster {
         this.species = species;
         status = null;
         item = null;
+        friendship = 0;
     }
 
     public Monster(int health, int attack, int defense, int special, int speed, int level, MoveSet moveSet, int dv) {
@@ -59,6 +62,7 @@ public class Monster {
         this.dv = dv;
         status = null;
         item = null;
+        friendship = 0;
     }
 
     public String getName() {
@@ -140,6 +144,13 @@ public class Monster {
         return typing;
     }
 
+    public Type getFirstType() {
+        return typing.firstType();
+    }
+    public Type getSecondType() {
+        return typing.secondType();
+    }
+
     public void setRandomDv() {
         RandomGenerator rng = RandomGenerator.of("L64X128MixRandom");
         this.dv = rng.nextInt(0, 25);
@@ -197,6 +208,17 @@ public class Monster {
         return null;
     }
 
+    public int getFriendship() {
+        return friendship;
+    }
+    public void setFriendship(int friendship) {
+        this.friendship = friendship;
+    }
+
+    /* check if evolvable (separate method or something. If so, put the if statements in that method)
+       then play the evolve scene.
+       if the evolution scene was not cancelled, only then call an evolve() method.
+       Don't evolve during battle*/
     public void evolve() {
         if (species.getEvolution(this) != null) {
             if (name.equals(species.toString())) {
