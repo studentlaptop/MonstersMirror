@@ -199,8 +199,6 @@ public class Monster {
 
     public void evolve() {
         if (species.getEvolution(this) != null) {
-            // call evolutionScene
-            // if evolutionScene == true
             if (name.equals(species.toString())) {
                 setName(species.getEvolution(this).toString());
             }
@@ -208,10 +206,8 @@ public class Monster {
         }
     }
 
-    public void evolve(Item item) {
+    public void evolve(ItemInfo item) {
         if (species.getEvolution(this, item) != null) {
-            // call evolutionScene
-            // if evolutionScene == true
             if (name.equals(species.toString())) {
                 setName(species.getEvolution(this, item).toString());
             }

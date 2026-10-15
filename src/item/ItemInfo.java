@@ -6,19 +6,19 @@ public enum ItemInfo {
     FIRE_STONE {
         @Override
         public void effect(Monster monster) {
-            monster.evolve(new Item(ItemInfo.FIRE_STONE));
+            monster.evolve(this);
         }
     },
     WATER_STONE {
         @Override
         public void effect(Monster monster) {
-            monster.evolve(new Item(ItemInfo.WATER_STONE));
+            monster.evolve(this);
         }
     },
     LIGHTNING_STONE {
         @Override
         public void effect(Monster monster) {
-            monster.evolve(new Item(ItemInfo.LIGHTNING_STONE));
+            monster.evolve(this);
         }
     },
     ;

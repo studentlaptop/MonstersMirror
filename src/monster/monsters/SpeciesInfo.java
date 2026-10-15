@@ -1,11 +1,11 @@
 package monster.monsters;
 
-import item.Item;
 import item.ItemInfo;
 import monster.Monster;
 import monster.Type;
 import monster.Typing;
 
+import java.time.LocalTime;
 import java.util.EnumMap;
 
 public enum SpeciesInfo {
@@ -571,16 +571,26 @@ public enum SpeciesInfo {
     ) {
         @Override
         public SpeciesInfo getEvolution(Monster monster) {
+            if (monster.getFriendship() == 255) {
+                if (LocalTime.now().isAfter(LocalTime.of(3, 59, 59))
+                        && LocalTime.now().isBefore(LocalTime.of(20, 0, 0))) {
+                    return null; // espeon
+                }
+
+                if (LocalTime.now().isAfter(LocalTime.of(19, 59, 59))
+                        && LocalTime.now().isBefore(LocalTime.of(4, 0, 0))) {
+                    return null; // umbreon
+                }
+            }
             return null;
         }
 
         @Override
-        public SpeciesInfo getEvolution(Monster monster, Item item) {
-            return switch(item.getInfo()) {
+        public SpeciesInfo getEvolution(Monster monster, ItemInfo item) {
+            return switch(item) {
                 case FIRE_STONE -> FLAREON;
                 case WATER_STONE -> VAPOREON;
                 case LIGHTNING_STONE -> JOLTEON;
-                default -> null;
             };
         }
     },
@@ -680,7 +690,7 @@ public enum SpeciesInfo {
         return null;
     }
 
-    public SpeciesInfo getEvolution(Monster monster, Item item) {
+    public SpeciesInfo getEvolution(Monster monster, ItemInfo item) {
         return null;
     }
 
@@ -689,37 +699,37 @@ public enum SpeciesInfo {
         private Typing typing;
         private final EnumMap<Info, Integer> info = new EnumMap<>(Info.class);
 
-        public Builder typing(Type type) {
+        private Builder typing(Type type) {
             this.typing = new Typing(type);
             return this;
         }
 
-        public Builder typing(Type firstType, Type secondType) {
+        private Builder typing(Type firstType, Type secondType) {
             this.typing = new Typing(firstType, secondType);
             return this;
         }
 
-        public Builder baseHealth(Integer health) {
+        private Builder baseHealth(Integer health) {
             this.info.put(Info.BASE_HEALTH, health);
             return this;
         }
 
-        public Builder baseAttack(Integer attack) {
+        private Builder baseAttack(Integer attack) {
             this.info.put(Info.BASE_ATTACK, attack);
             return this;
         }
 
-        public Builder baseDefense(Integer defense) {
+        private Builder baseDefense(Integer defense) {
             this.info.put(Info.BASE_DEFENSE, defense);
             return this;
         }
 
-        public Builder baseSpeed(Integer speed) {
+        private Builder baseSpeed(Integer speed) {
             this.info.put(Info.BASE_SPEED, speed);
             return this;
         }
 
-        public Builder baseSpecial(Integer special) {
+        private Builder baseSpecial(Integer special) {
             this.info.put(Info.BASE_SPECIAL, special);
             return this;
         }
