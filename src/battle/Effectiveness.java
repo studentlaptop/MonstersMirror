@@ -1,17 +1,17 @@
 package battle;
 
 import monster.Monster;
-import monster.monsters.Pidgey;
+import monster.monsters.SpeciesInfo;
 import monster.move.interfaces.Attack;
 import monster.move.moves.physical.Physical;
 
 class Effectiveness {
 
     static EffectModifier getEffectModifier(Attack move, Monster monster) {
-        MoveEffect firstTypeEffect = move.getType().getMoveEffect(monster.getTyping().firstType());
+        MoveEffect firstTypeEffect = move.getType().getMoveEffect(monster.getFirstType());
 
-        if (monster.getTyping().secondType() != null) {
-            MoveEffect secondTypeEffect = move.getType().getMoveEffect(monster.getTyping().secondType());
+        if (monster.getSecondType() != null) {
+            MoveEffect secondTypeEffect = move.getType().getMoveEffect(monster.getSecondType());
 
             if (isIneffective(firstTypeEffect, secondTypeEffect)) {
                 return new EffectModifier(MoveEffect.NO_EFFECT, MoveEffect.NO_EFFECT.getModifier());
@@ -55,6 +55,6 @@ class Effectiveness {
     }
 
     void main() {
-        IO.println(getEffectModifier((Attack) Physical.VOLT_TACKLE.getMove(), new Pidgey()));
+        IO.println(getEffectModifier((Attack) Physical.VOLT_TACKLE.getMove(), new Monster(SpeciesInfo.PIDGEY, Physical.TACKLE.getMove(), null, null, null)));
     }
 }

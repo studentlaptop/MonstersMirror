@@ -27,13 +27,13 @@ public class Monster {
     private int friendship;
     private Item item;
 
-    public Monster() {
+    /*public Monster() {
         moveSet = new MoveSet(Physical.TACKLE.getMove(), null, null, null);
         setRandomDv();
         status = null;
         item = null;
         friendship = 0;
-    }
+    }*/
 
     public Monster(SpeciesInfo species, Move firstMove, Move secondMove, Move thirdMove, Move fourthMove) {
         this.name = species.toString();
@@ -79,8 +79,13 @@ public class Monster {
 
     public void setHealth(int health) {
         if (health < 0) {
-            health = 0;
+            this.health = 0;
+            return;
         }
+
+        if (health > this.health) { // TODO: change 'this.health' to the monster's max health
+        }
+
         this.health = health;
     }
 
@@ -205,7 +210,14 @@ public class Monster {
     }
 
     public Item useItem() {
-        return null;
+        if (item == null) {
+            return null;
+        }
+
+        var usedItem = item;
+        item.useByMonster(this);
+        item = null;
+        return usedItem;
     }
 
     public int getFriendship() {

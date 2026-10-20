@@ -3,8 +3,10 @@ package monster.move;
 import monster.Monster;
 import monster.Type;
 import monster.status.Status;
+import monster.status.statuses.Statuses;
 
 import java.util.EnumMap;
+import java.util.random.RandomGenerator;
 
 public enum MoveInfo {
     ABSORB(new Builder()
@@ -102,7 +104,20 @@ public enum MoveInfo {
     DRILL_PECK(new Builder()),
     EARTHQUAKE(new Builder()),
     EGG_BOMB(new Builder()),
-    EMBER(new Builder()),
+    EMBER(new Builder()
+            .type(Type.FIRE)
+            .accuracy(100)
+            .power(40)
+            .powerPoints(25)
+    ) {
+        @Override
+        public void effect(Monster monster) {
+            attack(monster, this);
+            if (isUnaffected(monster) && statusChance(10)) {
+                inflictStatus(monster, Statuses.BURN.getStatus());
+            }
+        }
+    },
     EXPLOSION(new Builder()),
     FIRE_BLAST(new Builder()),
     FIRE_PUNCH(new Builder()),
@@ -227,11 +242,12 @@ public enum MoveInfo {
     WHIRLWIND(new Builder()),
     WING_ATTACK(new Builder()),
     WITHDRAW(new Builder()),
-    WRAP(new Builder());
+    WRAP(new Builder()),
     ;
 
     private final Type type;
     private final EnumMap<Info, Integer> info;
+    private static final RandomGenerator RNG = RandomGenerator.of("L64X128MixRandom");
 
     MoveInfo(Builder builder) {
         this.type = builder.type;
@@ -258,8 +274,13 @@ public enum MoveInfo {
         return info.getOrDefault(Info.PRIORITY, 0);
     }
 
-    private static boolean attack() {
-        return false;
+    public void effect(Monster monster) {} // TODO: make abstract
+
+    private static int attack(Monster monster, MoveInfo move) {
+        if (move.getPower() < 0) {
+            throw new IllegalArgumentException(move + " is not an attack move");
+        }
+        return move.getPower();
     }
 
     private static boolean heal() {
@@ -268,6 +289,10 @@ public enum MoveInfo {
 
     private static boolean isUnaffected(Monster monster) {
         return monster.getStatus() == null;
+    }
+
+    private static boolean statusChance(int probability) {
+        return RNG.nextInt(1, 101) <= probability;
     }
 
     private static void inflictStatus(Monster monster, Status status) {

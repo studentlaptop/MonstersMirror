@@ -22,4 +22,13 @@ public class Item {
     public void use(Monster monster) {
         this.info.effect(monster);
     }
+
+    public void useByMonster(Monster monster) {
+        this.info.battleEffect(monster);
+    }
+
+    @Override
+    public String toString() {
+        return info.toString();
+    }
 }

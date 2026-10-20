@@ -568,6 +568,7 @@ public enum SpeciesInfo {
     ),
     EEVEE(new Builder()
             .typing(Type.NORMAL)
+            .baseHealth(55)
     ) {
         @Override
         public SpeciesInfo getEvolution(Monster monster) {
@@ -591,6 +592,7 @@ public enum SpeciesInfo {
                 case FIRE_STONE -> FLAREON;
                 case WATER_STONE -> VAPOREON;
                 case LIGHTNING_STONE -> JOLTEON;
+                default -> null;
             };
         }
     },
@@ -602,6 +604,7 @@ public enum SpeciesInfo {
     ),
     FLAREON(new Builder()
             .typing(Type.FIRE)
+            .baseHealth(65)
     ),
     PORYGON(new Builder()
             .typing(Type.NORMAL)
