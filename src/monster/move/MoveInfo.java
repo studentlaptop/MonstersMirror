@@ -237,6 +237,7 @@ public enum MoveInfo {
     TWINEEDLE(new Builder()),
     VINE_WHIP(new Builder()),
     VISE_GRIP(new Builder()),
+    VOLT_TACKLE(new Builder()),
     WATER_GUN(new Builder()),
     WATERFALL(new Builder()),
     WHIRLWIND(new Builder()),

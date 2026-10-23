@@ -11,17 +11,17 @@ import monster.move.moves.special.Special;
 import monster.move.moves.support.Support;
 
 void main() {
-    Monster rattata = new Monster(SpeciesInfo.RATTATA, Physical.TACKLE.getMove(), null, null, null);
-    Monster rattata2 = new Monster(SpeciesInfo.RATTATA, Physical.TACKLE.getMove(), null, null, null);
+    Monster rattata = new Monster(SpeciesInfo.RATTATA, Physical.TACKLE.create(), null, null, null);
+    Monster rattata2 = new Monster(SpeciesInfo.RATTATA, Physical.TACKLE.create(), null, null, null);
 
     IO.println(rattata.getName());
-    rattata.setMoves(Physical.TACKLE.getMove(), Physical.SLAM.getMove(), Support.SOFT_BOILED.getMove(), Special.EMBER.getMove());
+    rattata.setMoves(Physical.TACKLE.create(), Physical.SLAM.create(), Support.SOFT_BOILED.create(), Special.EMBER.create());
 
-    IO.println(rattata.getMoveSet().contains(Physical.TACKLE.getMove()));
+    IO.println(rattata.getMoveSet().contains(Physical.TACKLE.create()));
 
     IO.println(rattata.getFirstMove() == rattata2.getFirstMove());
 
-    IO.println(rattata.getMoveSet().learn(Physical.SLAM.getMove()));
+    IO.println(rattata.getMoveSet().learn(Physical.SLAM.create()));
 
     for (Move move : rattata.getMoves()) {
         if (move == null) {
@@ -51,13 +51,13 @@ void main() {
 
     IO.println("Rattata2's health: " + rattata2.getHealth());
 
-    Monster bulbasaur = new Monster(SpeciesInfo.BULBASAUR, Physical.TACKLE.getMove(), null, null, null);
+    Monster bulbasaur = new Monster(SpeciesInfo.BULBASAUR, Physical.TACKLE.create(), null, null, null);
     bulbasaur.setLevel(16);
     bulbasaur.evolve();
     IO.println(bulbasaur.getSpecies());
     IO.println(bulbasaur.getName());
 
-    Monster eevee = new Monster(SpeciesInfo.EEVEE, Physical.TACKLE.getMove(), null, null, null);
+    Monster eevee = new Monster(SpeciesInfo.EEVEE, Physical.TACKLE.create(), null, null, null);
     Item fireStone = new Item(ItemInfo.FIRE_STONE);
     //fireStone.use(eevee);
     eevee.setItem(fireStone);
