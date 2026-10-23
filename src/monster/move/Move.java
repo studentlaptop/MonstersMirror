@@ -2,17 +2,46 @@ package monster.move;
 
 import monster.Type;
 
-public abstract class Move {
-    /*private String name;
-    private Type type;
-    private int accuracy;
-    private int powerPoints;*/
+public class Move {
+    private final String name;
+    private final Type type;
+    private final int accuracy;
+    private final MoveInfo info;
+    private int powerPoints;
 
-    protected Move() {}
+    public Move(MoveInfo info) {
+        this.info = info;
+        this.name = info.toString();
+        this.type = info.getType();
+        this.accuracy = info.getAccuracy();
+        this.powerPoints = info.getPowerPoints();
+    }
 
-    public abstract String getName();
-    public abstract Type getType();
-    public abstract int getAccuracy();
-    public abstract int getPowerPoints();
-    public abstract void setPowerPoints(int powerPoints);
+    public String getName() {
+        return name;
+    }
+
+    public Type getType() {
+        return type;
+    }
+
+    public int getAccuracy() {
+        return accuracy;
+    }
+
+    public MoveInfo getInfo() {
+        return info;
+    }
+
+    public int getPowerPoints() {
+        return powerPoints;
+    }
+
+    public void setPowerPoints(int powerPoints) {
+        if (powerPoints < 0) {
+            this.powerPoints = 0;
+        }
+        this.powerPoints = powerPoints;
+    }
+
 }

@@ -55,6 +55,6 @@ class Effectiveness {
     }
 
     void main() {
-        IO.println(getEffectModifier((Attack) Physical.VOLT_TACKLE.getMove(), new Monster(SpeciesInfo.PIDGEY, Physical.TACKLE.getMove(), null, null, null)));
+        IO.println(getEffectModifier((Attack) Physical.VOLT_TACKLE.create(), new Monster(SpeciesInfo.PIDGEY, Physical.TACKLE.create(), null, null, null)));
     }
 }
