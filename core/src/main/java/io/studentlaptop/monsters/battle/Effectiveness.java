@@ -4,7 +4,6 @@ import io.studentlaptop.monsters.monster.Monster;
 import io.studentlaptop.monsters.monster.SpeciesInfo;
 import io.studentlaptop.monsters.monster.move.Move;
 import io.studentlaptop.monsters.monster.move.MoveInfo;
-import io.studentlaptop.monsters.monster.move.MoveSet;
 
 class Effectiveness {
 
@@ -56,6 +55,6 @@ class Effectiveness {
     }
 
     void main() {
-        IO.println(getEffectModifier(MoveInfo.VOLT_TACKLE.create(), new Monster(SpeciesInfo.PIDGEY, new MoveSet())));
+        IO.println(getEffectModifier(MoveInfo.VOLT_TACKLE.create(), new Monster(SpeciesInfo.PIDGEY)));
     }
 }

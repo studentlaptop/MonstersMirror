@@ -26,10 +26,10 @@ public class Monster {
     private int friendship;
     private Item item;
 
-    public Monster(SpeciesInfo species, MoveSet moveSet) {
+    public Monster(SpeciesInfo species) {
         this.name = species.toString();
         this.typing = species.getTyping();
-        this.moveSet = moveSet;
+        this.moveSet = new MoveSet();
         this.dexNum = species.getDexNum();
         this.health = species.getBaseHealth();
         this.attack = species.getBaseAttack();
@@ -37,6 +37,7 @@ public class Monster {
         this.speed = species.getBaseSpeed();
         this.special = species.getBaseSpecial();
         this.species = species;
+        this.level = 1;
         status = null;
         item = null;
         friendship = 0;

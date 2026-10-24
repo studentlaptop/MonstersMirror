@@ -4,11 +4,10 @@ import io.studentlaptop.monsters.monster.Monster;
 import io.studentlaptop.monsters.monster.SpeciesInfo;
 import io.studentlaptop.monsters.monster.move.Move;
 import io.studentlaptop.monsters.monster.move.MoveInfo;
-import io.studentlaptop.monsters.monster.move.MoveSet;
 
 void main() {
-    Monster rattata = new Monster(SpeciesInfo.RATTATA, new MoveSet());
-    Monster rattata2 = new Monster(SpeciesInfo.RATTATA, new MoveSet());
+    Monster rattata = new Monster(SpeciesInfo.RATTATA);
+    Monster rattata2 = new Monster(SpeciesInfo.RATTATA);
 
     IO.println(rattata.getName());
     rattata.setMoves(MoveInfo.TACKLE, MoveInfo.SLAM, MoveInfo.SOFT_BOILED, MoveInfo.EMBER);
@@ -31,18 +30,17 @@ void main() {
 
     rattata.getFourthMove().getInfo().effect(rattata2);
 
-
     IO.println("Rattata2's status: " + rattata2.getStatus());
 
     IO.println("Rattata2's health: " + rattata2.getHealth());
 
-    Monster bulbasaur = new Monster(SpeciesInfo.BULBASAUR, new MoveSet(MoveInfo.TACKLE));
+    Monster bulbasaur = new Monster(SpeciesInfo.BULBASAUR);
     bulbasaur.setLevel(16);
     bulbasaur.evolve();
     IO.println(bulbasaur.getSpecies());
     IO.println(bulbasaur.getName());
 
-    Monster eevee = new Monster(SpeciesInfo.EEVEE, new MoveSet(MoveInfo.TACKLE));
+    Monster eevee = new Monster(SpeciesInfo.EEVEE);
     Item fireStone = new Item(ItemInfo.FIRE_STONE);
     fireStone.use(eevee);
     eevee.setItem(fireStone);
