@@ -6,9 +6,31 @@ import java.util.Set;
 public class MoveSet {
     private Move[] moves;
 
-    public MoveSet(Move firstMove, Move secondMove, Move thirdMove, Move fourthMove) {
-        if (isValid(new Move[]{firstMove, secondMove, thirdMove, fourthMove})) {
-            moves = new Move[]{firstMove, secondMove, thirdMove, fourthMove};
+    public MoveSet() {
+        this.moves = new Move[4];
+    }
+
+    public MoveSet(MoveInfo firstMove) {
+        if (isValid(new Move[]{firstMove.create(), null, null, null})) {
+            moves = new Move[]{firstMove.create(), null, null, null};
+        }
+    }
+
+    public MoveSet(MoveInfo firstMove, MoveInfo secondMove) {
+        if (isValid(new Move[]{firstMove.create(), secondMove.create(), null, null})) {
+            moves = new Move[]{firstMove.create(), secondMove.create(), null, null};
+        }
+    }
+
+    public MoveSet(MoveInfo firstMove, MoveInfo secondMove, MoveInfo thirdMove) {
+        if (isValid(new Move[]{firstMove.create(), secondMove.create(), thirdMove.create(), null})) {
+            moves = new Move[]{firstMove.create(), secondMove.create(), thirdMove.create(), null};
+        }
+    }
+
+    public MoveSet(MoveInfo firstMove, MoveInfo secondMove, MoveInfo thirdMove, MoveInfo fourthMove) {
+        if (isValid(new Move[]{firstMove.create(), secondMove.create(), thirdMove.create(), fourthMove.create()})) {
+            moves = new Move[]{firstMove.create(), secondMove.create(), thirdMove.create(), fourthMove.create()};
         }
     }
 

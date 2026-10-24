@@ -2,10 +2,9 @@ package monster;
 
 import item.Item;
 import item.ItemInfo;
-import monster.monsters.SpeciesInfo;
 import monster.move.Move;
+import monster.move.MoveInfo;
 import monster.move.MoveSet;
-import monster.move.moves.physical.Physical;
 import monster.status.Status;
 
 import java.util.random.RandomGenerator;
@@ -27,18 +26,10 @@ public class Monster {
     private int friendship;
     private Item item;
 
-    /*public Monster() {
-        moveSet = new MoveSet(Physical.TACKLE.getMove(), null, null, null);
-        setRandomDv();
-        status = null;
-        item = null;
-        friendship = 0;
-    }*/
-
-    public Monster(SpeciesInfo species, Move firstMove, Move secondMove, Move thirdMove, Move fourthMove) {
+    public Monster(SpeciesInfo species, MoveSet moveSet) {
         this.name = species.toString();
         this.typing = species.getTyping();
-        this.moveSet = new  MoveSet(firstMove, secondMove, thirdMove, fourthMove);
+        this.moveSet = moveSet;
         this.dexNum = species.getDexNum();
         this.health = species.getBaseHealth();
         this.attack = species.getBaseAttack();
@@ -129,8 +120,13 @@ public class Monster {
         this.level = level;
     }
 
-    public void setMoves(Move firstMove, Move secondMove, Move thirdMove, Move fourthMove) {
-        moveSet.setMoves(firstMove, secondMove, thirdMove, fourthMove);
+    public void setMoves(MoveInfo firstMove, MoveInfo secondMove, MoveInfo thirdMove, MoveInfo fourthMove) {
+        moveSet.setMoves(
+                firstMove.create(),
+                secondMove.create(),
+                thirdMove.create(),
+                fourthMove.create()
+        );
     }
 
     public MoveSet getMoveSet() {

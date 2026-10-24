@@ -237,7 +237,8 @@ public enum MoveInfo {
     TWINEEDLE(new Builder()),
     VINE_WHIP(new Builder()),
     VISE_GRIP(new Builder()),
-    VOLT_TACKLE(new Builder()),
+    VOLT_TACKLE(new Builder()
+            .type(Type.ELECTRIC)),
     WATER_GUN(new Builder()),
     WATERFALL(new Builder()),
     WHIRLWIND(new Builder()),
@@ -282,6 +283,10 @@ public enum MoveInfo {
             throw new IllegalArgumentException(move + " is not an attack move");
         }
         return move.getPower();
+    }
+
+    public Move create() {
+        return new Move(this);
     }
 
     private static boolean heal() {
