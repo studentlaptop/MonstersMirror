@@ -1,9 +1,6 @@
-package monster.monsters;
+package monster;
 
 import item.ItemInfo;
-import monster.Monster;
-import monster.Type;
-import monster.Typing;
 
 import java.time.LocalTime;
 import java.util.EnumMap;
