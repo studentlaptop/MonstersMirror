@@ -1,13 +1,33 @@
 package item;
 
 import monster.Monster;
-import monster.Type;
 import monster.move.Move;
-import monster.status.statuses.Burn;
-import monster.status.statuses.Sleep;
-import monster.status.statuses.Statuses;
+import monster.status.statuses.*;
 
 public enum ItemInfo {
+    ANTIDOTE {
+        @Override
+        public void effect(Monster monster) {
+            if (monster.getStatus() instanceof Poison) {
+                monster.setStatus(null);
+            }
+        }
+    },
+    AWAKENING {
+        @Override
+        public void effect(Monster monster) {
+            if (monster.getStatus() instanceof Sleep) {
+                monster.setStatus(null);
+            }
+        }
+    },
+    AMULET_COIN {
+        @Override
+        public void effect() {
+            // TODO: program prize money mechanic
+        }
+    },
+
     FIRE_STONE {
         @Override
         public void effect(Monster monster) {
@@ -104,6 +124,57 @@ public enum ItemInfo {
                     move.setPowerPoints(move.getPowerPoints() + 5);
                 }
             }
+        }
+    },
+    BURNT_BERRY {
+        @Override
+        public void effect(Monster monster) {
+            if (monster.getStatus() instanceof Freeze) {
+                monster.setStatus(null);
+            }
+        }
+
+        @Override
+        public void battleEffect(Monster monster) {
+            if (monster.getStatus() instanceof Freeze) {
+                monster.setStatus(null);
+            }
+        }
+    },
+    PRZ_CURE_BERRY {
+        @Override
+        public void effect(Monster monster) {
+            if (monster.getStatus() instanceof Paralyze) {
+                monster.setStatus(null);
+            }
+        }
+
+        @Override
+        public void battleEffect(Monster monster) {
+            if (monster.getStatus() instanceof Paralyze) {
+                monster.setStatus(null);
+            }
+        }
+    },
+    PSN_CURE_BERRY {
+        @Override
+        public void effect(Monster monster) {
+            if (monster.getStatus() instanceof Poison) {
+                monster.setStatus(null);
+            }
+        }
+
+        @Override
+        public void battleEffect(Monster monster) {
+            if (monster.getStatus() instanceof Poison) {
+                monster.setStatus(null);
+            }
+        }
+    },
+    RARE_CANDY {
+        public void effect(Monster monster) {
+            monster.setLevel(monster.getLevel() + 1);
+            monster.evolve();
         }
     },
     ;
