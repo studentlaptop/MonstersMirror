@@ -1,14 +1,14 @@
 package io.studentlaptop.monsters.player;
 
 import com.badlogic.gdx.utils.ObjectIntMap;
-import io.studentlaptop.monsters.item.Item;
+import io.studentlaptop.monsters.item.ItemInfo;
 import io.studentlaptop.monsters.monster.Monster;
 
 import java.util.random.RandomGenerator;
 
 public class Player {
     private final String name;
-    private final ObjectIntMap<Item> inventory;
+    private final ObjectIntMap<ItemInfo> inventory;
     private final Monster[] party;
     private final int TRAINER_ID;
     private final int SECRET_ID;
@@ -40,7 +40,7 @@ public class Player {
         return rng.nextInt(0, Integer.MAX_VALUE);
     }
 
-    public ObjectIntMap<Item> getInventory() {
+    public ObjectIntMap<ItemInfo> getInventory() {
         return inventory;
     }
 
@@ -58,5 +58,26 @@ public class Player {
 
     public void setPartySlot(int index, Monster monster) {
         party[index] = monster;
+    }
+
+    public void setEmptySlot(Monster monster) {
+        for (int i = 0; i < party.length; i++) {
+            if (party[i] == null) {
+                party[i] = monster;
+                break;
+            }
+        }
+    }
+
+    public void putInventory(ItemInfo item) {
+        if (inventory.containsKey(item)) {
+            if (inventory.get(item, 0) >= 99) {
+                inventory.put(item, 99);
+            } else {
+                inventory.getAndIncrement(item, 0, 1);
+            }
+        } else {
+            inventory.put(item, 1);
+        }
     }
 }
