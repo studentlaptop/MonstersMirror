@@ -18,8 +18,8 @@ public class Player {
         this.name = name;
         inventory = new ObjectIntMap<>();
         party = new Monster[6];
-        TRAINER_ID = setID();
-        SECRET_ID = setID();
+        TRAINER_ID = setRandomID();
+        SECRET_ID = setRandomID();
         badges = new boolean[8];
     }
 
@@ -35,7 +35,7 @@ public class Player {
         return SECRET_ID;
     }
 
-    public int setID() {
+    public int setRandomID() {
         RandomGenerator rng = RandomGenerator.of("L64X128MixRandom");
         return rng.nextInt(0, Integer.MAX_VALUE);
     }
