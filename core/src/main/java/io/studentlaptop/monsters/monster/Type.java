@@ -1,6 +1,7 @@
 package io.studentlaptop.monsters.monster;
 
 import io.studentlaptop.monsters.battle.MoveEffect;
+import io.studentlaptop.monsters.monster.move.Move;
 
 import java.util.EnumMap;
 import java.util.Map;
@@ -12,6 +13,7 @@ import java.util.Map;
  */
 public enum Type {
     BUG,
+    DARK,
     DRAGON,
     ELECTRIC,
     FIGHTING,
@@ -25,45 +27,43 @@ public enum Type {
     POISON,
     PSYCHIC,
     ROCK,
+    STEEL,
     WATER,
     ;
-
-    /**
-     * Returns a {@link MoveEffect} enum from a {@link TypeEffect} {@linkplain EnumMap} associated with a given {@link Type} of a {@link Monster}.
-     *
-     * @param monsterType the key with which the {@link MoveEffect} value is to be associated
-     * @return The {@linkplain MoveEffect} value associated with {@code monsterType} key or {@linkplain MoveEffect#EFFECTIVE} if no key value pair exists
-     * @throws IllegalArgumentException if no valid {@linkplain TypeEffect} enum is found
-     */
-    public MoveEffect getMoveEffect(Type monsterType) {
-        for (TypeEffect typeEffect : TypeEffect.getValues()) {
-            if (this.equals(typeEffect.type)) {
-                return (typeEffect.effects.get(monsterType) ==  null) ? MoveEffect.EFFECTIVE : typeEffect.effects.get(monsterType);
-            }
-        }
-        throw new IllegalArgumentException("No " + TypeEffect.class.getName() + " found for " + this.name());
-    }
 
     /**
      * Enums of the {@link TypeEffect} class are used to define Move v. Monster effectiveness.
      * Each enum shall be constructed with a corresponding {@link Type} and an {@link EnumMap}.
      * The {@linkplain EnumMap} shall use {@linkplain Type} enums as keys and {@link MoveEffect} enums as values.
      * @see MoveEffect
-     * @see Type#getMoveEffect(Type)
+     * @see io.studentlaptop.monsters.battle.Effectiveness#getMoveEffect(Move, Type)
      */
-    private enum TypeEffect {
+    public enum TypeEffect {
         BUG_MOVE(BUG, new EnumMap<>(Map.of(
                 GHOST, MoveEffect.NOT_EFFECTIVE,
                 FIGHTING, MoveEffect.NOT_EFFECTIVE,
                 FIRE, MoveEffect.NOT_EFFECTIVE,
                 FLYING, MoveEffect.NOT_EFFECTIVE,
+                POISON, MoveEffect.NOT_EFFECTIVE,
+                STEEL, MoveEffect.NOT_EFFECTIVE,
 
+                DARK, MoveEffect.SUPER_EFFECTIVE,
                 GRASS, MoveEffect.SUPER_EFFECTIVE,
-                POISON, MoveEffect.SUPER_EFFECTIVE,
+                PSYCHIC, MoveEffect.SUPER_EFFECTIVE
+        ))),
+
+        DARK_MOVE(DARK, new EnumMap<>(Map.of(
+                DARK, MoveEffect.NOT_EFFECTIVE,
+                FIGHTING, MoveEffect.NOT_EFFECTIVE,
+                STEEL, MoveEffect.NOT_EFFECTIVE,
+
+                GHOST, MoveEffect.SUPER_EFFECTIVE,
                 PSYCHIC, MoveEffect.SUPER_EFFECTIVE
         ))),
 
         DRAGON_MOVE(DRAGON, new EnumMap<>(Map.of(
+                STEEL, MoveEffect.NOT_EFFECTIVE,
+
                 DRAGON, MoveEffect.SUPER_EFFECTIVE
         ))),
 
@@ -86,9 +86,11 @@ public enum Type {
 
                 GHOST, MoveEffect.NO_EFFECT,
 
+                DARK, MoveEffect.SUPER_EFFECTIVE,
                 ICE, MoveEffect.SUPER_EFFECTIVE,
                 NORMAL, MoveEffect.SUPER_EFFECTIVE,
-                ROCK, MoveEffect.SUPER_EFFECTIVE
+                ROCK, MoveEffect.SUPER_EFFECTIVE,
+                STEEL, MoveEffect.SUPER_EFFECTIVE
         ))),
 
         FIRE_MOVE(FIRE, new EnumMap<>(Map.of(
@@ -99,12 +101,14 @@ public enum Type {
 
                 BUG, MoveEffect.SUPER_EFFECTIVE,
                 GRASS, MoveEffect.SUPER_EFFECTIVE,
-                ICE, MoveEffect.SUPER_EFFECTIVE
+                ICE, MoveEffect.SUPER_EFFECTIVE,
+                STEEL, MoveEffect.SUPER_EFFECTIVE
         ))),
 
         FLYING_MOVE(FLYING, new EnumMap<>(Map.of(
                 ELECTRIC, MoveEffect.NOT_EFFECTIVE,
                 ROCK, MoveEffect.NOT_EFFECTIVE,
+                STEEL, MoveEffect.NOT_EFFECTIVE,
 
                 BUG, MoveEffect.SUPER_EFFECTIVE,
                 GRASS, MoveEffect.SUPER_EFFECTIVE,
@@ -113,9 +117,11 @@ public enum Type {
 
         GHOST_MOVE(GHOST, new EnumMap<>(Map.of(
                 NORMAL, MoveEffect.NO_EFFECT,
-                PSYCHIC, MoveEffect.NO_EFFECT,
 
-                GHOST, MoveEffect.SUPER_EFFECTIVE
+                STEEL, MoveEffect.NOT_EFFECTIVE,
+
+                GHOST, MoveEffect.SUPER_EFFECTIVE,
+                PSYCHIC, MoveEffect.SUPER_EFFECTIVE
         ))),
 
         GRASS_MOVE(GRASS, new EnumMap<>(Map.of(
@@ -125,6 +131,7 @@ public enum Type {
                 GRASS, MoveEffect.NOT_EFFECTIVE,
                 FLYING, MoveEffect.NOT_EFFECTIVE,
                 POISON, MoveEffect.NOT_EFFECTIVE,
+                STEEL, MoveEffect.NOT_EFFECTIVE,
 
                 GROUND, MoveEffect.SUPER_EFFECTIVE,
                 ROCK, MoveEffect.SUPER_EFFECTIVE,
@@ -140,13 +147,14 @@ public enum Type {
                 ELECTRIC, MoveEffect.SUPER_EFFECTIVE,
                 FIRE, MoveEffect.SUPER_EFFECTIVE,
                 POISON, MoveEffect.SUPER_EFFECTIVE,
-                ROCK, MoveEffect.SUPER_EFFECTIVE
+                ROCK, MoveEffect.SUPER_EFFECTIVE,
+                STEEL, MoveEffect.SUPER_EFFECTIVE
         ))),
-
 
         ICE_MOVE(ICE, new EnumMap<>(Map.of(
                 ICE, MoveEffect.NOT_EFFECTIVE,
                 WATER, MoveEffect.NOT_EFFECTIVE,
+                STEEL, MoveEffect.NOT_EFFECTIVE,
 
                 DRAGON, MoveEffect.SUPER_EFFECTIVE,
                 GRASS, MoveEffect.SUPER_EFFECTIVE,
@@ -156,12 +164,15 @@ public enum Type {
 
         NORMAL_MOVE(NORMAL, new EnumMap<>(Map.of(
                 ROCK, MoveEffect.NOT_EFFECTIVE,
+                STEEL, MoveEffect.NOT_EFFECTIVE,
 
                 GHOST, MoveEffect.NO_EFFECT
         ))),
 
 
         POISON_MOVE(POISON, new EnumMap<>(Map.of(
+                STEEL, MoveEffect.NO_EFFECT,
+
                 GHOST, MoveEffect.NOT_EFFECTIVE,
                 GROUND, MoveEffect.NOT_EFFECTIVE,
                 POISON, MoveEffect.NOT_EFFECTIVE,
@@ -172,7 +183,10 @@ public enum Type {
         ))),
 
         PSYCHIC_MOVE(PSYCHIC, new EnumMap<>(Map.of(
+                DARK, MoveEffect.NO_EFFECT,
+
                 PSYCHIC, MoveEffect.NOT_EFFECTIVE,
+                STEEL, MoveEffect.NOT_EFFECTIVE,
 
                 FIGHTING, MoveEffect.SUPER_EFFECTIVE,
                 POISON, MoveEffect.SUPER_EFFECTIVE
@@ -181,6 +195,7 @@ public enum Type {
         ROCK_MOVE(ROCK, new EnumMap<>(Map.of(
                 FIGHTING, MoveEffect.NOT_EFFECTIVE,
                 GROUND, MoveEffect.NOT_EFFECTIVE,
+                STEEL, MoveEffect.NOT_EFFECTIVE,
 
                 BUG, MoveEffect.SUPER_EFFECTIVE,
                 FIRE, MoveEffect.SUPER_EFFECTIVE,
@@ -196,21 +211,44 @@ public enum Type {
                 FIRE, MoveEffect.SUPER_EFFECTIVE,
                 GROUND, MoveEffect.SUPER_EFFECTIVE,
                 ROCK, MoveEffect.SUPER_EFFECTIVE
+        ))),
+
+        STEEL_MOVE(STEEL, new EnumMap<>(Map.of(
+                FIRE, MoveEffect.NOT_EFFECTIVE,
+                WATER, MoveEffect.NOT_EFFECTIVE,
+                ELECTRIC, MoveEffect.NOT_EFFECTIVE,
+                STEEL, MoveEffect.NOT_EFFECTIVE,
+
+                ICE, MoveEffect.SUPER_EFFECTIVE,
+                ROCK, MoveEffect.SUPER_EFFECTIVE
         )))
         ;
 
         private final Type type;
         private final EnumMap<Type, MoveEffect> effects;
 
-        private static final TypeEffect[] values = TypeEffect.values();
+        private static final EnumMap<Type, TypeEffect> typeEffectLookup = typeEffectLookup();
 
         TypeEffect(Type type, EnumMap<Type, MoveEffect> effects) {
             this.type = type;
             this.effects = effects;
         }
 
-        private static TypeEffect[]  getValues() {
-            return values;
+        private static EnumMap<Type, TypeEffect> typeEffectLookup() {
+            EnumMap<Type, TypeEffect> typeEffectLookup = new EnumMap<>(Type.class);
+            TypeEffect[] values = TypeEffect.values();
+            for (TypeEffect typeEffect : values) {
+                typeEffectLookup.put(typeEffect.type, typeEffect);
+            }
+            return typeEffectLookup;
+        }
+
+        public EnumMap<Type, MoveEffect> getEffects() {
+            return effects;
+        }
+
+        public static TypeEffect typeEffectLookup(Type type) {
+            return typeEffectLookup.get(type);
         }
     }
 }

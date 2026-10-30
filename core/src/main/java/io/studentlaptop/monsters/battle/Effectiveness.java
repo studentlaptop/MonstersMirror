@@ -2,16 +2,17 @@ package io.studentlaptop.monsters.battle;
 
 import io.studentlaptop.monsters.monster.Monster;
 import io.studentlaptop.monsters.monster.SpeciesInfo;
+import io.studentlaptop.monsters.monster.Type;
 import io.studentlaptop.monsters.monster.move.Move;
 import io.studentlaptop.monsters.monster.move.MoveInfo;
 
-class Effectiveness {
+public class Effectiveness {
 
-    static EffectModifier getEffectModifier(Move move, Monster monster) {
-        MoveEffect firstTypeEffect = move.getType().getMoveEffect(monster.getFirstType());
+    public static EffectModifier getEffectModifier(Move move, Monster monster) {
+        MoveEffect firstTypeEffect = getMoveEffect(move, monster.getFirstType());
 
         if (monster.getSecondType() != null) {
-            MoveEffect secondTypeEffect = move.getType().getMoveEffect(monster.getSecondType());
+            MoveEffect secondTypeEffect = getMoveEffect(move, monster.getSecondType());
 
             if (isIneffective(firstTypeEffect, secondTypeEffect)) {
                 return new EffectModifier(MoveEffect.NO_EFFECT, MoveEffect.NO_EFFECT.getModifier());
@@ -36,7 +37,24 @@ class Effectiveness {
         return new EffectModifier(firstTypeEffect, firstTypeEffect.getModifier());
     }
 
-    record EffectModifier(MoveEffect moveEffect, float modifier) {}
+    public record EffectModifier(MoveEffect moveEffect, float modifier) {}
+
+    /**
+     * Returns a {@link MoveEffect} enum from a {@link Type.TypeEffect} enum associated with a given {@link Type} of a {@link Monster}.
+     *
+     * @param move the {@linkplain Move} whose {@linkplain Type} is used to find an associated {@linkplain Type.TypeEffect}
+     * @param monsterType the key with which the {@link MoveEffect} value is to be associated in a {@linkplain Type.TypeEffect}
+     * @return The {@linkplain MoveEffect} value associated with {@code monsterType} key or {@linkplain MoveEffect#EFFECTIVE} if no key value pair exists
+     * @throws IllegalArgumentException if no valid {@linkplain Type.TypeEffect} enum is found for the {@linkplain Type} of {@code move}
+     */
+    public static MoveEffect getMoveEffect(Move move, Type monsterType) {
+        Type.TypeEffect typeEffect = Type.TypeEffect.typeEffectLookup(move.getType());
+
+        if (typeEffect == null) {
+            throw new NullPointerException("No " + Type.TypeEffect.class.getName() + " found for " + move.getInfo().toString() + "'s type: " + move.getType());
+        }
+        return (typeEffect.getEffects().get(monsterType) == null) ? MoveEffect.EFFECTIVE : typeEffect.getEffects().get(monsterType);
+    }
 
     private static boolean isIneffective(MoveEffect firstTypeEffect, MoveEffect secondTypeEffect) {
         return firstTypeEffect.equals(MoveEffect.NO_EFFECT) || secondTypeEffect.equals(MoveEffect.NO_EFFECT);
@@ -52,9 +70,5 @@ class Effectiveness {
 
     private static boolean isSuperEffective(MoveEffect firstTypeEffect, MoveEffect secondTypeEffect) {
         return (firstTypeEffect.getModifier() * secondTypeEffect.getModifier()) == MoveEffect.SUPER_EFFECTIVE.getModifier();
-    }
-
-    void main() {
-        IO.println(getEffectModifier(MoveInfo.VOLT_TACKLE.create(), new Monster(SpeciesInfo.PIDGEY)));
     }
 }
