@@ -61,7 +61,7 @@ public enum MoveInfo {
             .powerPoints(20)
     ),
     BITE(new Builder()
-            .type(Type.NORMAL) // TODO: change to Dark
+            .type(Type.DARK)
             .accuracy(100)
             .power(60)
             .powerPoints(25)
@@ -95,7 +95,9 @@ public enum MoveInfo {
     DIG(new Builder()),
     DISABLE(new Builder()),
     DIZZY_PUNCH(new Builder()),
-    DOUBLE_KICK(new Builder()),
+    DOUBLE_KICK(new Builder()
+        .type(Type.FIGHTING)
+    ),
     DOUBLE_SLAP(new Builder()),
     DOUBLE_TEAM(new Builder()),
     DOUBLE_EDGE(new Builder()),
@@ -185,7 +187,8 @@ public enum MoveInfo {
     REFLECT(new Builder()),
     REST(new Builder()),
     ROAR(new Builder()),
-    ROCK_SLIDE(new Builder()),
+    ROCK_SLIDE(new Builder()
+        .type(Type.ROCK)),
     ROCK_THROW(new Builder()),
     ROLLING_KICK(new Builder()),
     SAND_ATTACK(new Builder()),
@@ -221,7 +224,8 @@ public enum MoveInfo {
     SURF(new Builder()),
     SWIFT(new Builder()),
     SWORDS_DANCE(new Builder()),
-    TACKLE(new Builder()),
+    TACKLE(new Builder()
+        .type(Type.NORMAL)),
     TAIL_WHIP(new Builder()),
     TAKE_DOWN(new Builder()),
     TELEPORT(new Builder()),
