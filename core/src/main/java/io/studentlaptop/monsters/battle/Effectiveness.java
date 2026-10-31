@@ -1,10 +1,8 @@
 package io.studentlaptop.monsters.battle;
 
 import io.studentlaptop.monsters.monster.Monster;
-import io.studentlaptop.monsters.monster.SpeciesInfo;
 import io.studentlaptop.monsters.monster.Type;
 import io.studentlaptop.monsters.monster.move.Move;
-import io.studentlaptop.monsters.monster.move.MoveInfo;
 
 public class Effectiveness {
 

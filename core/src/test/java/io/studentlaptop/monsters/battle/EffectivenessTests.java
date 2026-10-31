@@ -8,7 +8,6 @@ import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
 import static io.studentlaptop.monsters.battle.MoveEffect.*;
-import static io.studentlaptop.monsters.battle.MoveEffect.SUPER_EFFECTIVE;
 import static org.junit.jupiter.api.Assertions.assertAll;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
