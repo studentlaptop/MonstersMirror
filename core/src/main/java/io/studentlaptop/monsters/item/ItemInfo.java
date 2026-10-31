@@ -268,7 +268,7 @@ public enum ItemInfo {
 
     }
 
-    private enum Category {
+    public enum Category {
         ITEMS,
         KEY_ITEMS,
         POKE_BALLS,
