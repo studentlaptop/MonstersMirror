@@ -1,6 +1,5 @@
 package io.studentlaptop.monsters.monster;
 
-import io.studentlaptop.monsters.item.Item;
 import io.studentlaptop.monsters.item.ItemInfo;
 import io.studentlaptop.monsters.monster.move.Move;
 import io.studentlaptop.monsters.monster.move.MoveInfo;
