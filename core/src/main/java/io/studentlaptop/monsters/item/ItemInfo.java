@@ -53,7 +53,7 @@ public enum ItemInfo {
         }
 
         @Override
-        public void battleEffect(Monster monster) {
+        public void battleHeldEffect(Monster monster) {
             if (monster.getHealth() <= monster.getSpecies().getBaseHealth() / 2) { // TODO: change right hand condition to monster's max health
                 monster.setHealth(monster.getHealth() + 10);
             }
@@ -65,7 +65,7 @@ public enum ItemInfo {
             monster.setHealth(monster.getHealth() + 30);
         }
         @Override
-        public void battleEffect(Monster monster) {
+        public void battleHeldEffect(Monster monster) {
             if (monster.getHealth() <= monster.getSpecies().getBaseHealth() / 2) { // TODO: change right hand condition to monster's max health
                 monster.setHealth(monster.getHealth() + 30);
             }
@@ -79,7 +79,7 @@ public enum ItemInfo {
             }
         }
         @Override
-        public void battleEffect(Monster monster) {
+        public void battleHeldEffect(Monster monster) {
             if (monster.getStatus() instanceof Burn) {
                 monster.setStatus(null);
             }
@@ -93,7 +93,7 @@ public enum ItemInfo {
             }
         }
         @Override
-        public void battleEffect(Monster monster) {
+        public void battleHeldEffect(Monster monster) {
             if (monster.getStatus() instanceof Sleep) {
                 monster.setStatus(null);
             }
@@ -107,7 +107,7 @@ public enum ItemInfo {
             }
         }
         @Override
-        public void battleEffect(Monster monster) {
+        public void battleHeldEffect(Monster monster) {
             if (monster.getStatus() != null) {
                 monster.setStatus(null);
             }
@@ -118,7 +118,7 @@ public enum ItemInfo {
             move.setPowerPoints(move.getPowerPoints() + 5);
         }
         @Override
-        public void battleEffect(Monster monster) {
+        public void battleHeldEffect(Monster monster) {
             for (Move move : monster.getMoves()) {
                 if (move.getPowerPoints() == 0) {
                     move.setPowerPoints(move.getPowerPoints() + 5);
@@ -135,7 +135,7 @@ public enum ItemInfo {
         }
 
         @Override
-        public void battleEffect(Monster monster) {
+        public void battleHeldEffect(Monster monster) {
             if (monster.getStatus() instanceof Freeze) {
                 monster.setStatus(null);
             }
@@ -150,7 +150,7 @@ public enum ItemInfo {
         }
 
         @Override
-        public void battleEffect(Monster monster) {
+        public void battleHeldEffect(Monster monster) {
             if (monster.getStatus() instanceof Paralyze) {
                 monster.setStatus(null);
             }
@@ -165,7 +165,7 @@ public enum ItemInfo {
         }
 
         @Override
-        public void battleEffect(Monster monster) {
+        public void battleHeldEffect(Monster monster) {
             if (monster.getStatus() instanceof Poison) {
                 monster.setStatus(null);
             }
@@ -183,4 +183,5 @@ public enum ItemInfo {
     public void effect(Monster monster) {}
     public void battleEffect() {}
     public void battleEffect(Monster monster) {}
+    public void battleHeldEffect(Monster monster) {}
 }

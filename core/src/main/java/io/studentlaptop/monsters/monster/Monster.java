@@ -24,7 +24,7 @@ public class Monster {
     private int dexNum;
     private SpeciesInfo species;
     private int friendship;
-    private Item item;
+    private ItemInfo item;
 
     public Monster(SpeciesInfo species) {
         this.name = species.toString();
@@ -198,21 +198,21 @@ public class Monster {
         this.species = species;
     }
 
-    public Item getItem() {
+    public ItemInfo getItem() {
         return item;
     }
 
-    public void setItem(Item item) {
+    public void setItem(ItemInfo item) {
         this.item = item;
     }
 
-    public Item useItem() {
+    public ItemInfo useItem() {
         if (item == null) {
             return null;
         }
 
         var usedItem = item;
-        item.useByMonster(this);
+        item.battleHeldEffect(this);
         item = null;
         return usedItem;
     }
