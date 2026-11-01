@@ -30,6 +30,11 @@ public enum ItemInfo {
             }
         }
     },
+    BROKEN_KEY(new Builder()
+        .category(Category.KEY_ITEMS)) {
+        @Override
+        public void effect() {}
+        },
     BERRY(new Builder()
         .price(10)
         .category(Category.BERRIES)) {
@@ -203,10 +208,10 @@ public enum ItemInfo {
     },
     ;
 
-    private int price = 0;
-    private String texturePath = null;
-    private String description = null;
-    private Category category = null;
+    private final int price;
+    private final String texturePath;
+    private final String description;
+    private final Category category;
 
     ItemInfo(Builder builder) {
         this.price = builder.price;
@@ -241,7 +246,7 @@ public enum ItemInfo {
     }
 
     private static class Builder {
-        private int price;
+        private int price = 0;
         private Category category;
         private String texturePath;
         private String description;
