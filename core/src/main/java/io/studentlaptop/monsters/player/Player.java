@@ -1,26 +1,25 @@
 package io.studentlaptop.monsters.player;
 
-import com.badlogic.gdx.utils.ObjectIntMap;
 import io.studentlaptop.monsters.item.ItemInfo;
 import io.studentlaptop.monsters.monster.Monster;
 
-import java.util.random.RandomGenerator;
+import java.util.EnumMap;
 
 public class Player {
     private final String name;
-    private final ObjectIntMap<ItemInfo> inventory;
+    private final EnumMap<ItemInfo, Integer> inventory;
     private final Monster[] party;
     private final int TRAINER_ID;
     private final int SECRET_ID;
-    private final boolean[] badges;
+    private final EnumMap<Badge, Boolean> badges;
 
     public Player(String name) {
         this.name = name;
-        inventory = new ObjectIntMap<>();
+        inventory = new EnumMap<>(ItemInfo.class);
         party = new Monster[6];
-        TRAINER_ID = setRandomID();
-        SECRET_ID = setRandomID();
-        badges = new boolean[8];
+        TRAINER_ID = PlayerUtils.getTrainerID();
+        SECRET_ID = PlayerUtils.getSecretID();
+        badges = new EnumMap<>(Badge.class);
     }
 
     public String getName() {
@@ -35,12 +34,7 @@ public class Player {
         return SECRET_ID;
     }
 
-    public int setRandomID() {
-        RandomGenerator rng = RandomGenerator.of("L64X128MixRandom");
-        return rng.nextInt(0, Integer.MAX_VALUE);
-    }
-
-    public ObjectIntMap<ItemInfo> getInventory() {
+    public EnumMap<ItemInfo, Integer> getInventory() {
         return inventory;
     }
 
@@ -48,11 +42,7 @@ public class Player {
         return party;
     }
 
-    public int getTRAINER_ID() {
-        return TRAINER_ID;
-    }
-
-    public boolean[] getBadges() {
+    public EnumMap<Badge, Boolean> getBadges() {
         return badges;
     }
 
@@ -71,10 +61,10 @@ public class Player {
 
     public void putInventory(ItemInfo item) {
         if (inventory.containsKey(item)) {
-            if (inventory.get(item, 0) >= 99) {
+            if (inventory.get(item) >= 99) {
                 inventory.put(item, 99);
             } else {
-                inventory.getAndIncrement(item, 0, 1);
+                inventory.put(item, inventory.get(item) + 1);
             }
         } else {
             inventory.put(item, 1);
