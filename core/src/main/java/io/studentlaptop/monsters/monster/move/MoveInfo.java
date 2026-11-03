@@ -346,5 +346,11 @@ public enum MoveInfo {
         POWER_POINTS,
         PRIORITY,
     }
+
+    private enum Category {
+        PHYSICAL,
+        SPECIAL,
+        SUPPORT
+    }
 }
 
