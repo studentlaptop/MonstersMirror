@@ -2,7 +2,10 @@ package io.studentlaptop.monsters.battle;
 
 import io.studentlaptop.monsters.monster.Monster;
 import io.studentlaptop.monsters.monster.Type;
+import io.studentlaptop.monsters.monster.Type.TypeEffect;
 import io.studentlaptop.monsters.monster.move.Move;
+
+import static io.studentlaptop.monsters.monster.Type.TypeEffect.getTypeEffectByType;
 
 public class Effectiveness {
 
@@ -38,18 +41,18 @@ public class Effectiveness {
     public record EffectModifier(MoveEffect moveEffect, float modifier) {}
 
     /**
-     * Returns a {@link MoveEffect} enum from a {@link Type.TypeEffect} enum associated with a given {@link Type} of a {@link Monster}.
+     * Returns a {@link MoveEffect} enum from a {@link TypeEffect} enum associated with a given {@link Type} of a {@link Monster}.
      *
-     * @param move the {@linkplain Move} whose {@linkplain Type} is used to find an associated {@linkplain Type.TypeEffect}
-     * @param monsterType the key with which the {@link MoveEffect} value is to be associated in a {@linkplain Type.TypeEffect}
+     * @param move the {@linkplain Move} whose {@linkplain Type} is used to find an associated {@linkplain TypeEffect}
+     * @param monsterType the key with which the {@link MoveEffect} value is to be associated in a {@linkplain TypeEffect}
      * @return The {@linkplain MoveEffect} value associated with {@code monsterType} key or {@linkplain MoveEffect#EFFECTIVE} if no key value pair exists
-     * @throws IllegalArgumentException if no valid {@linkplain Type.TypeEffect} enum is found for the {@linkplain Type} of {@code move}
+     * @throws IllegalArgumentException if no valid {@linkplain TypeEffect} enum is found for the {@linkplain Type} of {@code move}
      */
     public static MoveEffect getMoveEffect(Move move, Type monsterType) {
-        Type.TypeEffect typeEffect = Type.TypeEffect.typeEffectLookup(move.getType());
+        TypeEffect typeEffect = getTypeEffectByType(move.getType());
 
         if (typeEffect == null) {
-            throw new NullPointerException("No " + Type.TypeEffect.class.getName() + " found for " + move.getInfo().toString() + "'s type: " + move.getType());
+            throw new NullPointerException("No " + TypeEffect.class.getName() + " found for " + move.getInfo().toString() + "'s type: " + move.getType());
         }
         return (typeEffect.getEffects().get(monsterType) == null) ? MoveEffect.EFFECTIVE : typeEffect.getEffects().get(monsterType);
     }
