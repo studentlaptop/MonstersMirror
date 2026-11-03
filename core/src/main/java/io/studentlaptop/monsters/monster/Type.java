@@ -227,28 +227,28 @@ public enum Type {
         private final Type type;
         private final EnumMap<Type, MoveEffect> effects;
 
-        private static final EnumMap<Type, TypeEffect> typeEffectLookup = typeEffectLookup();
+        private static final EnumMap<Type, TypeEffect> typeEffects = getTypeEffectByType();
 
         TypeEffect(Type type, EnumMap<Type, MoveEffect> effects) {
             this.type = type;
             this.effects = effects;
         }
 
-        private static EnumMap<Type, TypeEffect> typeEffectLookup() {
-            EnumMap<Type, TypeEffect> typeEffectLookup = new EnumMap<>(Type.class);
+        private static EnumMap<Type, TypeEffect> getTypeEffectByType() {
+            EnumMap<Type, TypeEffect> typeEffects = new EnumMap<>(Type.class);
             TypeEffect[] values = TypeEffect.values();
             for (TypeEffect typeEffect : values) {
-                typeEffectLookup.put(typeEffect.type, typeEffect);
+                typeEffects.put(typeEffect.type, typeEffect);
             }
-            return typeEffectLookup;
+            return typeEffects;
         }
 
         public EnumMap<Type, MoveEffect> getEffects() {
             return effects;
         }
 
-        public static TypeEffect typeEffectLookup(Type type) {
-            return typeEffectLookup.get(type);
+        public static TypeEffect getTypeEffectByType(Type type) {
+            return typeEffects.get(type);
         }
     }
 }
