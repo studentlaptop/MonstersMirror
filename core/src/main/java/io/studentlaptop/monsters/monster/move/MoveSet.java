@@ -46,14 +46,14 @@ public class MoveSet {
         }
     }
 
-    public static boolean isValid(Move[] moveSet) {
-        if (moveSet.length == 4) {
-            Set<Move> duplicateCheck = new HashSet<>();
-            for (Move move : moveSet) {
+    public static boolean isValid(Move[] moves) {
+        if (moves.length == 4) {
+            Set<MoveInfo> duplicateCheck = new HashSet<>();
+            for (Move move : moves) {
                 if (move == null) {
                     continue;
                 }
-                if (!duplicateCheck.add(move)) {
+                if (!duplicateCheck.add(move.getInfo())) {
                     throw new IllegalArgumentException("Duplicate move: " + move.getName());
                 }
             }
@@ -129,6 +129,11 @@ public class MoveSet {
     public Move getFourthMove() {
         return moves[3];
     }
+
+    public int size() {
+        return moves.length;
+    }
+
     public static class Builder {
         private Move[] moves;
 
