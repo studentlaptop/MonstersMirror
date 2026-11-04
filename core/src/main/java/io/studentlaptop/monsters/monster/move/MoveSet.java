@@ -10,6 +10,12 @@ public class MoveSet {
         this.moves = new Move[4];
     }
 
+    public MoveSet(Builder builder) {
+        if (isValid(builder.moves)) {
+            this.moves = builder.moves;
+        }
+    }
+
     public MoveSet(MoveInfo firstMove) {
         if (isValid(new Move[]{firstMove.create(), null, null, null})) {
             moves = new Move[]{firstMove.create(), null, null, null};
@@ -122,5 +128,27 @@ public class MoveSet {
 
     public Move getFourthMove() {
         return moves[3];
+    }
+    public static class Builder {
+        private Move[] moves;
+
+        public Builder(MoveInfo firstMove) {
+            this.moves = new Move[]{firstMove.create(), null, null, null};
+        }
+
+        public Builder secondMove(MoveInfo secondMove) {
+            moves[1] = secondMove.create();
+            return this;
+        }
+
+        public Builder thirdMove(MoveInfo thirdMove) {
+            moves[2] = thirdMove.create();
+            return this;
+        }
+
+        public Builder fourthMove(MoveInfo fourthMove) {
+            moves[3] = fourthMove.create();
+            return this;
+        }
     }
 }
