@@ -20,14 +20,14 @@ public class SaveScratch {
         json.setOutputType(JsonWriter.OutputType.json);
 
         Player player = new Player("Noah");
-        player.setPartySlot(0, new Monster(SpeciesInfo.ABRA));
-        player.setEmptySlot(new Monster(SpeciesInfo.EEVEE));
+        player.getParty().set(0, new Monster(SpeciesInfo.ABRA));
+        player.getParty().add(new Monster(SpeciesInfo.EEVEE));
         player.putInventory(ItemInfo.FIRE_STONE);
         player.putInventory(ItemInfo.FIRE_STONE);
         player.putInventory(ItemInfo.WATER_STONE);
 
         if (player.getInventory().containsKey(ItemInfo.FIRE_STONE)) {
-            ItemInfo.FIRE_STONE.effect(player.getParty()[1]);
+            ItemInfo.FIRE_STONE.effect(player.getParty().get(1));
         }
 
 

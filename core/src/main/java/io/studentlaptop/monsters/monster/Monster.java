@@ -244,4 +244,9 @@ public class Monster {
             setSpecies(species.getEvolution(this, item));
         }
     }
+
+    @Override
+    public String toString() {
+        return this.name;
+    }
 }
