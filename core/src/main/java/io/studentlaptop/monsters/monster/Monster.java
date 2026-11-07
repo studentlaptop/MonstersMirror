@@ -1,8 +1,6 @@
 package io.studentlaptop.monsters.monster;
 
 import io.studentlaptop.monsters.item.ItemInfo;
-import io.studentlaptop.monsters.monster.move.Move;
-import io.studentlaptop.monsters.monster.move.MoveInfo;
 import io.studentlaptop.monsters.monster.move.MoveSet;
 import io.studentlaptop.monsters.monster.status.Status;
 
@@ -120,15 +118,6 @@ public class Monster {
         this.level = level;
     }
 
-    public void setMoves(MoveInfo firstMove, MoveInfo secondMove, MoveInfo thirdMove, MoveInfo fourthMove) {
-        moveSet.setMoves(
-                firstMove.create(),
-                secondMove.create(),
-                thirdMove.create(),
-                fourthMove.create()
-        );
-    }
-
     public MoveSet getMoveSet() {
         return moveSet;
     }
@@ -167,26 +156,6 @@ public class Monster {
 
     public int getDexNum() {
         return dexNum;
-    }
-
-    public Move getFirstMove() {
-        return moveSet.get(0);
-    }
-
-    public Move getSecondMove() {
-        return moveSet.get(1);
-    }
-
-    public Move getThirdMove() {
-        return moveSet.get(2);
-    }
-
-    public Move getFourthMove() {
-        return moveSet.get(3);
-    }
-
-    public Move[] getMoves() {
-        return moveSet.getMoves();
     }
 
     public SpeciesInfo getSpecies() {
