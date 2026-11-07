@@ -95,4 +95,16 @@ public class PartyTests {
             assertEquals(new Party(), partyByEmptyCollection)
         );
     }
+
+    @Test
+    public void givenBuilder_whenNewPartyWithBuilder_thenAssertPartyIsInitialized() {
+        Monster eevee = new Monster(SpeciesInfo.EEVEE);
+        Party party = new Party(List.of(eevee));
+        Party partyByBuilder = new Party.Builder().first(eevee).build();
+
+        assertAll(() ->
+            assertNotNull(partyByBuilder), () ->
+            assertEquals (party, partyByBuilder)
+        );
+    }
 }

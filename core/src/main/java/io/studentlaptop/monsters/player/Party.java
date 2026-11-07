@@ -14,6 +14,10 @@ public class Party extends AbstractList<Monster> {
         party = new Monster[REQ_LENGTH];
     }
 
+    Party(Builder builder) {
+        party = builder.party;
+    }
+
     Party(Collection<Monster> c) {
         if (isValid(c)) {
             if (c.isEmpty()) {
@@ -41,7 +45,9 @@ public class Party extends AbstractList<Monster> {
 
     @Override
     public Monster set(int index, Monster monster) {
-        return party[index] = monster;
+        Monster previous = party[index];
+        party[index] = monster;
+        return previous;
     }
 
     @Override
@@ -63,6 +69,16 @@ public class Party extends AbstractList<Monster> {
         return party[index] = null;
     }
 
+    /**
+     * Destructs Party contents.
+     * This method planned to only be used after defeating a Trainer in battle.
+     *
+     */
+    @Override
+    public void clear() {
+        party = null;
+    }
+
     @Override
     public int indexOf(Object o) {
         if (o instanceof Monster || o == null) {
@@ -79,7 +95,72 @@ public class Party extends AbstractList<Monster> {
         throw new ClassCastException(obj.toString() + " is not a Monster");
     }
 
+    public Monster getSecond() {
+        return party[1];
+    }
+
+    public Monster getThird() {
+        return party[2];
+    }
+
+    public Monster getFourth() {
+        return party[3];
+    }
+
+    public Monster getFifth() {
+        return party[4];
+    }
+
+    public Monster getSixth() {
+        return party[5];
+    }
+
     private static boolean isValid(Collection<Monster> c) {
-        return c.size() <= REQ_LENGTH;
+        if (c.size() <= REQ_LENGTH) {
+            return true;
+        }
+        throw new IllegalArgumentException(c + " length out of range");
+    }
+
+    public static class Builder {
+        private Monster[] party;
+
+        public Builder() {
+            party = new Monster[REQ_LENGTH];
+        }
+
+        public Builder first(Monster monster) {
+            party[0] = monster;
+            return this;
+        }
+
+        public Builder second(Monster monster) {
+            party[1] = monster;
+            return this;
+        }
+
+        public Builder third(Monster monster) {
+            party[2] = monster;
+            return this;
+        }
+
+        public Builder fourth(Monster monster) {
+            party[3] = monster;
+            return this;
+        }
+
+        public Builder fifth(Monster monster) {
+            party[4] = monster;
+            return this;
+        }
+
+        public Builder sixth(Monster monster) {
+            party[5] = monster;
+            return this;
+        }
+
+        public Party build() {
+            return new Party(this);
+        }
     }
 }
