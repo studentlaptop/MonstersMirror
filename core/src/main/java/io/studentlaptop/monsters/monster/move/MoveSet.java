@@ -65,20 +65,38 @@ public class MoveSet extends AbstractList<Move> {
         return moves[index] = null;
     }
 
+    private static boolean isValid(Collection<Move> c) {
+        if (c.size() <= REQ_LENGTH) {
+            Set<MoveInfo> duplicateCheck = new HashSet<>();
+            for (Move move : c) {
+                if (move == null) {
+                    continue;
+                }
+                if (!duplicateCheck.add(move.getInfo())) {
+                    throw new IllegalArgumentException("Duplicate move: " + move.getName());
+                }
+            }
+            return true;
+        }
+        throw new IllegalArgumentException("moveSet length out of range");
+    }
+
     @Override
     public int indexOf(Object o) {
         if (o instanceof Move || o == null) {
             return super.indexOf(o);
         }
-        throw new ClassCastException(o.toString() + " is not a Move");
-    }
-
-    @Override
-    public boolean contains(Object obj) {
-        if (obj instanceof Move || obj == null) {
-            return super.contains(obj);
+        if (o instanceof MoveInfo) {
+            for (Move move : moves) {
+                if (move == null) {
+                    continue;
+                }
+                if (move.getInfo().equals(o)) {
+                    return super.indexOf(move);
+                }
+            }
         }
-        throw new ClassCastException(obj.toString() + " is not a Move");
+        throw new ClassCastException(o.toString() + " is not a Move");
     }
 
     public boolean forget(Move move) {
@@ -115,24 +133,26 @@ public class MoveSet extends AbstractList<Move> {
         return moves[3];
     }
 
-    private static boolean isValid(Collection<Move> c) {
-        if (c.size() == REQ_LENGTH) {
-            Set<MoveInfo> duplicateCheck = new HashSet<>();
-            for (Move move : c) {
+    @Override
+    public boolean contains(Object obj) {
+        if (obj instanceof Move || obj == null) {
+            return super.contains(obj);
+        }
+        if (obj instanceof MoveInfo) {
+            for (Move move : moves) {
                 if (move == null) {
                     continue;
                 }
-                if (!duplicateCheck.add(move.getInfo())) {
-                    throw new IllegalArgumentException("Duplicate move: " + move.getName());
+                if (move.getInfo().equals(obj)) {
+                    return true;
                 }
             }
-            return true;
         }
-        throw new IllegalArgumentException("moveSet length out of range");
+        throw new ClassCastException(obj.toString() + " is not a Move");
     }
 
     public static class Builder {
-        private Move[] moves;
+        private final Move[] moves;
 
         public Builder(MoveInfo firstMove) {
             this.moves = new Move[]{firstMove.create(), null, null, null};
@@ -158,19 +178,16 @@ public class MoveSet extends AbstractList<Move> {
         }
 
         private static boolean isValid(Move[] moves) {
-            if (moves.length == REQ_LENGTH) {
-                Set<MoveInfo> duplicateCheck = new HashSet<>();
-                for (Move move : moves) {
-                    if (move == null) {
-                        continue;
-                    }
-                    if (!duplicateCheck.add(move.getInfo())) {
-                        throw new IllegalArgumentException("Duplicate move: " + move.getName());
-                    }
+            Set<MoveInfo> duplicateCheck = new HashSet<>();
+            for (Move move : moves) {
+                if (move == null) {
+                    continue;
                 }
-                return true;
+                if (!duplicateCheck.add(move.getInfo())) {
+                    throw new IllegalArgumentException("Duplicate move: " + move.getName());
+                }
             }
-            throw new IllegalArgumentException("moveSet length out of range");
+            return true;
         }
     }
 }

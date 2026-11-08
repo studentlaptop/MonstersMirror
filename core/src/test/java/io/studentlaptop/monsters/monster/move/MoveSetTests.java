@@ -2,6 +2,8 @@ package io.studentlaptop.monsters.monster.move;
 
 import org.junit.jupiter.api.Test;
 
+import java.util.List;
+
 import static org.junit.jupiter.api.Assertions.*;
 
 public class MoveSetTests {
@@ -20,6 +22,15 @@ public class MoveSetTests {
 
     @Test
     public void noDuplicatesInMoveSet() {
+        MoveSet emptyMoveSet = new MoveSet();
+        MoveSet tackle = new MoveSet.Builder(MoveInfo.TACKLE).build();
+        Move[] moves = {MoveInfo.TACKLE.create()};
         assertThrows(IllegalArgumentException.class, () -> new MoveSet.Builder(MoveInfo.DOUBLE_KICK).second(MoveInfo.DOUBLE_KICK).build());
+        assertDoesNotThrow(() -> emptyMoveSet.indexOf(null));
+        assertNotEquals(-1, emptyMoveSet.indexOf(null));
+        assertTrue(emptyMoveSet.contains(null));
+        assertThrows(ClassCastException.class, () -> emptyMoveSet.indexOf("null"));
+        assertNotEquals(-1, tackle.indexOf(MoveInfo.TACKLE));
+        assertDoesNotThrow(() -> new MoveSet(List.of(moves)));
     }
 }
