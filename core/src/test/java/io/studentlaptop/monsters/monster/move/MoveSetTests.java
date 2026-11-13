@@ -26,11 +26,17 @@ public class MoveSetTests {
         MoveSet tackle = new MoveSet.Builder(MoveInfo.TACKLE).build();
         Move[] moves = {MoveInfo.TACKLE.create()};
         assertThrows(IllegalArgumentException.class, () -> new MoveSet.Builder(MoveInfo.DOUBLE_KICK).second(MoveInfo.DOUBLE_KICK).build());
+        assertDoesNotThrow(() -> new MoveSet(List.of(moves)));
+    }
+
+    @Test
+    public void indexOfAndContains() {
+        MoveSet emptyMoveSet = new MoveSet();
+        MoveSet tackleMoveSet = new MoveSet.Builder(MoveInfo.TACKLE).build();
         assertDoesNotThrow(() -> emptyMoveSet.indexOf(null));
         assertNotEquals(-1, emptyMoveSet.indexOf(null));
         assertTrue(emptyMoveSet.contains(null));
         assertThrows(ClassCastException.class, () -> emptyMoveSet.indexOf("null"));
-        assertNotEquals(-1, tackle.indexOf(MoveInfo.TACKLE));
-        assertDoesNotThrow(() -> new MoveSet(List.of(moves)));
+        assertNotEquals(-1, tackleMoveSet.indexOf(MoveInfo.TACKLE));
     }
 }
