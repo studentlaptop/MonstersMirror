@@ -8,8 +8,8 @@ import java.util.Map;
 
 /**
  * Enums of the {@link Type} class can be applied to the typing of a {@link io.studentlaptop.monsters.monster.move.Move} and a {@link Monster}.
- * Each {@link Type} shall have an associated {@link EnumMap} in {@link TypeEffect}.
- * @see TypeEffect
+ * Each {@link Type} shall have an associated {@link EnumMap} in {@link Effect}.
+ * @see Effect
  */
 public enum Type {
     BUG,
@@ -32,13 +32,13 @@ public enum Type {
     ;
 
     /**
-     * Enums of the {@link TypeEffect} class are used to define Move v. Monster effectiveness.
+     * Enums of the {@link Effect} class are used to define Move v. Monster effectiveness.
      * Each enum shall be constructed with a corresponding {@link Type} and an {@link EnumMap}.
      * The {@linkplain EnumMap} shall use {@linkplain Type} enums as keys and {@link MoveEffect} enums as values.
      * @see MoveEffect
      * @see io.studentlaptop.monsters.battle.Effectiveness#getMoveEffect(Move, Type)
      */
-    public enum TypeEffect {
+    public enum Effect {
         BUG_MOVE(BUG, new EnumMap<>(Map.of(
                 GHOST, MoveEffect.NOT_EFFECTIVE,
                 FIGHTING, MoveEffect.NOT_EFFECTIVE,
@@ -227,28 +227,17 @@ public enum Type {
         private final Type type;
         private final EnumMap<Type, MoveEffect> effects;
 
-        private static final EnumMap<Type, TypeEffect> typeEffects = getTypeEffectByType();
-
-        TypeEffect(Type type, EnumMap<Type, MoveEffect> effects) {
+        Effect(Type type, EnumMap<Type, MoveEffect> effects) {
             this.type = type;
             this.effects = effects;
         }
 
-        private static EnumMap<Type, TypeEffect> getTypeEffectByType() {
-            EnumMap<Type, TypeEffect> typeEffects = new EnumMap<>(Type.class);
-            TypeEffect[] values = TypeEffect.values();
-            for (TypeEffect typeEffect : values) {
-                typeEffects.put(typeEffect.type, typeEffect);
-            }
-            return typeEffects;
+        public Type getType() {
+            return type;
         }
 
         public EnumMap<Type, MoveEffect> getEffects() {
             return effects;
-        }
-
-        public static TypeEffect getTypeEffectByType(Type type) {
-            return typeEffects.get(type);
         }
     }
 }

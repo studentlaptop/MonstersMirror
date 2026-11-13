@@ -2,12 +2,11 @@ package io.studentlaptop.monsters.battle;
 
 import io.studentlaptop.monsters.monster.Monster;
 import io.studentlaptop.monsters.monster.Type;
-import io.studentlaptop.monsters.monster.Type.TypeEffect;
+import io.studentlaptop.monsters.monster.Type.Effect;
 import io.studentlaptop.monsters.monster.move.Move;
 
-import static io.studentlaptop.monsters.monster.Type.TypeEffect.getTypeEffectByType;
-
 public class Effectiveness {
+    public record EffectModifier(MoveEffect moveEffect, float modifier) {}
 
     public static EffectModifier getEffectModifier(Move move, Monster monster) {
         MoveEffect firstTypeEffect = getMoveEffect(move, monster.getFirstType());
@@ -38,23 +37,17 @@ public class Effectiveness {
         return new EffectModifier(firstTypeEffect, firstTypeEffect.getModifier());
     }
 
-    public record EffectModifier(MoveEffect moveEffect, float modifier) {}
 
     /**
-     * Returns a {@link MoveEffect} enum from a {@link TypeEffect} enum associated with a given {@link Type} of a {@link Monster}.
+     * Returns a {@link MoveEffect} enum from a {@link Type.Effect} enum associated with a given {@link Type} of a {@link Monster}.
      *
-     * @param move the {@linkplain Move} whose {@linkplain Type} is used to find an associated {@linkplain TypeEffect}
-     * @param monsterType the key with which the {@link MoveEffect} value is to be associated in a {@linkplain TypeEffect}
+     * @param move the {@linkplain Move} whose {@linkplain Type} is used to find an associated {@linkplain Effect}
+     * @param monsterType the key with which the {@link MoveEffect} value is to be associated in a {@linkplain Effect}
      * @return The {@linkplain MoveEffect} value associated with {@code monsterType} key or {@linkplain MoveEffect#EFFECTIVE} if no key value pair exists
-     * @throws IllegalArgumentException if no valid {@linkplain TypeEffect} enum is found for the {@linkplain Type} of {@code move}
      */
     public static MoveEffect getMoveEffect(Move move, Type monsterType) {
-        TypeEffect typeEffect = getTypeEffectByType(move.getType());
-
-        if (typeEffect == null) {
-            throw new NullPointerException("No " + TypeEffect.class.getName() + " found for " + move.getInfo().toString() + "'s type: " + move.getType());
-        }
-        return (typeEffect.getEffects().get(monsterType) == null) ? MoveEffect.EFFECTIVE : typeEffect.getEffects().get(monsterType);
+        Type.Effect effect = EffectivenessUtils.effects.get(move.getType());
+        return effect.getEffects().getOrDefault(monsterType, MoveEffect.EFFECTIVE);
     }
 
     private static boolean isIneffective(MoveEffect firstTypeEffect, MoveEffect secondTypeEffect) {
