@@ -12,12 +12,12 @@ import static org.junit.jupiter.api.Assertions.assertAll;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
 public class EffectivenessTests {
-    Effectiveness.EffectModifier noEffect =  new Effectiveness.EffectModifier(NO_EFFECT, NO_EFFECT.getModifier());
-    Effectiveness.EffectModifier notEffective = new Effectiveness.EffectModifier(NOT_EFFECTIVE, NOT_EFFECTIVE.getModifier());
-    Effectiveness.EffectModifier effective = new Effectiveness.EffectModifier(EFFECTIVE, EFFECTIVE.getModifier());
-    Effectiveness.EffectModifier superEffective = new Effectiveness.EffectModifier(SUPER_EFFECTIVE, SUPER_EFFECTIVE.getModifier());
-    Effectiveness.EffectModifier doubleNotEffective = new Effectiveness.EffectModifier(NOT_EFFECTIVE, NOT_EFFECTIVE.getModifier() * NOT_EFFECTIVE.getModifier());
-    Effectiveness.EffectModifier doubleSuperEffective = new Effectiveness.EffectModifier(SUPER_EFFECTIVE, SUPER_EFFECTIVE.getModifier() * SUPER_EFFECTIVE.getModifier());
+    Effectiveness.EffectModifier noEffect =  new Effectiveness.EffectModifier(NO_EFFECT, NO_EFFECT.modifier);
+    Effectiveness.EffectModifier notEffective = new Effectiveness.EffectModifier(NOT_EFFECTIVE, NOT_EFFECTIVE.modifier);
+    Effectiveness.EffectModifier effective = new Effectiveness.EffectModifier(EFFECTIVE, EFFECTIVE.modifier);
+    Effectiveness.EffectModifier superEffective = new Effectiveness.EffectModifier(SUPER_EFFECTIVE, SUPER_EFFECTIVE.modifier);
+    Effectiveness.EffectModifier doubleNotEffective = new Effectiveness.EffectModifier(NOT_EFFECTIVE, NOT_EFFECTIVE.modifier * NOT_EFFECTIVE.modifier);
+    Effectiveness.EffectModifier doubleSuperEffective = new Effectiveness.EffectModifier(SUPER_EFFECTIVE, SUPER_EFFECTIVE.modifier * SUPER_EFFECTIVE.modifier);
 
     Move fireMove = MoveInfo.EMBER.create();
     Move grassMove = MoveInfo.ABSORB.create();

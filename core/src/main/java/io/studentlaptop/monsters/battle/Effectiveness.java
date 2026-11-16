@@ -15,26 +15,26 @@ public class Effectiveness {
             MoveEffect secondTypeEffect = getMoveEffect(move.getType(), monster.getSecondType());
 
             if (isIneffective(firstTypeEffect, secondTypeEffect)) {
-                return new EffectModifier(MoveEffect.NO_EFFECT, MoveEffect.NO_EFFECT.getModifier());
+                return new EffectModifier(MoveEffect.NO_EFFECT, MoveEffect.NO_EFFECT.modifier);
             }
 
             if (isNotEffective(firstTypeEffect, secondTypeEffect)) {
-                return new EffectModifier(MoveEffect.NOT_EFFECTIVE, MoveEffect.NOT_EFFECTIVE.getModifier());
+                return new EffectModifier(MoveEffect.NOT_EFFECTIVE, MoveEffect.NOT_EFFECTIVE.modifier);
             }
 
             if (isEffective(firstTypeEffect, secondTypeEffect)) {
-                return new EffectModifier(MoveEffect.EFFECTIVE, MoveEffect.EFFECTIVE.getModifier());
+                return new EffectModifier(MoveEffect.EFFECTIVE, MoveEffect.EFFECTIVE.modifier);
             }
 
             if (isSuperEffective(firstTypeEffect, secondTypeEffect)) {
-                return new EffectModifier(MoveEffect.SUPER_EFFECTIVE, MoveEffect.SUPER_EFFECTIVE.getModifier());
+                return new EffectModifier(MoveEffect.SUPER_EFFECTIVE, MoveEffect.SUPER_EFFECTIVE.modifier);
             }
 
             if (firstTypeEffect.equals(secondTypeEffect)) {
-                return new EffectModifier(firstTypeEffect, firstTypeEffect.getModifier() * secondTypeEffect.getModifier());
+                return new EffectModifier(firstTypeEffect, firstTypeEffect.modifier * secondTypeEffect.modifier);
             }
         }
-        return new EffectModifier(firstTypeEffect, firstTypeEffect.getModifier());
+        return new EffectModifier(firstTypeEffect, firstTypeEffect.modifier);
     }
 
 
@@ -55,14 +55,14 @@ public class Effectiveness {
     }
 
     private static boolean isNotEffective(MoveEffect firstTypeEffect, MoveEffect secondTypeEffect) {
-        return (firstTypeEffect.getModifier() * secondTypeEffect.getModifier()) == MoveEffect.NOT_EFFECTIVE.getModifier();
+        return (firstTypeEffect.modifier * secondTypeEffect.modifier) == MoveEffect.NOT_EFFECTIVE.modifier;
     }
 
     private static boolean isEffective(MoveEffect firstTypeEffect, MoveEffect secondTypeEffect) {
-        return (firstTypeEffect.getModifier() * secondTypeEffect.getModifier()) == MoveEffect.EFFECTIVE.getModifier();
+        return (firstTypeEffect.modifier * secondTypeEffect.modifier) == MoveEffect.EFFECTIVE.modifier;
     }
 
     private static boolean isSuperEffective(MoveEffect firstTypeEffect, MoveEffect secondTypeEffect) {
-        return (firstTypeEffect.getModifier() * secondTypeEffect.getModifier()) == MoveEffect.SUPER_EFFECTIVE.getModifier();
+        return (firstTypeEffect.modifier * secondTypeEffect.modifier) == MoveEffect.SUPER_EFFECTIVE.modifier;
     }
 }
