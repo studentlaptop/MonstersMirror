@@ -62,7 +62,9 @@ public class MoveSet extends AbstractList<Move> {
 
     @Override
     public Move remove(int index) {
-        return moves[index] = null;
+        Move previous = moves[index];
+        moves[index] = null;
+        return previous;
     }
 
     private static boolean isValid(Collection<Move> c) {
