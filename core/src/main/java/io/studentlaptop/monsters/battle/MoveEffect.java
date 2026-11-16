@@ -1,8 +1,10 @@
 package io.studentlaptop.monsters.battle;
 
+import io.studentlaptop.monsters.monster.Type;
+
 /**
  * Enums of the {@link MoveEffect} class describe the relation & damage multiplier of Move v. Monster type comparisons.
- * @see io.studentlaptop.monsters.monster.Type
+ * @see Type
  */
 public enum MoveEffect {
     NO_EFFECT(0.0f),

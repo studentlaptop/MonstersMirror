@@ -9,10 +9,10 @@ public class Effectiveness {
     public record EffectModifier(MoveEffect moveEffect, float modifier) {}
 
     public static EffectModifier getEffectModifier(Move move, Monster monster) {
-        MoveEffect firstTypeEffect = getMoveEffect(move, monster.getFirstType());
+        MoveEffect firstTypeEffect = getMoveEffect(move.getType(), monster.getFirstType());
 
         if (monster.getSecondType() != null) {
-            MoveEffect secondTypeEffect = getMoveEffect(move, monster.getSecondType());
+            MoveEffect secondTypeEffect = getMoveEffect(move.getType(), monster.getSecondType());
 
             if (isIneffective(firstTypeEffect, secondTypeEffect)) {
                 return new EffectModifier(MoveEffect.NO_EFFECT, MoveEffect.NO_EFFECT.getModifier());
@@ -41,13 +41,13 @@ public class Effectiveness {
     /**
      * Returns a {@link MoveEffect} enum from a {@link Type.Effect} enum associated with a given {@link Type} of a {@link Monster}.
      *
-     * @param move the {@linkplain Move} whose {@linkplain Type} is used to find an associated {@linkplain Effect}
+     * @param moveType the {@linkplain Type} of the {@linkplain Move} that is used to find an associated {@linkplain Effect}
      * @param monsterType the key with which the {@link MoveEffect} value is to be associated in a {@linkplain Effect}
      * @return The {@linkplain MoveEffect} value associated with {@code monsterType} key or {@linkplain MoveEffect#EFFECTIVE} if no key value pair exists
      */
-    public static MoveEffect getMoveEffect(Move move, Type monsterType) {
-        Type.Effect effect = EffectivenessUtils.effects.get(move.getType());
-        return effect.getEffects().getOrDefault(monsterType, MoveEffect.EFFECTIVE);
+    private static MoveEffect getMoveEffect(Type moveType, Type monsterType) {
+        Type.Effect effectEnum = EffectivenessUtils.effects.get(moveType);
+        return effectEnum.getEffects().getOrDefault(monsterType, MoveEffect.EFFECTIVE);
     }
 
     private static boolean isIneffective(MoveEffect firstTypeEffect, MoveEffect secondTypeEffect) {

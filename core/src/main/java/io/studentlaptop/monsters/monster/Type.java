@@ -1,5 +1,6 @@
 package io.studentlaptop.monsters.monster;
 
+import io.studentlaptop.monsters.battle.Effectiveness;
 import io.studentlaptop.monsters.battle.MoveEffect;
 import io.studentlaptop.monsters.monster.move.Move;
 
@@ -7,7 +8,7 @@ import java.util.EnumMap;
 import java.util.Map;
 
 /**
- * Enums of the {@link Type} class can be applied to the typing of a {@link io.studentlaptop.monsters.monster.move.Move} and a {@link Monster}.
+ * Enums of the {@link Type} class can be applied to the typing of a {@link Move} and a {@link Monster}.
  * Each {@link Type} shall have an associated {@link EnumMap} in {@link Effect}.
  * @see Effect
  */
@@ -36,7 +37,7 @@ public enum Type {
      * Each enum shall be constructed with a corresponding {@link Type} and an {@link EnumMap}.
      * The {@linkplain EnumMap} shall use {@linkplain Type} enums as keys and {@link MoveEffect} enums as values.
      * @see MoveEffect
-     * @see io.studentlaptop.monsters.battle.Effectiveness#getMoveEffect(Move, Type)
+     * @see Effectiveness
      */
     public enum Effect {
         BUG_MOVE(BUG, new EnumMap<>(Map.of(
