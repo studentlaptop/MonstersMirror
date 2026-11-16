@@ -251,17 +251,13 @@ public enum MoveInfo {
     WRAP(new Builder()),
     ;
 
-    private final Type type;
+    public final Type type;
     private final EnumMap<Info, Integer> info;
     private static final RandomGenerator RNG = RandomGenerator.of("L64X128MixRandom");
 
     MoveInfo(Builder builder) {
         this.type = builder.type;
         this.info = builder.info;
-    }
-
-    public Type getType() {
-        return type;
     }
 
     public int getAccuracy() {
