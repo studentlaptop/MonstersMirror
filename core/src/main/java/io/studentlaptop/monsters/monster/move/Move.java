@@ -9,7 +9,7 @@ public class Move {
     private final MoveInfo info;
     private int powerPoints;
 
-    public Move(MoveInfo info) {
+    Move(MoveInfo info) {
         this.info = info;
         this.name = info.toString();
         this.type = info.getType();

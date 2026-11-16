@@ -12,13 +12,9 @@ public enum MoveEffect {
     EFFECTIVE(1.0f),
     SUPER_EFFECTIVE(2.0f);
 
-    private final float modifier;
+    public final float modifier;
 
     MoveEffect(float modifier) {
         this.modifier = modifier;
-    }
-
-    public float getModifier() {
-        return modifier;
     }
 }
