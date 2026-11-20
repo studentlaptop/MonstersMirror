@@ -3,18 +3,17 @@ package io.studentlaptop.monsters.monster.move;
 import io.studentlaptop.monsters.monster.Type;
 
 public class Move {
+    public static final int PP_MAX = 3;
     private final MoveInfo info;
     private int powerPoints;
     private int maxPowerPoints;
     private int ppUpCounter;
-    private boolean ppMax;
 
     Move(MoveInfo info) {
         this.info = info;
         powerPoints = info.getPowerPoints();
         maxPowerPoints = powerPoints;
         ppUpCounter = 0;
-        ppMax = false;
     }
 
     public String getName() {
@@ -56,24 +55,23 @@ public class Move {
     }
 
     public boolean incrementPpUpCounter() {
-        if (ppUpCounter < 3 && !ppMax) {
+        if (ppUpCounter < PP_MAX) {
             ppUpCounter++;
-            maxPowerPoints = (int) (maxPowerPoints + ppUpCounter * (maxPowerPoints * .2f));
+            maxPowerPoints +=  info.getPowerPoints() / 5;
             return true;
         }
         return false;
     }
 
     public boolean isPpMaxed() {
-        return ppMax;
+        return ppUpCounter == PP_MAX;
     }
 
-    public boolean setPpMaxTrue() {
-        if (!ppMax) {
-            maxPowerPoints = (int) (info.getPowerPoints() * 1.6f);
-            return ppMax = true;
+    public boolean setPpToMax() {
+        if (ppUpCounter != PP_MAX) {
+            maxPowerPoints = info.getPowerPoints() * 8/5;
+            return true;
         }
         return false;
     }
-
 }
