@@ -157,21 +157,21 @@ public class MoveSet extends AbstractList<Move> {
         private final Move[] moves;
 
         public Builder(MoveInfo firstMove) {
-            this.moves = new Move[]{firstMove.create(), null, null, null};
+            this.moves = new Move[]{new Move(firstMove), null, null, null};
         }
 
         public Builder second(MoveInfo secondMove) {
-            moves[1] = secondMove.create();
+            moves[1] = new Move(secondMove);
             return this;
         }
 
         public Builder third(MoveInfo thirdMove) {
-            moves[2] = thirdMove.create();
+            moves[2] = new Move(thirdMove);
             return this;
         }
 
         public Builder fourth(MoveInfo fourthMove) {
-            moves[3] = fourthMove.create();
+            moves[3] = new Move(fourthMove);
             return this;
         }
 

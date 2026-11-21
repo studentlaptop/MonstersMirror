@@ -26,7 +26,7 @@ public class Monster {
     public Monster(SpeciesInfo species) {
         this.name = species.toString();
         this.typing = species.getTyping();
-        this.moveSet = new MoveSet();
+        this.moveSet = new MoveSet(); // TODO: instantiate with first learnable move via MoveSet.Builder
         this.dexNum = species.getDexNum();
         this.health = species.getBaseHealth();
         this.attack = species.getBaseAttack();

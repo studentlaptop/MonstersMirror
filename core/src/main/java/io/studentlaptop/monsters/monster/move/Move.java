@@ -9,7 +9,7 @@ public class Move {
     private int maxPowerPoints;
     private int ppUpCounter;
 
-    Move(MoveInfo info) {
+    public Move(MoveInfo info) {
         this.info = info;
         powerPoints = info.getPowerPoints();
         maxPowerPoints = powerPoints;

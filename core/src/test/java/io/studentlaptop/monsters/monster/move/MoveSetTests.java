@@ -24,7 +24,7 @@ public class MoveSetTests {
     public void noDuplicatesInMoveSet() {
         MoveSet emptyMoveSet = new MoveSet();
         MoveSet tackle = new MoveSet.Builder(MoveInfo.TACKLE).build();
-        Move[] moves = {MoveInfo.TACKLE.create()};
+        Move[] moves = {new Move(MoveInfo.TACKLE)};
         assertThrows(IllegalArgumentException.class, () -> new MoveSet.Builder(MoveInfo.DOUBLE_KICK).second(MoveInfo.DOUBLE_KICK).build());
         assertDoesNotThrow(() -> new MoveSet(List.of(moves)));
     }

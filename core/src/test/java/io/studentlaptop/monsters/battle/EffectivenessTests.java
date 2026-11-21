@@ -19,10 +19,10 @@ public class EffectivenessTests {
     Effectiveness.EffectModifier doubleNotEffective = new Effectiveness.EffectModifier(NOT_EFFECTIVE, NOT_EFFECTIVE.modifier * NOT_EFFECTIVE.modifier);
     Effectiveness.EffectModifier doubleSuperEffective = new Effectiveness.EffectModifier(SUPER_EFFECTIVE, SUPER_EFFECTIVE.modifier * SUPER_EFFECTIVE.modifier);
 
-    Move fireMove = MoveInfo.EMBER.create();
-    Move grassMove = MoveInfo.ABSORB.create();
-    Move normalMove = MoveInfo.TACKLE.create();
-    Move rockMove = MoveInfo.ROCK_SLIDE.create();
+    Move fireMove = new Move(MoveInfo.EMBER);
+    Move grassMove = new Move(MoveInfo.ABSORB);
+    Move normalMove = new Move(MoveInfo.TACKLE);
+    Move rockMove = new Move(MoveInfo.ROCK_SLIDE);
 
     Monster bugFlyingMonster = new Monster(SpeciesInfo.BUTTERFREE);
     Monster ghostMonster = new Monster(SpeciesInfo.GASTLY);
