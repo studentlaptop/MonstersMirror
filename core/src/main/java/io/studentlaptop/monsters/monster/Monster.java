@@ -1,7 +1,7 @@
 package io.studentlaptop.monsters.monster;
 
 import io.studentlaptop.monsters.item.ItemInfo;
-import io.studentlaptop.monsters.monster.move.MoveSet;
+import io.studentlaptop.monsters.monster.move.Moveset;
 import io.studentlaptop.monsters.monster.status.Status;
 
 import java.util.random.RandomGenerator;
@@ -11,7 +11,7 @@ public class Monster {
     private int health;
     private int attack;
     private int defense;
-    private final MoveSet moveSet;
+    private final Moveset moveset;
     private int special;
     private int level;
     private int dv;
@@ -26,7 +26,7 @@ public class Monster {
     public Monster(SpeciesInfo species) {
         this.name = species.toString();
         this.typing = species.getTyping();
-        this.moveSet = new MoveSet(); // TODO: instantiate with first learnable move via MoveSet.Builder
+        this.moveset = new Moveset(); // TODO: instantiate with first learnable move via MoveSet.Builder
         this.dexNum = species.getDexNum();
         this.health = species.getBaseHealth();
         this.attack = species.getBaseAttack();
@@ -40,14 +40,14 @@ public class Monster {
         friendship = 0;
     }
 
-    public Monster(int health, int attack, int defense, int special, int speed, int level, MoveSet moveSet, int dv) {
+    public Monster(int health, int attack, int defense, int special, int speed, int level, Moveset moveset, int dv) {
         this.health = health;
         this.attack = attack;
         this.defense = defense;
         this.special = special;
         this.speed = speed;
         this.level = level;
-        this.moveSet = moveSet;
+        this.moveset = moveset;
         this.dv = dv;
         status = null;
         item = null;
@@ -118,8 +118,8 @@ public class Monster {
         this.level = level;
     }
 
-    public MoveSet getMoveSet() {
-        return moveSet;
+    public Moveset getMoveset() {
+        return moveset;
     }
 
     public int getDv() {

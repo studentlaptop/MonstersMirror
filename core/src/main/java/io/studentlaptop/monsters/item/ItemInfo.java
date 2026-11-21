@@ -141,7 +141,7 @@ public enum ItemInfo {
         }
         @Override
         public void battleHeldEffect(Monster monster) {
-            for (Move move : monster.getMoveSet()) {
+            for (Move move : monster.getMoveset()) {
                 if (move.getPowerPoints() == 0) {
                     move.setPowerPoints(move.getPowerPoints() + 5);
                 }

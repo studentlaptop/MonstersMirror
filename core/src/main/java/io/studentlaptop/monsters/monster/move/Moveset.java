@@ -2,27 +2,27 @@ package io.studentlaptop.monsters.monster.move;
 
 import java.util.*;
 
-public class MoveSet extends AbstractList<Move> {
+public class Moveset extends AbstractList<Move> {
     private Move[] moves;
     private static final int REQ_LENGTH = 4;
 
-    public MoveSet() {
+    public Moveset() {
         this.moves = new Move[REQ_LENGTH];
     }
 
-    public MoveSet(Builder builder) {
+    public Moveset(Builder builder) {
         if (Builder.isValid(builder.moves)) {
             this.moves = builder.moves;
         }
     }
 
-    public MoveSet(Collection<Move> c) {
+    public Moveset(Collection<Move> c) {
         if (isValid(c)) {
             if (c.isEmpty()) {
                 moves = new Move[REQ_LENGTH];
             } else {
                 Move[] a = c.toArray(new Move[REQ_LENGTH]);
-                if (c.getClass() == MoveSet.class) {
+                if (c.getClass() == Moveset.class) {
                     moves = a;
                 } else {
                     moves = Arrays.copyOf(a, REQ_LENGTH, Move[].class);
@@ -175,8 +175,8 @@ public class MoveSet extends AbstractList<Move> {
             return this;
         }
 
-        public MoveSet build() {
-            return new MoveSet(this);
+        public Moveset build() {
+            return new Moveset(this);
         }
 
         private static boolean isValid(Move[] moves) {
