@@ -1,4 +1,4 @@
-package io.studentlaptop.monsters.player;
+package io.studentlaptop.monsters.player.party;
 
 import io.studentlaptop.monsters.monster.Monster;
 
@@ -10,25 +10,25 @@ public class Party extends AbstractList<Monster> {
     private Monster[] party;
     private static final int REQ_LENGTH = 6;
 
-    Party() {
+    public Party() {
         party = new Monster[REQ_LENGTH];
     }
 
-    Party(Builder builder) {
+    public Party(Builder builder) {
         party = builder.party;
     }
 
-    Party(Collection<Monster> c) {
-        if (isValid(c)) {
-            if (c.isEmpty()) {
-                party = new Monster[REQ_LENGTH];
+    public Party(Collection<Monster> c) {
+        PartyUtils.length.validate(c, REQ_LENGTH);
+
+        if (c.isEmpty()) {
+            party = new Monster[REQ_LENGTH];
+        } else {
+            Monster[] a = c.toArray(new Monster[REQ_LENGTH]);
+            if (c.getClass() == Party.class) {
+                party = a;
             } else {
-                Monster[] a = c.toArray(new Monster[REQ_LENGTH]);
-                if (c.getClass() == Party.class) {
-                    party = a;
-                } else {
-                    party = Arrays.copyOf(a, REQ_LENGTH, Monster[].class);
-                }
+                party = Arrays.copyOf(a, REQ_LENGTH, Monster[].class);
             }
         }
     }
@@ -115,15 +115,8 @@ public class Party extends AbstractList<Monster> {
         return party[5];
     }
 
-    private static boolean isValid(Collection<Monster> c) {
-        if (c.size() <= REQ_LENGTH) {
-            return true;
-        }
-        throw new IllegalArgumentException(c + " length out of range");
-    }
-
     public static class Builder {
-        private Monster[] party;
+        private final Monster[] party;
 
         public Builder() {
             party = new Monster[REQ_LENGTH];

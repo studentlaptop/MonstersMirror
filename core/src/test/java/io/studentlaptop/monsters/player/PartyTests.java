@@ -2,6 +2,7 @@ package io.studentlaptop.monsters.player;
 
 import io.studentlaptop.monsters.monster.Monster;
 import io.studentlaptop.monsters.monster.SpeciesInfo;
+import io.studentlaptop.monsters.player.party.Party;
 import org.junit.jupiter.api.Test;
 
 import java.util.ArrayList;

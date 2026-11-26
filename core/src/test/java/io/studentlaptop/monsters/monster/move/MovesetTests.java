@@ -1,5 +1,6 @@
 package io.studentlaptop.monsters.monster.move;
 
+import io.studentlaptop.monsters.monster.moveset.Moveset;
 import org.junit.jupiter.api.Test;
 
 import java.util.List;

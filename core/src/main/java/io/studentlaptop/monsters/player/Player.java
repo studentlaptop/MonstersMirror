@@ -1,6 +1,7 @@
 package io.studentlaptop.monsters.player;
 
 import io.studentlaptop.monsters.item.ItemInfo;
+import io.studentlaptop.monsters.player.party.Party;
 
 import java.util.EnumMap;
 

@@ -1,7 +1,7 @@
 package io.studentlaptop.monsters.monster;
 
 import io.studentlaptop.monsters.item.ItemInfo;
-import io.studentlaptop.monsters.monster.move.Moveset;
+import io.studentlaptop.monsters.monster.moveset.Moveset;
 import io.studentlaptop.monsters.monster.status.Status;
 
 import java.util.random.RandomGenerator;

@@ -1,9 +1,12 @@
-package io.studentlaptop.monsters.monster.move;
+package io.studentlaptop.monsters.monster.moveset;
+
+import io.studentlaptop.monsters.monster.move.Move;
+import io.studentlaptop.monsters.monster.move.MoveInfo;
 
 import java.util.*;
 
 public class Moveset extends AbstractList<Move> {
-    private Move[] moves;
+    private final Move[] moves;
     private static final int REQ_LENGTH = 4;
 
     public Moveset() {
@@ -11,22 +14,21 @@ public class Moveset extends AbstractList<Move> {
     }
 
     public Moveset(Builder builder) {
-        if (Builder.isValid(builder.moves)) {
-            this.moves = builder.moves;
-        }
+        this.moves = builder.moves;
     }
 
     public Moveset(Collection<Move> c) {
-        if (isValid(c)) {
-            if (c.isEmpty()) {
-                moves = new Move[REQ_LENGTH];
+        MovesetUtils.length.validate(c, REQ_LENGTH);
+        MovesetUtils.validateNoDuplicates(c);
+
+        if (c.isEmpty()) {
+            moves = new Move[REQ_LENGTH];
+        } else {
+            Move[] a = c.toArray(new Move[REQ_LENGTH]);
+            if (c.getClass() == Moveset.class) {
+                moves = a;
             } else {
-                Move[] a = c.toArray(new Move[REQ_LENGTH]);
-                if (c.getClass() == Moveset.class) {
-                    moves = a;
-                } else {
-                    moves = Arrays.copyOf(a, REQ_LENGTH, Move[].class);
-                }
+                moves = Arrays.copyOf(a, REQ_LENGTH, Move[].class);
             }
         }
     }
@@ -65,22 +67,6 @@ public class Moveset extends AbstractList<Move> {
         Move previous = moves[index];
         moves[index] = null;
         return previous;
-    }
-
-    private static boolean isValid(Collection<Move> c) {
-        if (c.size() <= REQ_LENGTH) {
-            Set<MoveInfo> duplicateCheck = new HashSet<>();
-            for (Move move : c) {
-                if (move == null) {
-                    continue;
-                }
-                if (!duplicateCheck.add(move.getInfo())) {
-                    throw new IllegalArgumentException("Duplicate move: " + move.getName());
-                }
-            }
-            return true;
-        }
-        throw new IllegalArgumentException("moveSet length out of range");
     }
 
     @Override
@@ -176,20 +162,8 @@ public class Moveset extends AbstractList<Move> {
         }
 
         public Moveset build() {
+            MovesetUtils.validateNoDuplicates(Arrays.asList(moves));
             return new Moveset(this);
-        }
-
-        private static boolean isValid(Move[] moves) {
-            Set<MoveInfo> duplicateCheck = new HashSet<>();
-            for (Move move : moves) {
-                if (move == null) {
-                    continue;
-                }
-                if (!duplicateCheck.add(move.getInfo())) {
-                    throw new IllegalArgumentException("Duplicate move: " + move.getName());
-                }
-            }
-            return true;
         }
     }
 }
