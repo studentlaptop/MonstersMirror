@@ -7,8 +7,8 @@ import java.util.Arrays;
 import java.util.Collection;
 
 public class Party extends AbstractList<Monster> {
+    public static final int REQ_LENGTH = 6;
     private Monster[] party;
-    private static final int REQ_LENGTH = 6;
 
     public Party() {
         party = new Monster[REQ_LENGTH];

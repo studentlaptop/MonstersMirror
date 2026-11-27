@@ -92,8 +92,10 @@ public class PartyTests {
         assertAll(() ->
             assertEquals(party, partyByPartyObj), () ->
             assertEquals(party, partyByArray), () ->
+            assertEquals(Party.REQ_LENGTH, partyByArray.size()), () ->
             assertEquals(partyByPartyObj, partyByCollection), () ->
-            assertEquals(new Party(), partyByEmptyCollection)
+            assertEquals(new Party(), partyByEmptyCollection), () ->
+            assertEquals(Party.REQ_LENGTH, partyByCollection.size())
         );
     }
 
@@ -105,7 +107,8 @@ public class PartyTests {
 
         assertAll(() ->
             assertNotNull(partyByBuilder), () ->
-            assertEquals (party, partyByBuilder)
+            assertEquals(party, partyByBuilder), () ->
+            assertEquals(Party.REQ_LENGTH, partyByBuilder.size())
         );
     }
 }

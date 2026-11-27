@@ -18,7 +18,7 @@ public class MovesetTests {
         assertNull(builderMoveset.getThird());
         assertNull(builderMoveset.getFourth());
 
-        assertEquals(4, builderMoveset.size());
+        assertEquals(Moveset.REQ_LENGTH, builderMoveset.size());
     }
 
     @Test

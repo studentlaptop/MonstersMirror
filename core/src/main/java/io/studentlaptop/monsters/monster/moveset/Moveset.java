@@ -6,8 +6,8 @@ import io.studentlaptop.monsters.monster.move.MoveInfo;
 import java.util.*;
 
 public class Moveset extends AbstractList<Move> {
+    public static final int REQ_LENGTH = 4;
     private final Move[] moves;
-    private static final int REQ_LENGTH = 4;
 
     public Moveset() {
         this.moves = new Move[REQ_LENGTH];
