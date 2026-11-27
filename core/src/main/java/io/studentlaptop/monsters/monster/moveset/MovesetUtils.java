@@ -15,7 +15,7 @@ public class MovesetUtils {
         }
     };
 
-    public static void validateNoDuplicates(Collection<Move> c) {
+    static void validateNoDuplicates(Collection<Move> c) {
         Set<MoveInfo> duplicateCheck = new HashSet<>();
         for (Move move : c) {
             if (move == null) {
