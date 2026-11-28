@@ -74,17 +74,22 @@ public class Moveset extends AbstractList<Move> {
         if (o instanceof Move || o == null) {
             return super.indexOf(o);
         }
-        if (o instanceof MoveInfo) {
-            for (Move move : moves) {
-                if (move == null) {
-                    continue;
-                }
-                if (move.getInfo().equals(o)) {
-                    return super.indexOf(move);
-                }
+        throw new ClassCastException(o.toString() + " is not a Move");
+    }
+
+    public int indexOf(MoveInfo moveInfo) {
+        if  (moveInfo == null) {
+            return super.indexOf(null);
+        }
+        for (Move move : moves) {
+            if (move == null) {
+                continue;
+            }
+            if (move.getInfo().equals(moveInfo)) {
+                return indexOf(move);
             }
         }
-        throw new ClassCastException(o.toString() + " is not a Move");
+        throw new ClassCastException(moveInfo + " is not a Move");
     }
 
     public boolean forget(Move move) {
